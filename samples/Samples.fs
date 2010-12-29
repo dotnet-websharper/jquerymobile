@@ -44,6 +44,57 @@ module SampleInternals =
             |>! OnAfterRender (fun elem ->
                 JQuery.JQuery.Of(elem.Body).Attr("data-role", "page").Ignore)
         page    
+
+    [<JavaScript>]
+    let SimpleNavigation () = 
+        let jq = JQuery.Mobile.MobileJQ.JQuery // should trigger webresource.
+        let home =
+            let header =
+                Div [H1 [Text "Home"]]
+                |>! OnAfterRender (fun elem ->
+                    JQuery.JQuery.Of(elem.Body).Attr("data-role", "header").Ignore)
+        
+            let content =
+                Div [P [A [Attr.HRef "#about"; Text "About this app"]]]
+                |>! OnAfterRender (fun elem ->
+                    JQuery.JQuery.Of(elem.Body).Attr("data-role", "content").Ignore)
+        
+            let page = 
+                Div [Attr.Id "home"
+                     header  :> IPagelet
+                     content :> IPagelet]
+                |>! OnAfterRender (fun elem ->
+                    JQuery.JQuery.Of(elem.Body).Attr("data-role", "page").Ignore)
+            page
+
+        let about =
+            let header =
+                Div [H1 [Text "About This App"]]
+                |>! OnAfterRender (fun elem ->
+                    JQuery.JQuery.Of(elem.Body).Attr("data-role", "header").Ignore)
+        
+            let content =
+                Div [P [Text "This app rocks"
+                        A [HRef "#home" 
+                           Text "Go home!"] :> IPagelet
+                        ]
+                    ]
+                |>! OnAfterRender (fun elem ->
+                    JQuery.JQuery.Of(elem.Body).Attr("data-role", "content").Ignore)
+        
+            let page = 
+                Div [Attr.Id "about"
+                     header  :> IPagelet
+                     content :> IPagelet]
+                |>! OnAfterRender (fun elem ->
+                    JQuery.JQuery.Of(elem.Body).Attr("data-role", "page").Ignore)
+            page
+        
+        Div [
+            home
+            about
+        ]
+        
             
 
 type Samples() = 
@@ -51,5 +102,5 @@ type Samples() =
 
     [<JavaScript>]
     override this.Body = 
-        SampleInternals.SimplePage () :> IPagelet
-         
+        // SampleInternals.SimplePage () :> IPagelet
+        SampleInternals.SimpleNavigation () :> IPagelet

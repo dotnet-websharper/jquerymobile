@@ -12,10 +12,7 @@
 <body>
     <form id="form1" runat="server">
 
-    <div>
-    <h1>Test</h1>
     <Samples:Samples runat="server" ></Samples:Samples>
-    </div>
     </form>
 </body>
 </html>
