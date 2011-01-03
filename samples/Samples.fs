@@ -33,7 +33,7 @@ module SampleInternals =
         
     [<JavaScript>]
     let SimplePage () = 
-        let jq = JQuery.Mobile.MobileJQ.JQuery // should trigger webresource.
+        JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
         let header =
             Div [H1 [Text "Page Title"]]
             |> AddDataRole "header"
@@ -56,7 +56,7 @@ module SampleInternals =
 
     [<JavaScript>]
     let SimpleNavigation () = 
-        let jq = JQuery.Mobile.MobileJQ.JQuery // should trigger webresource.
+        JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
         let home =
             let header =
                 Div [H1 [Text "Home"]]
@@ -102,7 +102,7 @@ module SampleInternals =
         
     [<JavaScript>]
     let FormTypes () = 
-        let jq = JQuery.Mobile.MobileJQ.JQuery // should trigger webresource.
+        JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
         let home =
             let header =
                 Div [H1 [Text "Ice Cream Order Form"]]
@@ -246,6 +246,66 @@ module SampleInternals =
 
         home    
 
+    [<JavaScript>]
+    let EventTestPage () =
+        let header =
+            Div [H1 [Text "Tap me!"]]
+            |> AddDataRole "header"
+        
+        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(header.Body)).Tap(
+            fun _ event -> 
+                JavaScript.Alert("Tapped on:" + string event.PageX + "," + string event.PageY)
+            ).Base.Ignore
+
+        let content =
+            Div [P [Text "Swipe me!"]]
+            |> AddDataRole "content"
+        
+        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(content.Body)).Swipe(
+            fun _ event -> 
+                JavaScript.Alert("Swipped on")
+            ).Base.Ignore
+
+        let footer =
+            Div [H4 [Text "Scroll me!"]]
+            |> AddDataRole "footer"
+
+        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(footer.Body)).Scrollstart(
+            fun _ event -> 
+                JavaScript.Alert("Scrolled on")
+            ).Base.Ignore
+
+        let page = 
+            Div [header
+                 content
+                 footer]
+            |> AddDataRole "page"
+
+        page    
+
+    [<JavaScript>]
+    let UtilsTestPage () =
+        let header =
+            Div [H1 [Text "Page 1"]]
+            |> AddDataRole "header"
+        
+        let content =
+            Div [P [Text "Content"]]
+            |> AddDataRole "content"
+        
+        let page = 
+            Div [header
+                 content]
+            |> AddDataRole "page"
+
+        
+        JavaScript.Alert(string JQuery.Mobile.JQuery.Mobile.DefaultTransition)
+        JavaScript.Alert(string JQuery.Mobile.JQuery.Mobile.LoadingMessage)
+
+        page    
+
+
+
 type Samples() = 
     inherit Web.Control()
 
@@ -253,4 +313,7 @@ type Samples() =
     override this.Body = 
         // SampleInternals.SimplePage () :> IPagelet
         // SampleInternals.SimpleNavigation () :> IPagelet
-        SampleInternals.FormTypes () :> IPagelet
+        // SampleInternals.FormTypes () :> IPagelet
+        // SampleInternals.EventTestPage() :> IPagelet
+        SampleInternals.UtilsTestPage() :> IPagelet
+
