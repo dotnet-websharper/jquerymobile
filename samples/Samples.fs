@@ -299,8 +299,8 @@ module SampleInternals =
             |> AddDataRole "page"
 
         
-        JavaScript.Alert(string JQuery.Mobile.JQuery.Mobile.DefaultTransition)
-        JavaScript.Alert(string JQuery.Mobile.JQuery.Mobile.LoadingMessage)
+        JavaScript.Alert(JQuery.Mobile.JQuery.Mobile.DefaultTransition)
+        JavaScript.Alert(JQuery.Mobile.JQuery.Mobile.LoadingMessage)
 
         page    
 
