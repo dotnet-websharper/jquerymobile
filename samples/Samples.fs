@@ -172,11 +172,11 @@ module SampleInternals =
                               Select [
                                 Attr.Name "sprinkles"
                                 Attr.Id   "sprinkles"
-                                Default.H.Option [
+                                Default.Tags.Option [
                                     Attr.Value "on"
                                     Text "Yes"
                                 ] :> IPagelet
-                                Default.H.Option [
+                                Default.Tags.Option [
                                     Attr.Value "off"
                                     Text "No"
                                 ] :> IPagelet
@@ -193,19 +193,19 @@ module SampleInternals =
                               Select [
                                 Attr.Name "store"
                                 Attr.Id   "store"
-                                Default.H.Option [
+                                Default.Tags.Option [
                                     Attr.Value "mainStreet"
                                     Text "Main Street"
                                 ] :> IPagelet
-                                Default.H.Option [
+                                Default.Tags.Option [
                                     Attr.Value "libertyAvenue"
                                     Text "Liberty Avenue"
                                 ] :> IPagelet
-                                Default.H.Option [
+                                Default.Tags.Option [
                                     Attr.Value "circleSquare"
                                     Text "Circle Square"
                                 ] :> IPagelet
-                                Default.H.Option [
+                                Default.Tags.Option [
                                     Attr.Value "angelRoad"
                                     Text "Angel Road"
                                 ] :> IPagelet
