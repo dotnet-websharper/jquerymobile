@@ -43,8 +43,6 @@
     <Compile Include="Main.fs" />
     <None Include="Resources.cs" />
     <None Include="Marker.cs" />
-    <EmbeddedResource Include="jquery.mobile-1.0a2.min.js" />
-
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

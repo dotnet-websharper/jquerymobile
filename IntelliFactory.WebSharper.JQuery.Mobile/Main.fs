@@ -13,5 +13,4 @@ namespace IntelliFactory.WebSharper.JQuery.Mobile
 
 module Main =
     open IntelliFactory.WebSharper.InterfaceGenerator
-
     do Compiler.Compile stdout Definition.Assembly
