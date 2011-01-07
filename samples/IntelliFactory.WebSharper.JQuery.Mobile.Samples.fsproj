@@ -52,6 +52,8 @@
     <Reference Include="IntelliFactory.WebSharper.JQuery" />
     <Reference Include="IntelliFactory.WebSharper.Core" />
     <Reference Include="IntelliFactory.Html" />
+    <Reference Include="IntelliFactory.Json" />
+
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
