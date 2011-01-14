@@ -1,5 +1,5 @@
 <ivy-module version="2.0">
-  <info organisation="IntelliFactory" module="if-ws-jquerymobile" revision="2.0" />
+  <info organisation="IntelliFactory" module="if-ws-jquerymobile" revision="2.1" />
   <configurations>
     <conf name="build" />
     <conf name="default" />
@@ -8,7 +8,6 @@
   <publications>
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="bin" ext="dll" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="doc" ext="xml" conf="default" />
-    <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="bin" ext="dll.js" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="bin" ext="dll.dep" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="debug" ext="pdb" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="doc" ext="Documentation.zip" conf="default" />
