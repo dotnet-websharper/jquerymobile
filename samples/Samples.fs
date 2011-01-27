@@ -23,27 +23,19 @@ module SampleInternals =
     let SimplePage () = 
         JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
         let header =
-            Div [HTML5.Attr.Data "role" "header"
-                 H1 [Text "Page Title"] :> IPagelet
-                ]
-            
+            Div [HTML5.Attr.Data "role" "header"] -< [H1 [Text "Page Title"]]
 
         let content =
-            Div [HTML5.Attr.Data "role" "content"
-                 P [Text "Lorem ipsum dolor sit amet, consectetur adipiscing"] :> IPagelet
-                ]
-            
+            Div [HTML5.Attr.Data "role" "content" ] -< [
+                 P [Text "Lorem ipsum dolor sit amet, consectetur adipiscing"]
+            ]
 
         let footer =
-            Div [HTML5.Attr.Data "role" "footer"
-                 H4 [Text "Page Footer"] :> IPagelet
-                ]
+            Div [HTML5.Attr.Data "role" "footer" ] -< [H4 [Text "Page Footer"]]
 
         let page = 
-            Div [HTML5.Attr.Data "role" "page"
-                 header  :> IPagelet
-                 content :> IPagelet
-                 footer  :> IPagelet]
+            Div [HTML5.Attr.Data "role" "page" ] 
+            -<  [header; content; footer]
 
         page    
 
@@ -55,19 +47,16 @@ module SampleInternals =
                 Div [HTML5.Attr.Data "role" "header"
                      H1 [Text "Home"] :> IPagelet                
                     ]
-                
-        
+
             let content =
                 Div [HTML5.Attr.Data "role" "content"
                      P [A [Attr.HRef "#about"; Text "About this app"]] :> IPagelet
-                    ]
-                
+                    ]                
         
             let page = 
                 Div [Attr.Id "home"
                      HTML5.Attr.Data "role" "page"
-                     header  :> IPagelet
-                     content :> IPagelet]
+                ] -< [header; content]
                 
             page
 
@@ -77,17 +66,13 @@ module SampleInternals =
                     HTML5.Attr.Data "role" "header"
                     H1 [Text "About This App"] :> IPagelet
                 ]
-                
         
             let content =
                 Div [HTML5.Attr.Data "role" "content"
-                     P [Text "This app rocks "
-                        A [HRef "#home" 
-                           Text " Go home!"] :> IPagelet
-                        ] :> IPagelet
-                    ]
+                     P [Text "This app rocks "] -< [A [HRef "#home"; Text " Go home!"]
+                    ] :> IPagelet
+                ]
                 
-        
             let page = 
                 Div [Attr.Id "about"
                      HTML5.Attr.Data "role" "page"
@@ -129,6 +114,7 @@ module SampleInternals =
                     Form [ Action "#"
                            Method "get"
                            // Name Field
+                           ] -< [
                            Div [
                               HTML5.Attr.Data "role" "fieldcontain"
                               Label [
@@ -140,8 +126,7 @@ module SampleInternals =
                                 Attr.Name "name"
                                 Attr.Value ""
                               ]  :> IPagelet
-                           ] :> IPagelet
-                           
+                           ]
                            // Flavour field
                            Div [
                               HTML5.Attr.Data "role" "controlgroup"
@@ -151,14 +136,15 @@ module SampleInternals =
                               checkbox "Vanilla"
                               checkbox "Chocolate"
                               checkbox "Strawberry"
-                           ] :> IPagelet
+                           ]
                            // Cones Field
                            Div [
                               HTML5.Attr.Data "role" "fieldcontain"
+                              ] -< [
                               Label [
                                 Attr.For "quantity"
                                 Text "Number of cones:"
-                              ] :> IPagelet
+                              ]
                               Input [
                                 Attr.Type "range"
                                 Attr.Name "quantity"
@@ -166,66 +152,55 @@ module SampleInternals =
                                 Attr.Value "1"
                                 HTML5.Attr.Min "1" 
                                 HTML5.Attr.Max "100"
-                              ] :> IPagelet
-                              
-                           ] :> IPagelet
-                           
+                              ]
+                           ]
                            // Sprinkles Field
                            Div [
                               HTML5.Attr.Data "role" "fieldcontain" 
-                              Label [
-                                Attr.For "sprinkles"
-                                Text "Sprinkles:"
-                              ] :> IPagelet
+                              ] -< [
+                              Label [Attr.For "sprinkles";Text "Sprinkles:"]
                               Select [
                                 HTML5.Attr.Data "role" "slider"
                                 Attr.Name "sprinkles"
                                 Attr.Id   "sprinkles"
-                                Default.Tags.Option [
-                                    Attr.Value "on"
-                                    Text "Yes"
-                                ] :> IPagelet
-                                Default.Tags.Option [
-                                    Attr.Value "off"
-                                    Text "No"
-                                ] :> IPagelet
-                              ] :> IPagelet
-                           ] :> IPagelet
-
+                                ] -< [
+                                Default.Tags.Option [Attr.Value "on"; Text "Yes"]
+                                Default.Tags.Option [Attr.Value "off"; Text "No"]
+                              ]
+                           ]
                            // Store Field
                            Div [
                               HTML5.Attr.Data "role" "fieldcontain" 
-                              Label [
-                                Attr.For "store"
-                                Text "Collect from store:"
-                              ] :> IPagelet
+                              ] -< [
+                              Label [Attr.For "store"; Text "Collect from store:"]
                               Select [
                                 Attr.Name "store"
                                 Attr.Id   "store"
+                                ] -< [
                                 Default.Tags.Option [
                                     Attr.Value "mainStreet"
                                     Text "Main Street"
-                                ] :> IPagelet
+                                ]
                                 Default.Tags.Option [
                                     Attr.Value "libertyAvenue"
                                     Text "Liberty Avenue"
-                                ] :> IPagelet
+                                ]
                                 Default.Tags.Option [
                                     Attr.Value "circleSquare"
                                     Text "Circle Square"
-                                ] :> IPagelet
+                                ]
                                 Default.Tags.Option [
                                     Attr.Value "angelRoad"
                                     Text "Angel Road"
-                                ] :> IPagelet
-                              ] :> IPagelet
-                           ] :> IPagelet
-                           
-                           
+                                ]
+                              ]
+                           ]
                            Div [
                               Attr.Class "ui-body ui-body-b"
+                              ] -< [
                               FieldSet [
                                 Attr.Class "ui-grid-a"
+                                ] -< [
                                 Div [ 
                                     Attr.Class "ui-block-a"
                                     Button [
@@ -233,17 +208,18 @@ module SampleInternals =
                                         Attr.Type "submit"
                                         Text "Cancel"
                                     ] :> IPagelet
-                                ] :> IPagelet
+                                ]
                                 Div [
                                     Attr.Class "ui-block-b"
+                                    ] -< [
                                     Button [
                                         HTML5.Attr.Data "theme" "a"
                                         Attr.Type "submit"
                                         Text "Order Ice Cream"
-                                    ] :> IPagelet
-                                ] :> IPagelet
-                              ] :> IPagelet
-                           ] :> IPagelet
+                                    ]
+                                ]
+                              ]
+                           ]
                     ] :> IPagelet
                 ] :> IPagelet
                 
@@ -262,7 +238,8 @@ module SampleInternals =
         let header =
             Div [
                 HTML5.Attr.Data "role" "header" 
-                H1 [Text "Tap me!"] :> IPagelet
+                ] -< [
+                H1 [Text "Tap me!"]
             ]
             
         
@@ -274,7 +251,8 @@ module SampleInternals =
         let content =
             Div [
                 HTML5.Attr.Data "role" "content"
-                P [Text "Swipe me!"] :> IPagelet
+                ] -< [
+                P [Text "Swipe me!"]
             ]
         
         JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(content.Body)).Swipe(
@@ -285,7 +263,8 @@ module SampleInternals =
         let footer =
             Div [
                 HTML5.Attr.Data "role" "footer"
-                H4 [Text "Scroll me!"] :> IPagelet
+                ] -< [
+                H4 [Text "Scroll me!"]
             ]
 
         JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(footer.Body)).Scrollstart(
@@ -296,9 +275,10 @@ module SampleInternals =
         let page = 
             Div [
                 HTML5.Attr.Data "role" "page"
-                header  :> IPagelet
-                content :> IPagelet
-                footer  :> IPagelet
+                ] -< [
+                header
+                content
+                footer 
             ]
 
         page    
@@ -308,20 +288,23 @@ module SampleInternals =
         let header =
             Div [
                 HTML5.Attr.Data "role" "header"
-                H1 [Text "Page 1"] :> IPagelet
+                ] -< [
+                H1 [Text "Page 1"]
             ]
         
         let content =
             Div [
                 HTML5.Attr.Data "role" "content"
-                P [Text "Content"] :> IPagelet
+                ] -< [
+                P [Text "Content"]
             ]
         
         let page = 
             Div [
                 HTML5.Attr.Data "role" "page"
-                header  :> IPagelet
-                content :> IPagelet
+                ] -< [
+                header
+                content
             ]
         
         JavaScript.Alert(JQuery.Mobile.JQuery.Mobile.DefaultTransition)

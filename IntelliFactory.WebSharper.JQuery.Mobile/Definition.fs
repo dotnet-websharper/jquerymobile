@@ -150,11 +150,44 @@ module Definition =
             |> WithComment "Mobile configurable options."
         ]
 
+    let ButtonIcon = 
+        Pattern.EnumInlines "ButtonIcon" [
+            "LeftArrow", "'arrow-l'"
+            "RightArrow", "'arrow-r'"
+            "UpArrow", "'arrow-u'"
+            "DownArrow", "'arrow-d'"
+            "Delete", "'delete'"
+            "Plus", "'plus'"
+            "Minus", "'minus'"
+            "Check", "'check'"
+            "Gear", "'gear'"
+            "Refresh", "'refresh'"
+            "Forward", "'forward'"
+            "Back", "'back'"
+            "Grid", "'grid'"
+            "Star", "'star'"
+            "Alert", "'alert'"
+            "Info", "'info'"
+        ]
+    
+    let Theme = 
+        Pattern.EnumStrings "Theme" [
+            "a"
+            "b"
+            "c"
+            "d"
+            "e"
+        ]
+    
     let Assembly =
         Assembly [
             Namespace "IntelliFactory.WebSharper.JQuery.Mobile" [
                 JQuery
                 Mobile
+            ]
+            Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Enums" [
+                ButtonIcon
+                Theme
             ]
         ]
 
