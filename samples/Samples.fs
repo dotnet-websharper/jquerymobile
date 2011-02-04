@@ -319,7 +319,7 @@ type Samples() =
     override this.Body = 
         // SampleInternals.SimplePage () :> IPagelet
         // SampleInternals.SimpleNavigation () :> IPagelet
-        // SampleInternals.FormTypes () :> IPagelet
+        SampleInternals.FormTypes () :> IPagelet
         // SampleInternals.EventTestPage() :> IPagelet
-        SampleInternals.UtilsTestPage() :> IPagelet
+        // SampleInternals.UtilsTestPage() :> IPagelet
 
