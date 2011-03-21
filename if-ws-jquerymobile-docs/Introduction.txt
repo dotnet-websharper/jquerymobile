@@ -16,8 +16,8 @@ it is that you can target any of the following platforms:
   * Symbian
   * Meego
 
-With the jQuery Mobile Extension you can develop WebSharper™ 
-applications that use the jQuery Mobile Extension API using
-nothing but F# code.
+With the jQuery Mobile Extension you can develop WebSharper
+applications that use the jQuery Mobile Extension API using nothing
+but F# code.
 
 

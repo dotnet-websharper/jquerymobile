@@ -2,15 +2,14 @@
   <info organisation="IntelliFactory" module="if-ws-jquerymobile" revision="2.1" />
   <configurations>
     <conf name="build" />
-    <conf name="default" />
- 
+    <conf name="default" /> 
   </configurations>
   <publications>
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="bin" ext="dll" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="doc" ext="xml" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="bin" ext="dll.dep" conf="default" />
     <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="debug" ext="pdb" conf="default" />
-    <artifact name="IntelliFactory.WebSharper.JQuery.Mobile" type="doc" ext="Documentation.zip" conf="default" />
+    <artifact name="if-ws-jquerymobile-docs" type="doc" ext="zip" conf="default" />
   </publications>
   <dependencies>
     <dependency name="if-ws"     rev="latest.integration" conf="build->compiler" />
