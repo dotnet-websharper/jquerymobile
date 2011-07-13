@@ -14,13 +14,14 @@ namespace IntelliFactory.WebSharper.JQuery.Mobile
 module Definition =
     open IntelliFactory.WebSharper.InterfaceGenerator
     open IntelliFactory.WebSharper.Dom
-    open IntelliFactory.WebSharper
+    type JEvent = IntelliFactory.WebSharper.JQuery.Event
+    type JQuery = IntelliFactory.WebSharper.JQuery.JQuery
 
     let EventHandler =
         (
             T<Element>  -*
-            T<JQuery.Event>?event
-        ) ^-> T<unit>        
+            T<JEvent>?event
+        ) ^-> T<unit>
 
     let JQ = Type.New()
 
@@ -50,7 +51,7 @@ module Definition =
             "gradeA" =@ T<unit -> bool>
             |> WithComment "Any support conditions that must be met in order to proceed."
 
-            "changePage" => ((T<JQuery.JQuery> + JQ + T<string> + T<string[]> + T<obj>) 
+            "changePage" => ((T<JQuery> + JQ + T<string> + T<string[]> + T<obj>) 
                             * !? T<string>?to_
                             * !? T<bool>?transition
                             * !? T<bool>?back)
@@ -139,7 +140,7 @@ module Definition =
             |> WithComment "jQuery Mobile exposes the animationComplete plugin, which you can utilize after adding or removing a class that applies a CSS transition."
         ] 
         |+> [   
-            "of" => T<JQuery.JQuery>?jquery ^-> JQ
+            "of" => T<JQuery>?jquery ^-> JQ
             |> WithInline "$jquery"
             |> WithComment "Builds a jquery mobile extended object with a normal jquery object."
             "UseJQueryMobile" =? T<unit>
