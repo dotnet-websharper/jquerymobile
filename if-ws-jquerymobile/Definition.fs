@@ -79,6 +79,39 @@ module Definition =
         |+> Protocol [
             "base" =? T<IntelliFactory.WebSharper.JQuery.JQuery> |> WithGetterInline "$this"
         
+
+            // form plugin methods
+
+            // selectmenu
+            "selectmenu" => T<string> ^-> T<unit> 
+            |> WithComment "Calling the select menu plugin."
+
+            "selectmenu" => T<string * bool> ^-> T<unit> 
+            |> WithComment "Calling the select menu plugin."
+
+            // textinput
+            "textinput" => T<string> ^-> T<unit> 
+            |> WithComment "Calling the textinput plugin."
+
+            // checkboxradio
+            "checkboxradio" => T<string> ^-> T<unit> 
+            |> WithComment "Calling the checkboxradio plugin."
+
+            // slider
+            "slider" => T<string> ^-> T<unit> 
+            |> WithComment "Calling the slider plugin."
+
+            // form button
+            "button" => T<string> ^-> T<unit> 
+            |> WithComment "Calling the form button plugin."
+
+            // listview
+            "listview" => T<string> ^-> T<unit> 
+            |> WithComment "Calling the listview menu plugin."
+
+
+            // rest
+
             // Tap
             "tap" => !?EventHandler?handler ^-> JQ
             |> WithComment "Triggers after a quick, complete touch event."
