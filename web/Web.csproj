@@ -63,9 +63,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\if-ws-jquerymobile\IntelliFactory.WebSharper.JQuery.Mobile.fsproj">
       <Project>{09FF3F57-1D1A-4537-AF3E-9B957DBD961E}</Project>
@@ -75,6 +73,9 @@
       <Project>{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}</Project>
       <Name>IntelliFactory.WebSharper.JQuery.Mobile.Tests</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Properties.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <VisualStudio>
