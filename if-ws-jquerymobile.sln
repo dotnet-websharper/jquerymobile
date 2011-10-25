@@ -10,10 +10,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.J
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.JQuery.Mobile.Documentation", "if-ws-jquerymobile-docs\IntelliFactory.WebSharper.JQuery.Mobile.Documentation.fsproj", "{DCEBE473-B8B8-4FAA-936B-28A6E76229F5}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.JQuery.Mobile.Tests", "if-ws-jquerymobile-tests\IntelliFactory.WebSharper.JQuery.Mobile.Tests.fsproj", "{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "web\Web.csproj", "{F453CB86-F138-4F1B-A87B-93E1B587E16F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,14 +24,6 @@ Global
 		{DCEBE473-B8B8-4FAA-936B-28A6E76229F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCEBE473-B8B8-4FAA-936B-28A6E76229F5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{DCEBE473-B8B8-4FAA-936B-28A6E76229F5}.Release|Any CPU.Build.0 = Debug|Any CPU
-		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

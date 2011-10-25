@@ -9,7 +9,7 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-namespace IntelliFactory.WebSharper.JQuery.Mobile.Tests
+namespace IntelliFactory.WebSharper.JQuery.Mobile.Samples
 
 open IntelliFactory.WebSharper
 open IntelliFactory.WebSharper.Html
