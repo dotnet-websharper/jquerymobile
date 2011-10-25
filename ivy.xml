@@ -11,3 +11,4 @@
     <dependency name="if-ws-ecma-2.4" rev="latest.integration" branch="2.4" />
   </dependencies>
 </ivy-module>
+
