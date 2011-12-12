@@ -7,9 +7,7 @@
     <artifact name="if-ws-jquerymobile-docs" type="doc" ext="zip" conf="default" />
   </publications>
   <dependencies>
-    <dependency name="if-ws" rev="latest.integration" />
-    <dependency name="if-ws-ecma" rev="latest.integration" />
-    <dependency name="if-ws-jquery" rev="latest.integration" />
+    <dependency name="WebSharper" rev="latest.integration" />
   </dependencies>
 </ivy-module>
 
