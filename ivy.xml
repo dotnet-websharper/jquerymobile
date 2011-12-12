@@ -9,6 +9,7 @@
   <dependencies>
     <dependency name="if-ws" rev="latest.integration" />
     <dependency name="if-ws-ecma" rev="latest.integration" />
+    <dependency name="if-ws-jquery" rev="latest.integration" />
   </dependencies>
 </ivy-module>
 
