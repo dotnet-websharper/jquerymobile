@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,6 +33,20 @@
   </PropertyGroup>
   <Import Project="..\.build\lib\IntelliFactory.WebSharper.InterfaceGenerator.targets" />
   <ItemGroup>
+    <Compile Include="Common.fs" />
+    <Compile Include="Events.fs" />
+    <Compile Include="Page.fs" />
+    <Compile Include="Dialog.fs" />
+    <Compile Include="FixedToolbar.fs" />
+    <Compile Include="Button.fs" />
+    <Compile Include="Popup.fs" />
+    <Compile Include="Collapsible.fs" />
+    <Compile Include="Accordion.fs" />
+    <Compile Include="TextInput.fs" />
+    <Compile Include="Slider.fs" />
+    <Compile Include="CheckBoxRadio.fs" />
+    <Compile Include="SelectMenu.fs" />
+    <Compile Include="ListView.fs" />
     <Compile Include="Definition.fs" />
     <Compile Include="Main.fs" />
     <None Include="Resources.cs" />
@@ -48,5 +62,6 @@
     <Reference Include="IntelliFactory.WebSharper.Dom" />
     <Reference Include="IntelliFactory.WebSharper.JQuery" />
     <Reference Include="IntelliFactory.Html" />
+    <Reference Include="IntelliFactory.WebSharper.Html" />
   </ItemGroup>
 </Project>

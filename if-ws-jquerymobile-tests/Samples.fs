@@ -12,16 +12,25 @@
 namespace IntelliFactory.WebSharper.JQuery.Mobile.Tests
 
 open IntelliFactory.WebSharper
-open IntelliFactory.WebSharper.Html
 open IntelliFactory.WebSharper.EcmaScript
+open IntelliFactory.WebSharper.JQuery
 open IntelliFactory.WebSharper.JQuery.Mobile
+open IntelliFactory.WebSharper.Html
 open IntelliFactory.WebSharper.JavaScript
 
+type private E =
+    IntelliFactory.WebSharper.JQuery.Mobile.Events
+
+
 module SampleInternals =
-   
+
     [<JavaScript>]
-    let SimplePage () = 
-        JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
+    let MobileInstance =
+        Mobile.Use() // should trigger webresource.
+        Mobile.Instance
+
+    [<JavaScript>]
+    let SimplePage () =
         let header =
             Div [HTML5.Attr.Data "role" "header"] -< [H1 [Text "Page Title"]]
 
@@ -37,11 +46,11 @@ module SampleInternals =
             Div [HTML5.Attr.Data "role" "page" ] 
             -<  [header; content; footer]
 
-        page    
+        page
 
     [<JavaScript>]
     let SimpleNavigation () = 
-        JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
+         // should trigger webresource.
         let home =
             let header =
                 Div [HTML5.Attr.Data "role" "header"
@@ -88,7 +97,6 @@ module SampleInternals =
         
     [<JavaScript>]
     let FormTypes () = 
-        JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
         let home =
             let header =
                 Div [HTML5.Attr.Data "role" "header"
@@ -241,12 +249,9 @@ module SampleInternals =
                 ] -< [
                 H1 [Text "Tap me!"]
             ]
-            
-        
-        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(header.Body)).Tap(
-            fun _ event -> 
-                JavaScript.Alert("Tapped on:" + string event.PageX + "," + string event.PageY)
-            ).Base.Ignore
+
+        E.Tap.On(JQuery.JQuery.Of(header.Body), fun event ->
+            JavaScript.Alert("Tapped on:" + string event.PageX + "," + string event.PageY))
 
         let content =
             Div [
@@ -254,11 +259,9 @@ module SampleInternals =
                 ] -< [
                 P [Text "Swipe me!"]
             ]
-        
-        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(content.Body)).Swipe(
-            fun _ event -> 
-                JavaScript.Alert("Swipped on")
-            ).Base.Ignore
+
+        E.Swipe.On(JQuery.Of(content.Body), fun event ->
+            JavaScript.Alert("Swipped on"))
 
         let footer =
             Div [
@@ -267,10 +270,8 @@ module SampleInternals =
                 H4 [Text "Scroll me!"]
             ]
 
-        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(footer.Body)).Scrollstart(
-            fun _ event -> 
-                JavaScript.Alert("Scrolled on")
-            ).Base.Ignore
+        E.Scrollstart.On(JQuery.Of(footer.Body), fun event ->
+            JavaScript.Alert("Scrolled on"))
 
         let page = 
             Div [
@@ -306,9 +307,6 @@ module SampleInternals =
                 header
                 content
             ]
-        
-        JavaScript.Alert(JQuery.Mobile.JQuery.Mobile.DefaultTransition)
-        JavaScript.Alert(JQuery.Mobile.JQuery.Mobile.LoadingMessage)
 
         page    
 
