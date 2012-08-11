@@ -13,7 +13,7 @@ module IntelliFactory.WebSharper.JQuery.Mobile.Main
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 
-let ClassList : list<CodeModel.TypeDeclaration> =
+let ClassList : list<CodeModel.NamespaceEntity> =
     [
         Common.Icon
         Common.IconPosition
