@@ -180,6 +180,8 @@ let Mobile =
             "path" =? Path
             "silentScroll" => !?T<int>?yPos ^-> T<unit>
             "activePage" =? T<JQuery>
+            "showPageLoadingMsg" => !?T<string>?theme * !?T<string>?msgText * !?T<bool>?textonly ^-> T<unit>
+            "hidePageLoadingMsg" => T<unit> ^-> T<unit>
         ]
 
 let JQuery =
