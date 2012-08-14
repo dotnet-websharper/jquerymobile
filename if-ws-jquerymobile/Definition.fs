@@ -207,5 +207,8 @@ let JQuery =
 
             "jqmHijackable" => T<JQuery>?jQuery ^-> T<bool>
             |> WithInline "$jQuery.jqmHijackable()"
+
+            "page" => T<JQuery>?jQuery ^-> T<JQuery>
+            |> WithInline "$jQuery.page()"
         ]
 
