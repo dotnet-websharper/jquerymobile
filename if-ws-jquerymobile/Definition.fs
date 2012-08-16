@@ -61,7 +61,7 @@ let Special =
     Class "Special"
     |+> [
             s "tap" "tapholdThreshold" T<int>
-            s "swipe" "scrollSupressionThreshold " T<int>
+            s "swipe" "scrollSupressionThreshold" T<int>
             s "swipe" "durationThreshold" T<int>
             s "swipe" "horizontalDistanceThreshold" T<int>
             s "swipe" "verticalDistanceThreshold" T<int>
@@ -73,10 +73,23 @@ let Special =
 let Orientation =
     Pattern.EnumStrings "Orientation" ["portrait"; "landscape"]
 
-let OrientationChangeEvent =
-    Class "OrientationChangeEvent"
+let OrientationChangeEventArgs =
+    Class "OrientationChangeEventArgs"
     |+> Protocol [
             "orientation" =? Orientation
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
+let VMouseEventArgs =
+    Class "VMouseEventArgs"
+    |+> Protocol [
+            "screenX" =? T<int>
+            "screenY" =? T<int>
+            "clientX" =? T<int>
+            "clientY" =? T<int>
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
         ]
 
 let Events =
@@ -84,22 +97,22 @@ let Events =
     let ev1 name ty = Events.DefineTyped name ty
     Class "Events"
     |+> [
-            ev0 "tap"
-            ev0 "taphold"
-            ev0 "swipe"
-            ev0 "swipeleft"
-            ev0 "swiperight"
-            ev0 "vmouseover"
-            ev0 "vmouseout"
-            ev0 "vmousedown"
-            ev0 "vmousemove"
-            ev0 "vmouseup"
-            ev0 "vclick"
-            ev0 "vmousecancel"
-            ev1 "orientationchange" OrientationChangeEvent.Type
-            ev0 "scrollstart"
-            ev0 "scrollstop"
-            ev0 "updatelayout"
+            ev0 "tap" |> WithSourceName "Tap"
+            ev0 "taphold" |> WithSourceName "TapHold"
+            ev0 "swipe" |> WithSourceName "Swipe"
+            ev0 "swipeleft" |> WithSourceName "SwipeLeft"
+            ev0 "swiperight" |> WithSourceName "SwipeRight"
+            ev1 "vmouseover" VMouseEventArgs.Type |> WithSourceName "VMouseOver"
+            ev1 "vmouseout" VMouseEventArgs.Type |> WithSourceName "VMouseOut"
+            ev1 "vmousedown" VMouseEventArgs.Type |> WithSourceName "VMouseDown"
+            ev1 "vmousemove" VMouseEventArgs.Type |> WithSourceName "VMouseMove"
+            ev1 "vmouseup" VMouseEventArgs.Type |> WithSourceName "VMouseUp"
+            ev1 "vclick" VMouseEventArgs.Type |> WithSourceName "VClick"
+            ev1 "vmousecancel" VMouseEventArgs.Type |> WithSourceName "VMouseCancel"
+            ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
+            ev0 "scrollstart" |> WithSourceName "ScrollStart"
+            ev0 "scrollstop" |> WithSourceName "ScrollStop"
+            ev0 "updatelayout" |> WithSourceName "UpdateLayout"
         ]
 
 let URL =

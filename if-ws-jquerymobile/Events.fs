@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.JQuery
 type JEvent = IntelliFactory.WebSharper.JQuery.Event
 
 let Handler0 = T<JEvent>?ev ^-> T<unit>
-let Handler1 t = T<JEvent> * t ^-> T<unit>
+let Handler1 t = t ^-> T<unit>
 
 let Event0 =
     let h = Handler0

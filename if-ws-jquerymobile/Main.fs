@@ -61,10 +61,11 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Definition.LoadingConfig
         Definition.Mobile
         Definition.Orientation
-        Definition.OrientationChangeEvent
+        Definition.OrientationChangeEventArgs
         Definition.Path
         Definition.Special
         Definition.URL
+        Definition.VMouseEventArgs
     ]
 
 let Assembly =

@@ -270,7 +270,10 @@ module SampleInternals =
                 H4 [Text "Scroll me!"]
             ]
 
-        E.Scrollstart.On(JQuery.Of(footer.Body), fun event ->
+        E.VMouseDown.On(JQuery.Of(content.Body), fun mouseEvent ->
+            JavaScript.Alert(string mouseEvent.Event.PageX))
+
+        E.ScrollStart.On(JQuery.Of(footer.Body), fun event ->
             JavaScript.Alert("Scrolled on"))
 
         let page = 
