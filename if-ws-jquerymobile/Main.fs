@@ -69,6 +69,12 @@ let ClassList : list<CodeModel.NamespaceEntity> =
     ]
 
 let Assembly =
-    Assembly [Namespace "IntelliFactory.WebSharper.JQuery.Mobile" ClassList]
+    Assembly [
+        Namespace "IntelliFactory.WebSharper.JQuery.Mobile" ClassList
+        Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Enums" [
+            Definition.Enums.ButtonIcon
+            Definition.Enums.Theme
+        ]
+    ]
 
 Compiler.Compile stdout Assembly

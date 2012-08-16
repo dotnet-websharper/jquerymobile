@@ -227,3 +227,40 @@ let JQuery =
             |> WithInline "$jQuery.page()"
         ]
 
+module Enums =
+
+    let ButtonIcon = 
+        Class "ButtonIcon"
+        |+> [
+            "LeftArrow"=? T<string> |> WithGetterInline "'arrow-l'"
+            "RightArrow"=? T<string> |> WithGetterInline "'arrow-r'"
+            "UpArrow"=? T<string> |> WithGetterInline "'arrow-u'"
+            "DownArrow"=? T<string> |> WithGetterInline "'arrow-d'"
+            "Delete"=? T<string> |> WithGetterInline "'delete'"
+            "Plus"=? T<string> |> WithGetterInline "'plus'"
+            "Minus"=? T<string> |> WithGetterInline "'minus'"
+            "Check"=? T<string> |> WithGetterInline "'check'"
+            "Gear"=? T<string> |> WithGetterInline "'gear'"
+            "Refresh"=? T<string> |> WithGetterInline "'refresh'"
+            "Forward"=? T<string> |> WithGetterInline "'forward'"
+            "Back"=? T<string> |> WithGetterInline "'back'"
+            "Grid"=? T<string> |> WithGetterInline "'grid'"
+            "Star"=? T<string> |> WithGetterInline "'star'"
+            "Alert"=? T<string> |> WithGetterInline "'alert'"
+            "Info"=? T<string> |> WithGetterInline "'info'"
+        ]
+    
+    let Theme = 
+        Class "Theme"
+        |+> [
+            "a" =? T<string>
+            |> WithGetterInline "'a'"
+            "b" =? T<string>
+            |> WithGetterInline "'b'"
+            "c" =? T<string>
+            |> WithGetterInline "'c'"
+            "d" =? T<string>
+            |> WithGetterInline "'d'"
+            "e" =? T<string>
+            |> WithGetterInline "'e'"
+        ]
