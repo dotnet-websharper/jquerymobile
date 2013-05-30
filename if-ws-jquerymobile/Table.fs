@@ -22,7 +22,7 @@ let TableConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "classes.table", T<string>
+//                "classes.table", T<string>
                 "initSelector", T<string>
             ]
     }

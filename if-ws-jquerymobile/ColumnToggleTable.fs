@@ -22,10 +22,10 @@ let ColumnToggleTableConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "classes.columnBtn", T<string>
-                "classes.columnToggleTable", T<string>
-                "classes.popup", T<string>
-                "classes.priorityPrefix", T<string>
+//                "classes.columnBtn", T<string>
+//                "classes.columnToggleTable", T<string>
+//                "classes.popup", T<string>
+//                "classes.priorityPrefix", T<string>
                 "columnBtnText", T<string>
                 "columnBtnTheme", T<string>
                 "columnPopupTheme", T<string>

@@ -27,22 +27,22 @@ let PanelConfig =
                 "open", T<Events.JEvent * JQuery -> unit>
                 
                 "animate", T<bool>
-                "classes.animate", T<string>
-                "classes.contentFixedToolbar", T<string>
-                "classes.contentFixedToolbarClosed", T<string>
-                "classes.contentFixedToolbarOpen", T<string>
-                "classes.contentWrap", T<string>
-                "classes.contentWrapClosed", T<string>
-                "classes.contentWrapOpen", T<string>
-                "classes.modal", T<string>
-                "classes.modalOpen", T<string>
-                "classes.pagePanel", T<string>
-                "classes.pagePanelOpen", T<string>
-                "classes.panel", T<string>
-                "classes.panelClosed", T<string>
-                "classes.panelFixed", T<string>
-                "classes.panelInner", T<string>
-                "classes.panelOpen", T<string>
+//                "classes.animate", T<string>
+//                "classes.contentFixedToolbar", T<string>
+//                "classes.contentFixedToolbarClosed", T<string>
+//                "classes.contentFixedToolbarOpen", T<string>
+//                "classes.contentWrap", T<string>
+//                "classes.contentWrapClosed", T<string>
+//                "classes.contentWrapOpen", T<string>
+//                "classes.modal", T<string>
+//                "classes.modalOpen", T<string>
+//                "classes.pagePanel", T<string>
+//                "classes.pagePanelOpen", T<string>
+//                "classes.panel", T<string>
+//                "classes.panelClosed", T<string>
+//                "classes.panelFixed", T<string>
+//                "classes.panelInner", T<string>
+//                "classes.panelOpen", T<string>
                 "dismissible", T<bool>
                 "display", T<string>
                 "initSelector", T<string>
@@ -68,11 +68,11 @@ let Panel =
             |> WithSourceName "BeforeClose"
 
             Events.Define "beforeopen"
-            |> WithSourceName "Beforeopen"
+            |> WithSourceName "BeforeOpene"
 
             Events.Define "close"
-            |> WithSourceName "Close"
+            |> WithSourceName "Closed"
 
             Events.Define "open"
-            |> WithSourceName "Open"
+            |> WithSourceName "Opened"
         ]

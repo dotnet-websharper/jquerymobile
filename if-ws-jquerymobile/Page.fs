@@ -125,7 +125,7 @@ let Page =
             p.DefineMethod("setContainerBackground", Common.SwatchLetter.Type)
 
             Events.Define "beforecreate"
-            |> WithSourceName "BeforeCreate"
+            |> WithSourceName "BeforeCreated"
 
 //            ev1 "BeforeLoad" "beforeload" PageBeforeLoadEvent.Type
 //            ev1 "Load" "pageload" PageLoadEvent.Type

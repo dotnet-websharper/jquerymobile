@@ -22,8 +22,8 @@ let ReflowTableConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "classes.cellLabels", T<string>
-                "classes.reflowTable", T<string>
+//                "classes.cellLabels", T<string>
+//                "classes.reflowTable", T<string>
                 "initSelector", T<string>
             ]
     }

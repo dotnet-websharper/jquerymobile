@@ -44,8 +44,8 @@ let Slider =
             p.DefineMethod("refresh")
 
             Events.Define "start"
-            |> WithSourceName "Start"
+            |> WithSourceName "Started"
 
             Events.Define "stop"
-            |> WithSourceName "Stop"
+            |> WithSourceName "Stopped"
         ]

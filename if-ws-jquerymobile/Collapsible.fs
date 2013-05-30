@@ -50,5 +50,5 @@ let Collapsible =
             |> WithSourceName "Collapse"
 
             Events.Define "expand"
-            |> WithSourceName "Expand"
+            |> WithSourceName "Expande"
         ]

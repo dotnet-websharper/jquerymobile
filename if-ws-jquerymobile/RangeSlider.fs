@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let RangeSliderConfig =
-    Pattern.Config "SliderConfig" {
+    Pattern.Config "RangeSliderConfig" {
         Required = []
         Optional =
             [
