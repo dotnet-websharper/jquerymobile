@@ -21,7 +21,29 @@ let ButtonMarkup =
             "hoverDelay" =@ T<int>
         ]
 
-let ChangePageConfig =
+let PageLoadConfig =
+    Pattern.Config "PageLoadConfig" {
+        Required = []
+        Optional =
+            [
+                "data", T<obj> + T<string>
+                "loadMsgDelay", T<int>
+                "pageContainer", T<JQuery>
+                "reloadPage", T<bool>
+                "role", T<string>
+                "showLoadMsg", T<bool>
+                "type", T<string>
+            ]
+    }
+
+let Deferred =
+    Class "Deferred"
+    |+> Protocol [
+            "resolve" => T<string> * PageLoadConfig.Type * T<JQuery> ^-> T<unit>
+            "reject" => T<string> * PageLoadConfig.Type ^-> T<unit>
+        ]
+
+let PageChangeConfig =
     Pattern.Config "ChangePageConfig" {
         Required = []
         Optional =
@@ -81,6 +103,71 @@ let OrientationChangeEventArgs =
             |> WithGetterInline "$this"
         ]
 
+let PageChangeEventArgs =
+    Class "PageChangeEventArgs"
+    |+> Protocol [
+            "toPage" =? T<JQuery>
+            "options"  =? PageChangeConfig.Type
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
+let PageBeforeLoadEventArgs =
+    Class "PageBeforeLoadEventArgs"
+    |+> Protocol [
+            "url" =? T<string>
+            "absUrl" =? T<string>
+            "dataUrl" =? T<string>
+            "deferred" =? T<Deferred>
+            "options" =? PageLoadConfig.Type
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
+let PageLoadEventArgs =
+    Class "PageLoadEventArgs"
+    |+> Protocol [
+            "url" =? T<string>
+            "absUrl" =? T<string>
+            "dataUrl" =? T<string>
+            "options" =? PageLoadConfig.Type
+            "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
+            "textStatus" =? T<string>
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
+let PageLoadFailedEventArgs =
+    Class "PageLoadFailedEventArgs"
+    |+> Protocol [
+            "url" =? T<string>
+            "absUrl" =? T<string>
+            "dataUrl" =? T<string>
+            "deferred" =? T<Deferred>
+            "options" =? PageLoadConfig.Type
+            "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
+            "textStatus" =? T<string>
+            "errorThrown" =? T<string> // object
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
+let PageHideEventArgs =
+    Class "PageHideEventArgs"
+    |+> Protocol [
+            "nextPage" =? T<JQuery>
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
+let PageShowEventArgs =
+    Class "PageShowEventArgs"
+    |+> Protocol [
+            "prevPage" =? T<JQuery>
+            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
+            |> WithGetterInline "$this"
+        ]
+
 let VMouseEventArgs =
     Class "VMouseEventArgs"
     |+> Protocol [
@@ -97,22 +184,36 @@ let Events =
     let ev1 name ty = Events.DefineTyped name ty
     Class "Events"
     |+> [
-            ev0 "tap" |> WithSourceName "Tap"
-            ev0 "taphold" |> WithSourceName "TapHold"
+            ev0 "hashchange" |> WithSourceName "HashChange"
+            ev0 "navigate" |> WithSourceName "Navigate"
+            ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
+            ev1 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange"
+            ev0 "pagebeforecreate" |> WithSourceName "PageBeforeCreate"
+            ev1 "pagebeforehide" PageHideEventArgs.Type |> WithSourceName "PageBeforeHide"
+            ev1 "pagebeforeload" PageBeforeLoadEventArgs.Type |> WithSourceName "PageBeforeLoad"
+            ev1 "pagebeforeshow" PageShowEventArgs.Type |> WithSourceName "PageBeforeShow"
+            ev1 "pagechange" PageChangeEventArgs.Type |> WithSourceName "PageChange"
+            ev1 "pagechangefailed" PageChangeEventArgs.Type |> WithSourceName "PageChangeFailed"
+            ev0 "pagecreate" |> WithSourceName "PageCreate"
+            ev1 "pagehide" PageHideEventArgs.Type |> WithSourceName "PageHide"
+            ev0 "pageinit" |> WithSourceName "PageInit"
+            ev1 "pageload" PageLoadEventArgs.Type |> WithSourceName "PageLoad"
+            ev0 "scrollstart" |> WithSourceName "ScrollStart"
+            ev0 "scrollstop" |> WithSourceName "ScrollStop"
             ev0 "swipe" |> WithSourceName "Swipe"
             ev0 "swipeleft" |> WithSourceName "SwipeLeft"
             ev0 "swiperight" |> WithSourceName "SwipeRight"
-            ev1 "vmouseover" VMouseEventArgs.Type |> WithSourceName "VMouseOver"
-            ev1 "vmouseout" VMouseEventArgs.Type |> WithSourceName "VMouseOut"
-            ev1 "vmousedown" VMouseEventArgs.Type |> WithSourceName "VMouseDown"
-            ev1 "vmousemove" VMouseEventArgs.Type |> WithSourceName "VMouseMove"
-            ev1 "vmouseup" VMouseEventArgs.Type |> WithSourceName "VMouseUp"
+            ev0 "tap" |> WithSourceName "Tap"
+            ev0 "taphold" |> WithSourceName "TapHold"
+            ev0 "throttledresize" |> WithSourceName "ThrottledResize"
+            ev0 "updatelayout" |> WithSourceName "UpdateLayout"
             ev1 "vclick" VMouseEventArgs.Type |> WithSourceName "VClick"
             ev1 "vmousecancel" VMouseEventArgs.Type |> WithSourceName "VMouseCancel"
-            ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
-            ev0 "scrollstart" |> WithSourceName "ScrollStart"
-            ev0 "scrollstop" |> WithSourceName "ScrollStop"
-            ev0 "updatelayout" |> WithSourceName "UpdateLayout"
+            ev1 "vmousedown" VMouseEventArgs.Type |> WithSourceName "VMouseDown"
+            ev1 "vmousemove" VMouseEventArgs.Type |> WithSourceName "VMouseMove"
+            ev1 "vmouseout" VMouseEventArgs.Type |> WithSourceName "VMouseOut"
+            ev1 "vmouseover" VMouseEventArgs.Type |> WithSourceName "VMouseOver"
+            ev1 "vmouseup" VMouseEventArgs.Type |> WithSourceName "VMouseUp"
         ]
 
 let URL =
@@ -187,9 +288,11 @@ let Mobile =
 
             // Methods and utilities
 
-            "changePage" => (T<JQuery> + T<string>)?``to`` * !? ChangePageConfig?``options`` ^-> T<unit>
-            "loadPage" => (T<string> + T<obj>)?url * !? Page.PageLoadConfig?``options`` ^-> T<unit>
+            "changePage" => (T<JQuery> + T<string>)?``to`` * !? PageChangeConfig?``options`` ^-> T<unit>
+            "loadPage" => (T<string> + T<obj>)?url * !? PageLoadConfig?``options`` ^-> T<unit>
             "loading" => T<string> * !? LoadingConfig ^-> T<unit>
+            "navigate" => (T<string> + T<obj>)?url * !? T<obj>?``data`` ^-> T<unit>
+            
             "path" =? Path
             "silentScroll" => !?T<int>?yPos ^-> T<unit>
             "activePage" =? T<JQuery>
@@ -227,40 +330,40 @@ let JQuery =
             |> WithInline "$jQuery.page()"
         ]
 
-module Enums =
-
-    let ButtonIcon = 
-        Class "ButtonIcon"
-        |+> [
-            "LeftArrow"=? T<string> |> WithGetterInline "'arrow-l'"
-            "RightArrow"=? T<string> |> WithGetterInline "'arrow-r'"
-            "UpArrow"=? T<string> |> WithGetterInline "'arrow-u'"
-            "DownArrow"=? T<string> |> WithGetterInline "'arrow-d'"
-            "Delete"=? T<string> |> WithGetterInline "'delete'"
-            "Plus"=? T<string> |> WithGetterInline "'plus'"
-            "Minus"=? T<string> |> WithGetterInline "'minus'"
-            "Check"=? T<string> |> WithGetterInline "'check'"
-            "Gear"=? T<string> |> WithGetterInline "'gear'"
-            "Refresh"=? T<string> |> WithGetterInline "'refresh'"
-            "Forward"=? T<string> |> WithGetterInline "'forward'"
-            "Back"=? T<string> |> WithGetterInline "'back'"
-            "Grid"=? T<string> |> WithGetterInline "'grid'"
-            "Star"=? T<string> |> WithGetterInline "'star'"
-            "Alert"=? T<string> |> WithGetterInline "'alert'"
-            "Info"=? T<string> |> WithGetterInline "'info'"
-        ]
-    
-    let Theme = 
-        Class "Theme"
-        |+> [
-            "a" =? T<string>
-            |> WithGetterInline "'a'"
-            "b" =? T<string>
-            |> WithGetterInline "'b'"
-            "c" =? T<string>
-            |> WithGetterInline "'c'"
-            "d" =? T<string>
-            |> WithGetterInline "'d'"
-            "e" =? T<string>
-            |> WithGetterInline "'e'"
-        ]
+//module Enums =
+//
+//    let ButtonIcon = 
+//        Class "ButtonIcon"
+//        |+> [
+//            "LeftArrow"=? T<string> |> WithGetterInline "'arrow-l'"
+//            "RightArrow"=? T<string> |> WithGetterInline "'arrow-r'"
+//            "UpArrow"=? T<string> |> WithGetterInline "'arrow-u'"
+//            "DownArrow"=? T<string> |> WithGetterInline "'arrow-d'"
+//            "Delete"=? T<string> |> WithGetterInline "'delete'"
+//            "Plus"=? T<string> |> WithGetterInline "'plus'"
+//            "Minus"=? T<string> |> WithGetterInline "'minus'"
+//            "Check"=? T<string> |> WithGetterInline "'check'"
+//            "Gear"=? T<string> |> WithGetterInline "'gear'"
+//            "Refresh"=? T<string> |> WithGetterInline "'refresh'"
+//            "Forward"=? T<string> |> WithGetterInline "'forward'"
+//            "Back"=? T<string> |> WithGetterInline "'back'"
+//            "Grid"=? T<string> |> WithGetterInline "'grid'"
+//            "Star"=? T<string> |> WithGetterInline "'star'"
+//            "Alert"=? T<string> |> WithGetterInline "'alert'"
+//            "Info"=? T<string> |> WithGetterInline "'info'"
+//        ]
+//    
+//    let Theme = 
+//        Class "Theme"
+//        |+> [
+//            "a" =? T<string>
+//            |> WithGetterInline "'a'"
+//            "b" =? T<string>
+//            |> WithGetterInline "'b'"
+//            "c" =? T<string>
+//            |> WithGetterInline "'c'"
+//            "d" =? T<string>
+//            |> WithGetterInline "'d'"
+//            "e" =? T<string>
+//            |> WithGetterInline "'e'"
+//        ]

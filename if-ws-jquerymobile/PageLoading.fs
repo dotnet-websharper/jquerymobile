@@ -31,8 +31,8 @@ let PageLoadingConfig =
     }
 
 let PageLoading =
-    let p = Common.Plugin("page")    // ???
-    Class "Page"
+    let p = Common.Plugin("pageloading")  
+    Class "PageLoading"
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(PageLoadingConfig.Type)

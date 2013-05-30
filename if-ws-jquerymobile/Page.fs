@@ -126,7 +126,7 @@ let Page =
 
             Events.Define "beforecreate"
             |> WithSourceName "BeforeCreate"
-//
+
 //            ev1 "BeforeLoad" "beforeload" PageBeforeLoadEvent.Type
 //            ev1 "Load" "pageload" PageLoadEvent.Type
 //            ev1 "LoadFailed" "pageloadfailed" PageLoadFailedEvent.Type

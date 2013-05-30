@@ -15,66 +15,114 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 
 let ClassList : list<CodeModel.NamespaceEntity> =
     [
-        Common.Icon
-        Common.IconPosition
         Common.Positioning
         Common.Relation
         Common.Tolerance
         Common.Transition
+        Common.IconPosition
+        Common.Icon
+        Common.PanelPosition
+        Common.ButtonPosition
+        Common.ControlGroupType
+        Common.SwatchLetter
+
         Events.Event0
         Generic - Events.Event1
-//        Page.Deferred
-        Page.Page
-//        Page.PageBeforeLoadEvent
-//        Page.PageChangeEvent
-//        Page.PageHideEvent
-//        Page.PageLoadConfig
-//        Page.PageLoadEvent
-//        Page.PageLoadFailedEvent
-//        Page.PageShowEvent
-        Dialog.Dialog
-        FixedToolbar.FixedToolbar
-        FixedToolbar.FixedToolbarConfig
-        Button.Button
+
         Button.ButtonConfig
-        Popup.Popup
+        Button.Button
+
+        CheckBoxRadio.CheckBoxRadioConfig
+        CheckBoxRadio.CheckBoxRadio
+
+        Collapsible.CollapsibleConfig
+        Collapsible.Collapsible
+
+        CollapsibleSet.CollapsibleSetConfig
+        CollapsibleSet.CollapsibleSet
+
+        ControlGroup.ControlGroupConfig
+        ControlGroup.ControlGroup
+
+        Dialog.DialogConfig
+        Dialog.Dialog
+
+        FixedToolbar.FixedToolbarConfig
+        FixedToolbar.FixedToolbar
+
+        Footer.Footer // unnecessary class?
+
+        Header.Header // unnecessary class?
+
+        ListView.ListViewConfig
+        ListView.ListView
+
+        NavBar.NavBarConfig
+        NavBar.NavBar
+
+        Page.PageConfig
+        Page.Page
+
+        PageLoading.PageLoadingConfig
+        PageLoading.PageLoading
+
+        Panel.PanelConfig
+        Panel.Panel
+
         Popup.PopupConfig
         Popup.PopupOpenConfig
-        Collapsible.Collapsible
-        Collapsible.CollapsibleConfig
-        CollapsibleSet.CollapsibleSet
-        CollapsibleSet.CollapsibleSetConfig
-        TextInput.TextInput
-        TextInput.TextInputConfig
-        Slider.Slider
-        Slider.SliderConfig
-        CheckBoxRadio.CheckBoxRadio
-        CheckBoxRadio.CheckBoxRadioConfig
-        SelectMenu.SelectMenu
+        Popup.Popup
+
+        RangeSlider.RangeSliderConfig
+        RangeSlider.RangeSlider
+
         SelectMenu.SelectMenuConfig
-        ListView.ListView
-        ListView.ListViewConfig
+        SelectMenu.SelectMenu
+
+        Slider.SliderConfig
+        Slider.Slider
+
+        Table.TableConfig
+        Table.Table
+
+        ColumnToggleTable.ColumnToggleTableConfig
+        ColumnToggleTable.ColumnToggleTable
+
+        ReflowTable.ReflowTableConfig
+        ReflowTable.ReflowTable
+
+        TextInput.TextInputConfig
+        TextInput.TextInput
+
         Definition.ButtonMarkup
-        Definition.ChangePageConfig
-        Definition.Events
-        Definition.JQuery
+        Definition.PageLoadConfig
+        Definition.Deferred
+        Definition.PageChangeConfig
         Definition.LoadingConfig
-        Definition.Mobile
+        Definition.Special
         Definition.Orientation
         Definition.OrientationChangeEventArgs
-        Definition.Path
-        Definition.Special
-        Definition.URL
+        Definition.PageChangeEventArgs
+        Definition.PageBeforeLoadEventArgs
+        Definition.PageLoadEventArgs
+        Definition.PageLoadFailedEventArgs
+        Definition.PageHideEventArgs
+        Definition.PageShowEventArgs
         Definition.VMouseEventArgs
+        Definition.Events
+        Definition.URL
+        Definition.Path
+        Definition.Mobile
+        Definition.JQuery
     ]
 
 let Assembly =
     Assembly [
         Namespace "IntelliFactory.WebSharper.JQuery.Mobile" ClassList
-        Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Enums" [
-            Definition.Enums.ButtonIcon
-            Definition.Enums.Theme
-        ]
+//        Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Enums" [
+//            Definition.Enums.ButtonIcon
+//            Definition.Enums.Theme
+//        ]
     ]
 
 Compiler.Compile stdout Assembly

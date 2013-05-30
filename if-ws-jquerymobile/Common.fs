@@ -106,8 +106,8 @@ let ButtonPosition =
         "none"
     ]
 
-let Orientation = 
-    Pattern.EnumStrings "Orientation" [
+let ControlGroupType = 
+    Pattern.EnumStrings "ControlGroupType" [
         "vertical"
         "horizontal"
     ]

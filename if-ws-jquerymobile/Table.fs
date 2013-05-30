@@ -9,34 +9,28 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Widgets / Controlgroup
-module IntelliFactory.WebSharper.JQuery.Mobile.ControlGroup
+/// See Widgets / Table
+module IntelliFactory.WebSharper.JQuery.Mobile.Table
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let ControlGroupConfig =
-    Pattern.Config "ControlGroupConfig" {
+let TableConfig =
+    Pattern.Config "TableConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "corners", T<bool>
-                "excludeInvisible", T<bool>
+                "classes.table", T<string>
                 "initSelector", T<string>
-                "mini", T<bool>
-                "shadow", T<bool>
-                "type", Common.ControlGroupType.Type
             ]
     }
 
-let ControlGroup =
-    let p = Common.Plugin("controlgroup")
-    Class "ControlGroup"
+let Table =
+    let p = Common.Plugin("table")
+    Class "Table"
     |+> [
             p.DefineConstructor()
-            p.DefineConstructor(ControlGroupConfig.Type)
-
-            p.DefineFunc("container", T<JQuery>)
+            p.DefineConstructor(TableConfig.Type)
         ]
