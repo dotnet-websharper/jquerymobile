@@ -147,7 +147,7 @@ let PageLoadFailedEventArgs =
             "options" =? PageLoadConfig.Type
             "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
             "textStatus" =? T<string>
-            "errorThrown" =? T<string> // object
+            "errorThrown" =? T<obj> + T<string>
             "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
             |> WithGetterInline "$this"
         ]
@@ -275,16 +275,21 @@ let Mobile =
             "buttonMarkup" =? ButtonMarkup
             "defaultDialogTransition" =@ T<string>
             "defaultPageTransition" =@ T<string>
+            "dynamicBaseEnabled" =@ T<bool>
+            "getMaxScrollForTransition" =@ T<int>
             "gradeA" =@ T<unit -> bool>
             "hasListeningEnabled" =@ T<bool>
             "ignoreContentEnabled" =@ T<bool>
             "linkBindingEnabled" =@ T<bool>
+            "maxTransitionWidth" =@ T<int> + T<bool> 
             "minScrollBack" =@ T<int>
             "ns" =@ T<string>
             "pageLoadErrorMessage" =@ T<string>
             "pageLoadErrorMessageTheme" =@ T<string>
+            "phonegapNavigationEnabled" =@ T<bool>
             "pushStateEnabled" =@ T<bool>
             "subPageUrlKey" =@ T<string>
+            // "transitionFallbacks"
 
             // Methods and utilities
 

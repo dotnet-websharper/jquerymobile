@@ -13,12 +13,17 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IntellliFactory.WebSharper.JQuery.Mobile.Tests</RootNamespace>
     <AssemblyName>IntellliFactory.WebSharper.JQuery.Mobile.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>4.0</OldToolsVersion>
     <UpgradeBackupLocation />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +33,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,18 +42,17 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -61,6 +66,7 @@
     <Reference Include="IntelliFactory.WebSharper.Ecma" />
     <Reference Include="IntelliFactory.WebSharper.Web" />
     <Reference Include="IntelliFactory.Html" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
@@ -68,15 +74,14 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\if-ws-jquerymobile\IntelliFactory.WebSharper.JQuery.Mobile.fsproj">
-      <Project>{09FF3F57-1D1A-4537-AF3E-9B957DBD961E}</Project>
-      <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
-    </ProjectReference>
     <ProjectReference Include="..\if-ws-jquerymobile-tests\IntelliFactory.WebSharper.JQuery.Mobile.Tests.fsproj">
-      <Project>{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}</Project>
+      <Project>{bb42ad3f-9110-4d95-a23f-36b4f2f900fa}</Project>
       <Name>IntelliFactory.WebSharper.JQuery.Mobile.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\if-ws-jquerymobile\IntelliFactory.WebSharper.JQuery.Mobile.fsproj">
+      <Project>{09ff3f57-1d1a-4537-af3e-9b957dbd961e}</Project>
+      <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

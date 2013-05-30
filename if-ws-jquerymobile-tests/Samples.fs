@@ -47,6 +47,10 @@ module SampleInternals =
             -<  [header; content; footer]
 
         page
+        |>! OnAfterRender (fun page ->
+            Mobile.Instance.ChangePage(JQuery.Of(page.Body)))
+//        |>! OnAfterRender (fun page ->
+//            Mobile.Page.Init(JQuery.Of(page.Body)))
 
     [<JavaScript>]
     let SimpleNavigation () = 
@@ -68,6 +72,8 @@ module SampleInternals =
                 ] -< [header; content]
                 
             page
+            |>! OnAfterRender (fun page ->
+                Mobile.Instance.ChangePage(JQuery.Of(page.Body)))
 
         let about =
             let header =
@@ -318,9 +324,9 @@ type Samples() =
 
     [<JavaScript>]
     override this.Body = 
-        // SampleInternals.SimplePage () :> IPagelet
-        // SampleInternals.SimpleNavigation () :> IPagelet
-        SampleInternals.FormTypes () :> IPagelet
-        // SampleInternals.EventTestPage() :> IPagelet
-        // SampleInternals.UtilsTestPage() :> IPagelet
+//        SampleInternals.SimplePage () :> IPagelet
+        SampleInternals.SimpleNavigation () :> IPagelet
+//        SampleInternals.FormTypes () :> IPagelet
+//        SampleInternals.EventTestPage() :> IPagelet
+//        SampleInternals.UtilsTestPage() :> IPagelet
 

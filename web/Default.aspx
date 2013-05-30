@@ -6,6 +6,7 @@
     <WebSharper:ScriptManager runat="server"/>
 </head>
 <body>
+    <div data-role="page"></div>
     <Tests:Samples runat="server" />
 </body>
 </html>
