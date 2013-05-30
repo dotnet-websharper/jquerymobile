@@ -9,34 +9,39 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Content Formatting / Collapsible sets (accordions).
-module IntelliFactory.WebSharper.JQuery.Mobile.Accordion
+/// See Widgets / Rangeslider.
+module IntelliFactory.WebSharper.JQuery.Mobile.RangeSlider
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let AccordionConfig =
-    Pattern.Config "AccordionConfig" {
+let RangeSliderConfig =
+    Pattern.Config "SliderConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
+                "normalize", T<Events.JEvent * JQuery -> unit>
 
-                "collapsedIcon", Common.Icon.Type
-                "expandedIcon", Common.Icon.Type
-                "iconpos", Common.IconPosition.Type
+                "disabled", T<bool>
+                "highlight", T<bool>
                 "initSelector", T<string>
-                "inset", T<bool>
                 "mini", T<bool>
-                "theme", T<string>
+                "theme", Common.SwatchLetter.Type
+                "trackTheme", Common.SwatchLetter.Type
             ]
     }
 
-let Accordion =
-    let p = Common.Plugin("accordion")
-    Class "Accordion"
+let RangeSlider =
+    let p = Common.Plugin("rangeslider")
+    Class "RangeSlider"
     |+> [
             p.DefineConstructor()
-            p.DefineConstructor(AccordionConfig.Type)
+            p.DefineConstructor(RangeSliderConfig.Type)
+            p.DefineMethod("enable")
+            p.DefineMethod("disable")
             p.DefineMethod("refresh")
+
+            Events.Define "normalize"
+            |> WithSourceName "Normalize"
         ]

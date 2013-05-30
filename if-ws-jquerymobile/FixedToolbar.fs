@@ -20,12 +20,13 @@ let FixedToolbarConfig =
         Required = []
         Optional =
             [
-                "create", (T<Events.JEvent> * T<JQuery> ^-> T<unit>)
+                "create", T<Events.JEvent * JQuery -> unit>
+                
                 "disablePageZoom", T<bool>
                 "fullscreen", T<bool>
-                "hideDuringFocus", T<bool>
+                "hideDuringFocus", T<string>
                 "initSelector", T<string>
-                "supportBlacklist", T<unit->bool>
+                "supportBlacklist", T<unit -> bool>
                 "tapToggle", T<bool>
                 "tapToggleBlacklist", T<string>
                 "transition", Common.Transition.Type

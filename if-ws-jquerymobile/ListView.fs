@@ -22,18 +22,19 @@ let ListViewConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "countTheme", T<string>
-                "dividerTheme", T<string>
+                "countTheme", Common.SwatchLetter.Type
+                "dividerTheme", Common.SwatchLetter.Type
                 "filter", T<bool>
-                "filterCallback", T<unit->unit>
+                "filterCallback", T<unit -> unit>
                 "filterPlaceholder", T<string>
-                "filterTheme", T<string>
-                "headerTheme", T<string>
+                "filterTheme", Common.SwatchLetter.Type
+                "headerTheme", Common.SwatchLetter.Type
+                "icon", Common.Icon.Type
                 "initSelector", T<string>
                 "inset", T<bool>
                 "splitIcon", Common.Icon.Type
-                "splitTheme", T<string>
-                "theme", T<string>
+                "splitTheme", Common.SwatchLetter.Type
+                "theme", Common.SwatchLetter.Type
             ]
     }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -36,13 +36,20 @@
     <Compile Include="Common.fs" />
     <Compile Include="Events.fs" />
     <Compile Include="Page.fs" />
+    <Compile Include="PageLoading.fs" />
+    <Compile Include="Panel.fs" />
+    <Compile Include="ControlGroup.fs" />
     <Compile Include="Dialog.fs" />
     <Compile Include="FixedToolbar.fs" />
+    <Compile Include="Footer.fs" />
+    <Compile Include="Header.fs" />
+    <Compile Include="NavBar.fs" />
     <Compile Include="Button.fs" />
     <Compile Include="Popup.fs" />
     <Compile Include="Collapsible.fs" />
-    <Compile Include="Accordion.fs" />
+    <Compile Include="CollapsibleSet.fs" />
     <Compile Include="TextInput.fs" />
+    <Compile Include="RangeSlider.fs" />
     <Compile Include="Slider.fs" />
     <Compile Include="CheckBoxRadio.fs" />
     <Compile Include="SelectMenu.fs" />

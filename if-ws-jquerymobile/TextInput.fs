@@ -22,12 +22,13 @@ let TextInputConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "clearSearchButtonText", T<string>
+                "clearBtn", T<bool>
+                "clearBtnText", T<string>
                 "disabled", T<bool>
                 "initSelector", T<string>
                 "mini", T<bool>
-                "preventFocusZoom", T<bool>
-                "theme", T<string>
+                "preventFocusZoom", T<string>
+                "theme", Common.SwatchLetter.Type
             ]
     }
 

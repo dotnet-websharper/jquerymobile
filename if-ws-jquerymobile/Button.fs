@@ -20,7 +20,7 @@ let ButtonConfig =
         Required = []
         Optional =
             [
-                "create", (T<Events.JEvent> * T<JQuery> ^-> T<unit>)
+                "create", T<Events.JEvent * JQuery -> unit>
 
                 "corners", T<bool>
                 "icon", Common.Icon.Type
@@ -40,7 +40,7 @@ let Button =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(ButtonConfig.Type)
-            p.DefineMethod("enable")
             p.DefineMethod("disable")
+            p.DefineMethod("enable")
             p.DefineMethod("refresh")
         ]

@@ -23,15 +23,15 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Common.Transition
         Events.Event0
         Generic - Events.Event1
-        Page.Deferred
+//        Page.Deferred
         Page.Page
-        Page.PageBeforeLoadEvent
-        Page.PageChangeEvent
-        Page.PageHideEvent
-        Page.PageLoadConfig
-        Page.PageLoadEvent
-        Page.PageLoadFailedEvent
-        Page.PageShowEvent
+//        Page.PageBeforeLoadEvent
+//        Page.PageChangeEvent
+//        Page.PageHideEvent
+//        Page.PageLoadConfig
+//        Page.PageLoadEvent
+//        Page.PageLoadFailedEvent
+//        Page.PageShowEvent
         Dialog.Dialog
         FixedToolbar.FixedToolbar
         FixedToolbar.FixedToolbarConfig
@@ -42,8 +42,8 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Popup.PopupOpenConfig
         Collapsible.Collapsible
         Collapsible.CollapsibleConfig
-        Accordion.Accordion
-        Accordion.AccordionConfig
+        CollapsibleSet.CollapsibleSet
+        CollapsibleSet.CollapsibleSetConfig
         TextInput.TextInput
         TextInput.TextInputConfig
         Slider.Slider

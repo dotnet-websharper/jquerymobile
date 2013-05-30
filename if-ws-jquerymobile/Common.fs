@@ -47,7 +47,7 @@ let Tolerance =
 
 let Transition =
     Pattern.EnumStrings "Transition" [
-        "fade"
+        "fade"         
         "flip"
         "flow"
         "pop"
@@ -59,18 +59,20 @@ let Transition =
         "none"
     ]
 
-
 let IconPosition =
     Pattern.EnumStrings "IconPosition" [
         "left"
         "right"
         "top"
         "bottom"
+        "none"
         "notext"
     ]
 
 let Icon =
     Pattern.EnumInlines "Icon" [
+        "Bars", "'bars'"
+        "Edit", "'edit'"
         "LeftArrow", "'arrow-l'"
         "RightArrow", "'arrow-r'"
         "UpArrow", "'arrow-u'"
@@ -87,7 +89,32 @@ let Icon =
         "Star", "'star'"
         "Alert", "'alert'"
         "Info", "'info'"
+        "Home", "'home'"
+        "Search", "'search'"
     ]
+
+let PanelPosition =
+    Pattern.EnumStrings "PanelPosition" [
+        "left"
+        "right"
+    ]
+
+let ButtonPosition =
+    Pattern.EnumStrings "ButtonPosition" [
+        "left"
+        "right"
+        "none"
+    ]
+
+let Orientation = 
+    Pattern.EnumStrings "Orientation" [
+        "vertical"
+        "horizontal"
+    ]
+
+let SwatchLetter =
+    Pattern.EnumStrings "SwatchLetter"
+        (seq { 'a' .. 'z' } |> Seq.map string)
 
 [<Sealed>]
 type Plugin(plugin: string) =

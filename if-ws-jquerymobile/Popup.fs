@@ -20,9 +20,16 @@ let PopupConfig =
         Required = []
         Optional =
             [
+                "afterclose", T<Events.JEvent * JQuery -> unit>
+                "afteropen", T<Events.JEvent * JQuery -> unit>
+                "beforeposition", T<Events.JEvent * JQuery -> unit>
+                "create", T<Events.JEvent * JQuery -> unit>
+
                 "corners", T<bool>
+                "dismissible", T<bool>
+                "history", T<bool>
                 "initSelector", T<string>
-                "overlayTheme", T<string>
+                "overlayTheme", Common.SwatchLetter.Type
                 "positionTo", Common.Positioning.Type
                 "shadow", T<bool>
                 "theme", T<string>
@@ -55,12 +62,12 @@ let Popup =
             p.DefineMethod("open", PopupOpenConfig.Type)
             p.DefineMethod("close")
 
-            Events.Define "popupbeforeposition"
+            Events.Define "beforeposition"
             |> WithSourceName "BeforePosition"
 
-            Events.Define "popupafteropen"
+            Events.Define "afteropen"
             |> WithSourceName "AfterOpen"
 
-            Events.Define "popupafterclose"
+            Events.Define "afterclose"
             |> WithSourceName "AfterClose"
         ]

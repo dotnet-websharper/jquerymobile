@@ -9,46 +9,35 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Content Formatting / Collapsible content blocks.
-module IntelliFactory.WebSharper.JQuery.Mobile.Collapsible
+/// See Components / Content Formatting / Collapsible sets (accordions).
+module IntelliFactory.WebSharper.JQuery.Mobile.CollapsibleSet
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let CollapsibleConfig =
-    Pattern.Config "CollapsibleConfig" {
+let CollapsibleSetConfig =
+    Pattern.Config "CollapsibleSetConfig" {
         Required = []
         Optional =
             [
-                "collapse", T<Events.JEvent * JQuery -> unit>
                 "create", T<Events.JEvent * JQuery -> unit>
-                "expand", T<Events.JEvent * JQuery -> unit>
 
-                "collapseCueText", T<string>
-                "collapsed", T<bool>
                 "collapsedIcon", Common.Icon.Type
                 "corners", T<bool>
-                "expandCueText", T<string>
                 "expandedIcon", Common.Icon.Type
-                "heading", T<string>
                 "iconpos", Common.IconPosition.Type
                 "initSelector", T<string>
                 "inset", T<bool>
                 "mini", T<bool>
-                "theme", Common.SwatchLetter.Type
+                "theme", T<string>
             ]
     }
 
-let Collapsible =
-    let p = Common.Plugin("collapsible")
-    Class "Collapsible"
+let CollapsibleSet =
+    let p = Common.Plugin("collapsible-set")
+    Class "Accordion"
     |+> [
             p.DefineConstructor()
-            p.DefineConstructor(CollapsibleConfig.Type)
-
-            Events.Define "collapse"
-            |> WithSourceName "Collapse"
-
-            Events.Define "expand"
-            |> WithSourceName "Expand"
+            p.DefineConstructor(CollapsibleSetConfig.Type)
+            p.DefineMethod("refresh")
         ]

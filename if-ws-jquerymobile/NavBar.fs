@@ -9,31 +9,27 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Pages & Dialogs / Dialogs.
-module IntelliFactory.WebSharper.JQuery.Mobile.Dialog
+/// See API / Widgets / Navbar
+module IntelliFactory.WebSharper.JQuery.Mobile.NavBar
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let DialogConfig =
-    Pattern.Config "DialogConfig" {
+let NavBarConfig =
+    Pattern.Config "NavBarConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "closeBtn", Common.ButtonPosition.Type
-                "closeBtnText", T<string>
-                "corners", T<bool>
-                "initSelector", T<string>
-                "overlayTheme", Common.SwatchLetter.Type
+                "iconpos", Common.IconPosition.Type
             ]
     }
 
-let Dialog =
-    let p = Common.Plugin("dialog")
-    Class "Dialog"
+let NavBar =
+    let p = Common.Plugin("navbar")   
+    Class "NavBar"
     |+> [
             p.DefineConstructor()
-            p.DefineMethod("close")
+            p.DefineConstructor(NavBarConfig.Type)
         ]

@@ -22,7 +22,7 @@ let CheckBoxRadioConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "mini", T<string>
+                "mini", T<bool>
                 "theme", T<string>
             ]
     }

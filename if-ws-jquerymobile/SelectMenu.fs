@@ -22,18 +22,18 @@ let SelectMenuConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "cornerns", T<bool>
+                "corners", T<bool>
                 "icon", Common.Icon.Type
                 "iconpos", Common.IconPosition.Type
                 "iconshadow", T<bool>
                 "initSelector", T<string>
                 "inline", T<bool>
-                "mini", T<string>
+                "mini", T<bool>
                 "nativeMenu", T<bool>
-                "overlayTheme", T<string>
+                "overlayTheme", Common.SwatchLetter.Type
                 "preventFocusZoom", T<bool>
                 "shadow", T<bool>
-                "theme", T<string>
+                "theme", Common.SwatchLetter.Type
             ]
     }
 
@@ -48,4 +48,5 @@ let SelectMenu =
             p.DefineMethod("enable")
             p.DefineMethod("open")
             p.DefineMethod("refresh")
+            p.DefineMethod("refresh", T<bool>)
         ]

@@ -20,12 +20,16 @@ let SliderConfig =
         Required = []
         Optional =
             [
+                "create", T<Events.JEvent * JQuery -> unit>
+                "start", T<Events.JEvent * JQuery -> unit>
+                "stop", T<Events.JEvent * JQuery -> unit>
+
                 "disabled", T<bool>
                 "highlight", T<bool>
                 "initSelector", T<string>
-                "mini", T<string>
-                "theme", T<string>
-                "trackTheme", T<string>
+                "mini", T<bool>
+                "theme", Common.SwatchLetter.Type
+                "trackTheme", Common.SwatchLetter.Type
             ]
     }
 
@@ -35,8 +39,13 @@ let Slider =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(SliderConfig.Type)
-
             p.DefineMethod("enable")
             p.DefineMethod("disable")
             p.DefineMethod("refresh")
+
+            Events.Define "start"
+            |> WithSourceName "Start"
+
+            Events.Define "stop"
+            |> WithSourceName "Stop"
         ]

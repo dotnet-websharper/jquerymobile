@@ -9,31 +9,34 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Pages & Dialogs / Dialogs.
-module IntelliFactory.WebSharper.JQuery.Mobile.Dialog
+/// See Widgets / Controlgroup
+module IntelliFactory.WebSharper.JQuery.Mobile.ControlGroup
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let DialogConfig =
-    Pattern.Config "DialogConfig" {
+let ControlGroupConfig =
+    Pattern.Config "ControlGroupConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "closeBtn", Common.ButtonPosition.Type
-                "closeBtnText", T<string>
                 "corners", T<bool>
+                "excludeInvisible", T<bool>
                 "initSelector", T<string>
-                "overlayTheme", Common.SwatchLetter.Type
+                "mini", T<bool>
+                "shadow", T<bool>
+                "type", Common.Orientation.Type
             ]
     }
 
-let Dialog =
-    let p = Common.Plugin("dialog")
-    Class "Dialog"
+let ControlGroup =
+    let p = Common.Plugin("controlgroup")
+    Class "ControlGroup"
     |+> [
             p.DefineConstructor()
-            p.DefineMethod("close")
+            p.DefineConstructor(ControlGroupConfig.Type)
+
+            p.DefineFunc("container", T<JQuery>)
         ]
