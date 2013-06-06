@@ -106,10 +106,8 @@ let OrientationChangeEventArgs =
 let PageChangeEventArgs =
     Class "PageChangeEventArgs"
     |+> Protocol [
-            "toPage" =? T<JQuery>
+            "toPage" =? T<JQuery> + T<string>
             "options"  =? PageChangeConfig.Type
-            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
-            |> WithGetterInline "$this"
         ]
 
 let PageBeforeLoadEventArgs =
@@ -120,8 +118,6 @@ let PageBeforeLoadEventArgs =
             "dataUrl" =? T<string>
             "deferred" =? T<Deferred>
             "options" =? PageLoadConfig.Type
-            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
-            |> WithGetterInline "$this"
         ]
 
 let PageLoadEventArgs =
@@ -133,8 +129,6 @@ let PageLoadEventArgs =
             "options" =? PageLoadConfig.Type
             "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
             "textStatus" =? T<string>
-            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
-            |> WithGetterInline "$this"
         ]
 
 let PageLoadFailedEventArgs =
@@ -148,24 +142,18 @@ let PageLoadFailedEventArgs =
             "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
             "textStatus" =? T<string>
             "errorThrown" =? T<obj> + T<string>
-            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
-            |> WithGetterInline "$this"
         ]
 
 let PageHideEventArgs =
     Class "PageHideEventArgs"
     |+> Protocol [
             "nextPage" =? T<JQuery>
-            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
-            |> WithGetterInline "$this"
         ]
 
 let PageShowEventArgs =
     Class "PageShowEventArgs"
     |+> Protocol [
             "prevPage" =? T<JQuery>
-            "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
-            |> WithGetterInline "$this"
         ]
 
 let VMouseEventArgs =
@@ -182,22 +170,26 @@ let VMouseEventArgs =
 let Events =
     let ev0 name = Events.Define name
     let ev1 name ty = Events.DefineTyped name ty
+    let ev2 name ty = Events.DefineTyped name (T<IntelliFactory.WebSharper.JQuery.Event> * ty)
     Class "Events"
     |+> [
             ev0 "hashchange" |> WithSourceName "HashChange"
-            ev0 "navigate" |> WithSourceName "Navigate"
+            ev0 "navigate" |> WithSourceName "Navigate" //?
             ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
-            ev1 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange"
+            ev2 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange"
             ev0 "pagebeforecreate" |> WithSourceName "PageBeforeCreate"
-            ev1 "pagebeforehide" PageHideEventArgs.Type |> WithSourceName "PageBeforeHide"
-            ev1 "pagebeforeload" PageBeforeLoadEventArgs.Type |> WithSourceName "PageBeforeLoad"
-            ev1 "pagebeforeshow" PageShowEventArgs.Type |> WithSourceName "PageBeforeShow"
-            ev1 "pagechange" PageChangeEventArgs.Type |> WithSourceName "PageChange"
-            ev1 "pagechangefailed" PageChangeEventArgs.Type |> WithSourceName "PageChangeFailed"
+            ev2 "pagebeforehide" PageHideEventArgs.Type |> WithSourceName "PageBeforeHide"
+            ev2 "pagebeforeload" PageBeforeLoadEventArgs.Type |> WithSourceName "PageBeforeLoad"
+            ev2 "pagebeforeshow" PageShowEventArgs.Type |> WithSourceName "PageBeforeShow"
+            ev2 "pagechange" PageChangeEventArgs.Type |> WithSourceName "PageChange"
+            ev2 "pagechangefailed" PageChangeEventArgs.Type |> WithSourceName "PageChangeFailed"
             ev0 "pagecreate" |> WithSourceName "PageCreate"
-            ev1 "pagehide" PageHideEventArgs.Type |> WithSourceName "PageHide"
+            ev2 "pagehide" PageHideEventArgs.Type |> WithSourceName "PageHide"
             ev0 "pageinit" |> WithSourceName "PageInit"
-            ev1 "pageload" PageLoadEventArgs.Type |> WithSourceName "PageLoad"
+            ev2 "pageload" PageLoadEventArgs.Type |> WithSourceName "PageLoad"
+            ev2 "pageloadfailed" PageLoadFailedEventArgs.Type |> WithSourceName "PageLoadFailed"
+            ev0 "pageremove" |> WithSourceName "PageRemove"    
+            ev2 "pageshow" PageShowEventArgs.Type |> WithSourceName "PageShow"    
             ev0 "scrollstart" |> WithSourceName "ScrollStart"
             ev0 "scrollstop" |> WithSourceName "ScrollStop"
             ev0 "swipe" |> WithSourceName "Swipe"

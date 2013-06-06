@@ -3,10 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1" />
     <WebSharper:ScriptManager runat="server"/>
+    
+    <style>
+        [data-role=page]{height: 100% !important; position:relative !important;}
+        [data-role=footer]{bottom:0; position:absolute !important; top: auto !important; width:100%;}
+    </style>
 </head>
 <body>
-    <div data-role="page"></div>
+    <div data-role="page" id="none"></div>
     <Tests:Samples runat="server" />
 </body>
 </html>

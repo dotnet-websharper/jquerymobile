@@ -52,54 +52,60 @@ module SampleInternals =
 //        |>! OnAfterRender (fun page ->
 //            Mobile.Page.Init(JQuery.Of(page.Body)))
 
+
+    [<JavaScript>] 
+    let HeaderDiv() = Div [HTML5.Attr.Data "role" "header"]
+
+    [<JavaScript>] 
+    let ContentDiv() = Div [HTML5.Attr.Data "role" "content"]
+
+    [<JavaScript>] 
+    let FooterDiv() = Div [HTML5.Attr.Data "role" "footer"]
+
+    [<JavaScript>] 
+    let PageDiv id' = Div [HTML5.Attr.Data "role" "page"; Id id']
+
+
     [<JavaScript>]
     let SimpleNavigation () = 
          // should trigger webresource.
         let home =
             let header =
-                Div [HTML5.Attr.Data "role" "header"
-                     H1 [Text "Home"] :> IPagelet                
-                    ]
+                HeaderDiv() -< [ H1 [ Text "Home" ] ]
 
             let content =
-                Div [HTML5.Attr.Data "role" "content"
-                     P [A [Attr.HRef "#about"; Text "About this app"]] :> IPagelet
-                    ]                
-        
-            let page = 
-                Div [Attr.Id "home"
-                     HTML5.Attr.Data "role" "page"
-                ] -< [header; content]
+                ContentDiv() -< [ 
+                    P [
+                        A [ Attr.HRef ""; Text "About this app" ]               // Attr.HRef "#about"
+//                        |>! OnClick (fun _ _ -> MobileInstance.ChangePage(JQuery.Of("#about")) )
+                        |>! OnClick (fun _ _ -> MobileInstance.ChangePage(JQuery.Of("#about")) )
+                    ] 
+                ]  
                 
-            page
-            |>! OnAfterRender (fun page ->
-                Mobile.Instance.ChangePage(JQuery.Of(page.Body)))
+            let footer = FooterDiv() -< [ H1 [Text "Home"] ]             
+        
+            PageDiv "home" -< [ header; content; footer ]
+            |>! OnAfterRender ( fun page ->
+                Mobile.Instance.ChangePage(JQuery.Of(page.Body)) )
 
         let about =
             let header =
-                Div [
-                    HTML5.Attr.Data "role" "header"
-                    H1 [Text "About This App"] :> IPagelet
-                ]
+                HeaderDiv() -< [ H1 [ Text "About This App" ] ]
         
             let content =
-                Div [HTML5.Attr.Data "role" "content"
-                     P [Text "This app rocks "] -< [A [HRef "#home"; Text " Go home!"]
-                    ] :> IPagelet
+                ContentDiv() -< [
+                    P [ Text "This app rocks " ] -< [
+                        A [ HRef ""; Text " Go home!" ]
+//                        |>! OnClick (fun _ _ -> MobileInstance.ChangePage(JQuery.Of("#home")) )
+                        |>! OnClick (fun _ _ -> MobileInstance.ChangePage(JQuery.Of("#home")) )
+                    ] 
                 ]
                 
-            let page = 
-                Div [Attr.Id "about"
-                     HTML5.Attr.Data "role" "page"
-                     header  :> IPagelet
-                     content :> IPagelet]
-            page
+            let footer = FooterDiv() -< [ H1 [ Text "About This App" ] ]             
+
+            PageDiv "about" -< [ header; content; footer ]
         
-        Div [
-            home
-            about
-        ]
-        
+        Div [ home; about ]
         
     [<JavaScript>]
     let FormTypes () = 
