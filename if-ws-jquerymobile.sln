@@ -14,8 +14,6 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.J
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "web\Web.csproj", "{F453CB86-F138-4F1B-A87B-93E1B587E16F}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.JQuery.Mobile.Html", "if-ws-jquerymobile-html\IntelliFactory.WebSharper.JQuery.Mobile.Html.fsproj", "{5DAE1CDB-5BB8-463F-AA36-C799F16542F9}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,10 +36,6 @@ Global
 		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F453CB86-F138-4F1B-A87B-93E1B587E16F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5DAE1CDB-5BB8-463F-AA36-C799F16542F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5DAE1CDB-5BB8-463F-AA36-C799F16542F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5DAE1CDB-5BB8-463F-AA36-C799F16542F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5DAE1CDB-5BB8-463F-AA36-C799F16542F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
