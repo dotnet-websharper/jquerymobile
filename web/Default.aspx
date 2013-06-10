@@ -12,7 +12,7 @@
     </style>
 </head>
 <body>
-    <div data-role="page" id="none"></div>
-    <Tests:Samples runat="server" />
+    <%--<div data-role="page" id="none"></div>--%>
+    <Tests:AppControl runat="server" />
 </body>
 </html>

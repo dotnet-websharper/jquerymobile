@@ -34,6 +34,7 @@
   <Import Project="..\.build\lib\IntelliFactory.WebSharper.targets" />
   <ItemGroup>
     <Compile Include="Samples.fs" />
+    <Compile Include="Site.fs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="IntelliFactory.WebSharper.JQuery.Mobile">

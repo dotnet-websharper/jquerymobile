@@ -174,7 +174,7 @@ let Events =
     Class "Events"
     |+> [
             ev0 "hashchange" |> WithSourceName "HashChange"
-            ev0 "navigate" |> WithSourceName "Navigate" //?
+            ev2 "navigate" T<obj> |> WithSourceName "Navigate" 
             ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
             ev2 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange"
             ev0 "pagebeforecreate" |> WithSourceName "PageBeforeCreate"
@@ -243,6 +243,21 @@ let Path =
             "get" => T<string> ^-> T<string>
         ]
 
+let TransitionFallbacks =
+    Class "TransitionFallbacks"
+    |+> Protocol
+        [
+            "fade" =? Common.Transition.Type    
+            "flip" =? Common.Transition.Type  
+            "flow" =? Common.Transition.Type  
+            "pop"  =? Common.Transition.Type  
+            "slide" =? Common.Transition.Type  
+            "slidedown" =? Common.Transition.Type  
+            "slidefade" =? Common.Transition.Type  
+            "slideup" =? Common.Transition.Type  
+            "turn" =? Common.Transition.Type  
+        ]
+
 let Mobile =
     let self = Type.New()
     Class "Mobile"
@@ -281,7 +296,7 @@ let Mobile =
             "phonegapNavigationEnabled" =@ T<bool>
             "pushStateEnabled" =@ T<bool>
             "subPageUrlKey" =@ T<string>
-            // "transitionFallbacks"
+            "transitionFallbacks" =? TransitionFallbacks
 
             // Methods and utilities
 
@@ -326,41 +341,3 @@ let JQuery =
             "page" => T<JQuery>?jQuery ^-> T<JQuery>
             |> WithInline "$jQuery.page()"
         ]
-
-//module Enums =
-//
-//    let ButtonIcon = 
-//        Class "ButtonIcon"
-//        |+> [
-//            "LeftArrow"=? T<string> |> WithGetterInline "'arrow-l'"
-//            "RightArrow"=? T<string> |> WithGetterInline "'arrow-r'"
-//            "UpArrow"=? T<string> |> WithGetterInline "'arrow-u'"
-//            "DownArrow"=? T<string> |> WithGetterInline "'arrow-d'"
-//            "Delete"=? T<string> |> WithGetterInline "'delete'"
-//            "Plus"=? T<string> |> WithGetterInline "'plus'"
-//            "Minus"=? T<string> |> WithGetterInline "'minus'"
-//            "Check"=? T<string> |> WithGetterInline "'check'"
-//            "Gear"=? T<string> |> WithGetterInline "'gear'"
-//            "Refresh"=? T<string> |> WithGetterInline "'refresh'"
-//            "Forward"=? T<string> |> WithGetterInline "'forward'"
-//            "Back"=? T<string> |> WithGetterInline "'back'"
-//            "Grid"=? T<string> |> WithGetterInline "'grid'"
-//            "Star"=? T<string> |> WithGetterInline "'star'"
-//            "Alert"=? T<string> |> WithGetterInline "'alert'"
-//            "Info"=? T<string> |> WithGetterInline "'info'"
-//        ]
-//    
-//    let Theme = 
-//        Class "Theme"
-//        |+> [
-//            "a" =? T<string>
-//            |> WithGetterInline "'a'"
-//            "b" =? T<string>
-//            |> WithGetterInline "'b'"
-//            "c" =? T<string>
-//            |> WithGetterInline "'c'"
-//            "d" =? T<string>
-//            |> WithGetterInline "'d'"
-//            "e" =? T<string>
-//            |> WithGetterInline "'e'"
-//        ]
