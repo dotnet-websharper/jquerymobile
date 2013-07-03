@@ -3,19 +3,19 @@
 open IntelliFactory.Html
 open IntelliFactory.WebSharper.Sitelets
 
-type Action = | App
+type Action =
+    | App
 
 module Skin =
     open System.IO
-    
+
     type Page =
         {
             Body : list<Content.HtmlElement>
         }
 
     let MainTemplate =
-        let path = Path.Combine(__SOURCE_DIRECTORY__, "main-template.html")
-        Content.Template<Page>(path)
+        Content.Template<Page>("~/Main.html")
             .With("body", fun x -> x.Body)
 
     let WithTemplate body : Content<Action> =
@@ -24,13 +24,14 @@ module Skin =
                 Body =  body context
             }
 
-module Site = 
+module Site =
     let App = Skin.WithTemplate <| fun ctx -> [ Div [ new AppControl() ] ]
 
-type sampleWebsite() =     
-    interface IWebsite<Action> with       
+[<Sealed>]
+type Sample() =
+    interface IWebsite<Action> with
         member this.Sitelet = Sitelet.Content "/" App Site.App
         member this.Actions = [ App ]
 
-[<assembly: WebsiteAttribute(typeof<sampleWebsite>)>]
-()
+[<assembly: Website(typeof<Sample>)>]
+do ()

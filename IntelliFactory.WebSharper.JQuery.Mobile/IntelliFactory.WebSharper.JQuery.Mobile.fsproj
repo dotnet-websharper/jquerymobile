@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{09ff3f57-1d1a-4537-af3e-9b957dbd961e}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
+    <RootNamespace>$(Name)</RootNamespace>
+    <AssemblyName>$(Name)</AssemblyName>
+    <WebSharperProject>InterfaceGenerator</WebSharperProject>
+    <KeyOriginatorFile>$(INTELLIFACTORY)/keys/IntelliFactory.snk</KeyOriginatorFile>
+  </PropertyGroup>
+  <Import Project="..\.build\FSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Common.fs" />
+    <Compile Include="Events.fs" />
+    <Compile Include="Button.fs" />
+    <Compile Include="CheckBoxRadio.fs" />
+    <Compile Include="Collapsible.fs" />
+    <Compile Include="CollapsibleSet.fs" />
+    <Compile Include="ControlGroup.fs" />
+    <Compile Include="Dialog.fs" />
+    <Compile Include="FixedToolbar.fs" />
+    <Compile Include="Footer.fs" />
+    <Compile Include="Header.fs" />
+    <Compile Include="ListView.fs" />
+    <Compile Include="NavBar.fs" />
+    <Compile Include="Page.fs" />
+    <Compile Include="PageLoading.fs" />
+    <Compile Include="Panel.fs" />
+    <Compile Include="Popup.fs" />
+    <Compile Include="RangeSlider.fs" />
+    <Compile Include="SelectMenu.fs" />
+    <Compile Include="Slider.fs" />
+    <Compile Include="Table.fs" />
+    <Compile Include="ColumnToggleTable.fs" />
+    <Compile Include="ReflowTable.fs" />
+    <Compile Include="TextInput.fs" />
+    <Compile Include="Definition.fs" />
+    <Compile Include="Main.fs" />
+    <None Include="Resources.cs" />
+    <None Include="Marker.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+</Project>
