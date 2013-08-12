@@ -116,13 +116,25 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Definition.JQuery
     ]
 
-let Assembly =
+let JQMAssembly =
     Assembly [
-        Namespace "IntelliFactory.WebSharper.JQuery.Mobile" ClassList
+        Namespace "IntelliFactory.WebSharper.JQuery.Mobile" ClassList  
+        Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Resources" [
+                Resource "JQueryMobileJs" "//code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"
+                |> fun r -> r.AssemblyWide()
+                Resource "JQueryMobileCss" "//code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"
+                |> fun r -> r.AssemblyWide()
+            ]
 //        Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Enums" [
 //            Definition.Enums.ButtonIcon
 //            Definition.Enums.Theme
 //        ]
     ]
 
-Compiler.Compile stdout Assembly
+module MainModule =
+    open IntelliFactory.WebSharper.InterfaceGenerator
+
+    [<EntryPoint>]
+    let Start args =
+        Compiler.Create().Start(args, JQMAssembly)
+
