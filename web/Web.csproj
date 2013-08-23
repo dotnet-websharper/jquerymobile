@@ -59,7 +59,7 @@
     </Content>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
+  <!--<ItemGroup>
     <ProjectReference Include="..\IntelliFactory.WebSharper.JQuery.Mobile.Tests\IntelliFactory.WebSharper.JQuery.Mobile.Tests.fsproj">
       <Project>{bb42ad3f-9110-4d95-a23f-36b4f2f900fa}</Project>
       <Name>IntelliFactory.WebSharper.JQuery.Mobile.Tests</Name>
@@ -70,7 +70,7 @@
       <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
       <Private>True</Private>
     </ProjectReference>
-  </ItemGroup>
+  </ItemGroup>-->
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

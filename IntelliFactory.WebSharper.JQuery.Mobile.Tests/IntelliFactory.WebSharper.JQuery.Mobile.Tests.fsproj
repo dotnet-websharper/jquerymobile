@@ -4,7 +4,7 @@
     <ProjectGuid>{bb42ad3f-9110-4d95-a23f-36b4f2f900fa}</ProjectGuid>
     <OutputType>Library</OutputType>
     <Name>IntelliFactory.WebSharper.JQuery.Mobile.Tests</Name>
-    <OutDir>bin</OutDir>
+    <OutputPath>bin</OutputPath>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets"  />
   <Import Project="..\build\net45\$(Name).proj" />
