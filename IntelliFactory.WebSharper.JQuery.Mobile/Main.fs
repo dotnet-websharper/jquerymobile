@@ -122,6 +122,7 @@ let JQMAssembly =
         Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Resources" [
                 Resource "JQueryMobileJs" "//code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"
                 |> fun r -> r.AssemblyWide()
+                |> RequiresExternal [T<IntelliFactory.WebSharper.JQuery.Resources.JQuery>]
                 Resource "JQueryMobileCss" "//code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"
                 |> fun r -> r.AssemblyWide()
             ]
