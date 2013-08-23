@@ -4,12 +4,10 @@
     <ProjectGuid>{09ff3f57-1d1a-4537-af3e-9b957dbd961e}</ProjectGuid>
     <OutputType>Library</OutputType>
     <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
-    <RootNamespace>$(Name)</RootNamespace>
-    <AssemblyName>$(Name)</AssemblyName>
-    <WebSharperProject>InterfaceGenerator</WebSharperProject>
-    <KeyOriginatorFile>$(INTELLIFACTORY)/keys/IntelliFactory.snk</KeyOriginatorFile>
+    <OutputPath>bin</OutputPath>
   </PropertyGroup>
-  <Import Project="..\.build\FSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets"  />
+  <Import Project="..\build\net45\$(Name).proj" />
   <ItemGroup>
     <Compile Include="Common.fs" />
     <Compile Include="Events.fs" />
@@ -40,8 +38,6 @@
     <None Include="Resources.cs" />
     <None Include="Marker.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System.Web" />
-  </ItemGroup>
+  <Target Name="Build" />
+  <Target Name="Clean" />
 </Project>

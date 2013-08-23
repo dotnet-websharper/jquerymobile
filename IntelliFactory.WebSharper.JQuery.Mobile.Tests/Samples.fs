@@ -415,8 +415,8 @@ module SampleInternals =
                 H1 [Text "Tap me!"]
             ]
 
-        E.Tap.On(JQuery.JQuery.Of(header.Body), fun event ->
-            JavaScript.Alert("Tapped on:" + string event.PageX + "," + string event.PageY))
+        let jqb = JQuery.JQuery.Of(header.Body)
+        E.Tap.On(jqb, fun event -> JavaScript.Alert("Tapped on:" + string event.PageX + "," + string event.PageY))
 
         let content =
             Div [
@@ -476,7 +476,7 @@ module SampleInternals =
                 content
             ]
 
-        page    
+        page
 
 type Samples() = 
     inherit Web.Control()

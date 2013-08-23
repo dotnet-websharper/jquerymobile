@@ -131,10 +131,12 @@ let JQMAssembly =
 //        ]
     ]
 
-module MainModule =
-    open IntelliFactory.WebSharper.InterfaceGenerator
+open IntelliFactory.WebSharper.InterfaceGenerator
 
-    [<EntryPoint>]
-    let Start args =
-        Compiler.Create().Start(args, JQMAssembly)
+[<Sealed>]
+type JQMExtension() =
+    interface IExtension with
+        member ext.Assembly = JQMAssembly
 
+[<assembly: Extension(typeof<JQMExtension>)>]
+do ()

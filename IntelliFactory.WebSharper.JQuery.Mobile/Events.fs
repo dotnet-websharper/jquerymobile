@@ -39,7 +39,7 @@ let Event0 =
 let Event1 =
     Generic / fun t ->
         let h = Handler1 t
-        Class "Event"
+        Class "Event`1"
         |+> Protocol [
                 "name" =? T<string>
                 |> WithGetterInline "$this"

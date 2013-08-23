@@ -6,3 +6,6 @@ web/bin
 web/Scripts
 ^packages
 ^\.nuget
+^tools/packages/
+^packages/
+^build/

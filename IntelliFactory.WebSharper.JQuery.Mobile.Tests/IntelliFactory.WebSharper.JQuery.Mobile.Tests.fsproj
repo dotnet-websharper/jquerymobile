@@ -4,24 +4,14 @@
     <ProjectGuid>{bb42ad3f-9110-4d95-a23f-36b4f2f900fa}</ProjectGuid>
     <OutputType>Library</OutputType>
     <Name>IntelliFactory.WebSharper.JQuery.Mobile.Tests</Name>
-    <RootNamespace>$(Name)</RootNamespace>
-    <AssemblyName>$(Name)</AssemblyName>
+    <OutDir>bin</OutDir>
   </PropertyGroup>
-  <Import Project="..\.build\FSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets"  />
+  <Import Project="..\build\net45\$(Name).proj" />
   <ItemGroup>
     <Compile Include="Samples.fs" />
     <Compile Include="Site.fs" />
   </ItemGroup>
-  <ItemGroup>
-    <Reference Include="mscorlib" />
-    <Reference Include="System" />
-    <Reference Include="System.Web" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IntelliFactory.WebSharper.JQuery.Mobile\IntelliFactory.WebSharper.JQuery.Mobile.fsproj">
-      <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
-      <Project>{09ff3f57-1d1a-4537-af3e-9b957dbd961e}</Project>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
+  <Target Name="Build" />
+  <Target Name="Clean" />
 </Project>
