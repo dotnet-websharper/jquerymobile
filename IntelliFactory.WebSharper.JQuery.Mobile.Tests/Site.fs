@@ -15,7 +15,7 @@ module Skin =
         }
 
     let MainTemplate =
-        Content.Template<Page>("~/Main.html")
+        Content.Template<Page>(__SOURCE_DIRECTORY__ + "/Main.html")
             .With("body", fun x -> x.Body)
 
     let WithTemplate body : Content<Action> =

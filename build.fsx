@@ -10,36 +10,28 @@ let bt =
             r.Assembly "System.Xml"
         ])
 
-let main =
+let ext =
     bt.WebSharper.Extension("IntelliFactory.WebSharper.JQuery.Mobile")
-    |> FSharpConfig.BaseDir.Custom("IntelliFactory.WebSharper.JQuery.Mobile")
     |> fun main -> main.SourcesFromProject()
 
 let tests =
-    bt.WebSharper.Library("IntelliFactory.WebSharper.JQuery.Mobile.Tests")
-    |> FSharpConfig.BaseDir.Custom("IntelliFactory.WebSharper.JQuery.Mobile.Tests")
+    bt.WebSharper.HtmlWebsite("IntelliFactory.WebSharper.JQuery.Mobile.Tests")
     |> fun tests ->
         tests.SourcesFromProject().References(fun r ->
-            [r.Project main])
-
-let web =
-    bt.WebSharper.HostWebsite("Web")
-        .References(fun r ->
-            [
-                r.Project main
-                r.Project tests
-                r.NuGet("WebSharper").At(["/tools/net45/IntelliFactory.Xml.dll"]).Reference()
-            ])
+            [r.Project ext])
 
 bt.Solution [
-
-    main
+    ext
     tests
-    web
 
     bt.NuGet.CreatePackage()
-        .Description("Bindings to JQuery mobile")
-        .Add(main)
+        .Description("WebSharper Extensions to jQuery Mobile")
+        .Configure(fun cfg ->
+            { cfg with
+                Authors = ["IntelliFactory"]
+                RequiresLicenseAcceptance = true
+                LicenseUrl = Some "http://websharper.com/licensing" })
+        .Add(ext)
 
 ]
 |> bt.Dispatch
