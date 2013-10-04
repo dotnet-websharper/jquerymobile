@@ -1,6 +1,6 @@
-# WebSharper.JQuery.Mobile
+# Overview
 
-Provides WebSharper bindings to the [jQuery
+This extension provides WebSharper bindings to the [jQuery
 Mobile](http://jquerymobile.com) library that provides support for
 mobile web development.  The library targets any of the following
 platforms:
@@ -46,14 +46,16 @@ the page.
 
 First, some helpers to set the custom attributes to an element:
 
-      [<JavaScript>]
-      let SetAttr attr value elem =
-          elem
-          |>! OnAfterRender (fun elem ->
-                  JQuery.JQuery.Of(elem.Body).Attr(attr, value).Ignore)
+```fsharp
+[<JavaScript>]
+let SetAttr attr value elem =
+    elem
+    |>! OnAfterRender (fun elem ->
+            JQuery.JQuery.Of(elem.Body).Attr(attr, value).Ignore)
 
-      [<JavaScript>]
-      let AddDataRole role elem = SetAttr "data-role" role elem
+[<JavaScript>]
+let AddDataRole role elem = SetAttr "data-role" role elem
+```
         
 Then it is a matter of adding the right attributes to each of the
 parts of the website. Since JQuery Mobile works automatically, it is
@@ -61,28 +63,30 @@ sometimes better to make sure the resource is added to the page. The
 dummy `UseJQueryMobile` will force the static analyzer to add the
 reference of the JQuery Mobile extension.
 
-      [<JavaScript>]
-      let SimplePage () = 
-          JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
-          let header =
-              Div [H1 [Text "Page Title"]]
-              |> AddDataRole "header"
+```fsharp
+[<JavaScript>]
+let SimplePage () = 
+    JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
+    let header =
+        Div [H1 [Text "Page Title"]]
+        |> AddDataRole "header"
 
-          let content =
-              Div [P [Text "Lorem ipsum dolor sit amet, consectetur adipiscing"]]
-              |> AddDataRole "content"
+    let content =
+        Div [P [Text "Lorem ipsum dolor sit amet, consectetur adipiscing"]]
+        |> AddDataRole "content"
 
-          let footer =
-              Div [H4 [Text "Page Footer"]]
-              |> AddDataRole "footer"
+    let footer =
+        Div [H4 [Text "Page Footer"]]
+        |> AddDataRole "footer"
 
-          let page = 
-              Div [header
-                   content
-                   footer]
-              |> AddDataRole "page"
+    let page = 
+        Div [header
+             content
+             footer]
+        |> AddDataRole "page"
 
-        page    
+  page    
+```
 
 ### Using the jQuery Mobile object
 
@@ -92,15 +96,19 @@ website](http://jquerymobile.com/demos/1.0a2). To get access, build
 the jQuery object under the `Mobile` namespace. Is possible to build
 it from any jQuery object as it's shown in the following example:
 
-        JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(header.Body)).Tap(
-            fun _ event -> 
-                JavaScript.Alert("Tapped on: " + string event.PageX + "," + string event.PageY)
-            ).Base.Ignore
+```fsharp
+JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(header.Body)).Tap(
+    fun _ event -> 
+        JavaScript.Alert("Tapped on: " + string event.PageX + "," + string event.PageY)
+    ).Base.Ignore
+```
 
 ### Configuration properties and utilities
 
 They jQuery Mobile also provides different utilities and configuration
 values. These are available under the `Mobile` property. For example:
 
-        JQuery.Mobile.JQuery.Mobile.DefaultTransition
+```fsharp
+JQuery.Mobile.JQuery.Mobile.DefaultTransition
+```
 

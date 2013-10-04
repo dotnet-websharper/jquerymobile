@@ -25,12 +25,13 @@ bt.Solution [
     tests
 
     bt.NuGet.CreatePackage()
-        .Description("WebSharper Extensions to jQuery Mobile")
-        .Configure(fun cfg ->
-            { cfg with
-                Authors = ["IntelliFactory"]
-                RequiresLicenseAcceptance = true
-                LicenseUrl = Some "http://websharper.com/licensing" })
+        .Configure(fun c ->
+            { c with
+                Title = Some "WebSharper.JQueryMobile-1.3.1"
+                LicenseUrl = Some "http://websharper.com/licensing"
+                ProjectUrl = Some "https://github.com/intellifactory/websharper.jquerymobile"
+                Description = "WebSharper Extensions for JQuery Mobile 1.3.1"
+                RequiresLicenseAcceptance = true })
         .Add(ext)
 
 ]
