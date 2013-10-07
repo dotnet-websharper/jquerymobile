@@ -2,7 +2,7 @@
 open IntelliFactory.Build
 
 let bt =
-    BuildTool().PackageId("IntelliFactory.WebSharper.JQuery.Mobile", "2.5").References(fun r ->
+    BuildTool().PackageId("WebSharper.JQuery.Mobile", "2.5").References(fun r ->
         [
             r.Assembly "System.Runtime.Serialization"
             r.Assembly "System.ServiceModel.Web"
