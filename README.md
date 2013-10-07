@@ -1,9 +1,9 @@
 # Overview
 
 This extension provides WebSharper bindings to the [jQuery
-Mobile](http://jquerymobile.com) library that provides support for
-mobile web development.  The library targets any of the following
-platforms:
+Mobile](http://jquerymobile.com) library, version 1.3.1, that provides
+support for mobile web development.  The library targets any of the
+following platforms:
 
   * iOS
   * Android
