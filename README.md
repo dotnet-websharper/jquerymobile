@@ -14,13 +14,6 @@ following platforms:
   * Symbian
   * Meego
 
-With the WebSharper.JQuery.Mobile you can develop WebSharper apps that
-use jQuery Mobile.
-
-## Usage
-
-TODO: update documentation.
-
 ### Creating Pages
 
 [JQuery Mobile](http://jquerymobile.com) uses the `data-*` Html5
