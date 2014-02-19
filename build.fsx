@@ -2,13 +2,15 @@
 open IntelliFactory.Build
 
 let bt =
-    BuildTool().PackageId("WebSharper.JQueryMobile", "2.5").References(fun r ->
+    let bt =
+      BuildTool().PackageId("WebSharper.JQueryMobile", "2.5").References(fun r ->
         [
             r.Assembly "System.Runtime.Serialization"
             r.Assembly "System.ServiceModel.Web"
             r.Assembly "System.Web"
             r.Assembly "System.Xml"
         ])
+    bt.WithFramework(bt.Framework.Net40)
 
 let ext =
     bt.WebSharper.Extension("IntelliFactory.WebSharper.JQuery.Mobile")
