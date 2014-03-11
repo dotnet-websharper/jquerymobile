@@ -5,9 +5,10 @@
     <OutputType>Library</OutputType>
     <Name>IntelliFactory.WebSharper.JQuery.Mobile</Name>
     <OutputPath>bin</OutputPath>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">11</MinimumVisualStudioVersion>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets" />
-  <Import Project="..\build\net45\$(Name).proj" />
+  <Import Project="../msbuild/FSharp.targets" />
+  <Import Project="..\build\net40\$(Name).proj" />
   <ItemGroup>
     <Compile Include="Common.fs" />
     <Compile Include="Events.fs" />
@@ -36,6 +37,7 @@
     <Compile Include="Definition.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
+  <ItemGroup />
   <Target Name="Build" />
   <Target Name="Clean" />
 </Project>
