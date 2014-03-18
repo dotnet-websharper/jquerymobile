@@ -47,15 +47,17 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Dialog.DialogConfig
         Dialog.Dialog
 
-        FixedToolbar.FixedToolbarConfig
-        FixedToolbar.FixedToolbar
+        Filterable.FilterableConfig
+        Filterable.Filterable
 
-        Footer.Footer // unnecessary class?
-
-        Header.Header // unnecessary class?
+        FlipSwitch.FlipSwitchConfig
+        FlipSwitch.FlipSwitch
 
         ListView.ListViewConfig
         ListView.ListView
+
+        Loader.LoaderConfig
+        Loader.Loader
 
         NavBar.NavBarConfig
         NavBar.NavBar
@@ -63,8 +65,8 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Page.PageConfig
         Page.Page
 
-        PageLoading.PageLoadingConfig
-        PageLoading.PageLoading
+        PageContainer.PageContainerConfig
+        PageContainer.PageContainer
 
         Panel.PanelConfig
         Panel.Panel
@@ -90,6 +92,12 @@ let ClassList : list<CodeModel.NamespaceEntity> =
 
         ReflowTable.ReflowTableConfig
         ReflowTable.ReflowTable
+
+        Tabs.TabsConfig
+        Tabs.Tabs
+
+        Toolbar.ToolbarConfig
+        Toolbar.Toolbar
 
         TextInput.TextInputConfig
         TextInput.TextInput
@@ -120,10 +128,10 @@ let JQMAssembly =
     Assembly [
         Namespace "IntelliFactory.WebSharper.JQuery.Mobile" ClassList  
         Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Resources" [
-                Resource "JQueryMobileJs" "//code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"
+                Resource "JQueryMobileJs" "//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"
                 |> fun r -> r.AssemblyWide()
                 |> RequiresExternal [T<IntelliFactory.WebSharper.JQuery.Resources.JQuery>]
-                Resource "JQueryMobileCss" "//code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css"
+                Resource "JQueryMobileCss" "//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"
                 |> fun r -> r.AssemblyWide()
             ]
 //        Namespace "IntelliFactory.WebSharper.JQuery.Mobile.Enums" [

@@ -9,47 +9,53 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Form Elements / Text inputs.
-module IntelliFactory.WebSharper.JQuery.Mobile.TextInput
+/// See Components / Toolbars / Fixed positioning.
+module IntelliFactory.WebSharper.JQuery.Mobile.Toolbar
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let TextInputConfig =
-    Pattern.ConfigObs "TextInputConfig" {
+let ToolbarConfig =
+    Pattern.ConfigObs "ToolbarConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
-
-                "autogrow", T<bool>
-                "clearBtn", T<bool>
-                "clearBtnText", T<string>
-                "corners", T<bool>
+                
+                "addBackBtn", T<bool>
+                "backBtnText", T<string>
+                "backBtnTheme", Common.SwatchLetter.Type
                 "defaults", T<bool>
+                "disablePageZoom", T<bool>
                 "disabled", T<bool>
-                "enhanced", T<bool>
-                "keyupTimeoutBuffer", T<int>
-                "mini", T<bool>
-                "preventFocusZoom", T<string>
+                "fullscreen", T<bool>
+                "hideDuringFocus", T<string>
+                "position", T<string>
+                "supportBlacklist", T<unit -> bool>
+                "tapToggle", T<bool>
+                "tapToggleBlacklist", T<string>
                 "theme", Common.SwatchLetter.Type
-                "wrapperClass", T<string>
+                "transition", Common.Transition.Type
+                "updatePagePadding", T<bool>
+                "visibleOnPageShow", T<bool>
             ]
         Obsolete =
             [
-                "initSelector", T<string>
+                "trackPersistentToolbars", T<bool>
             ]
     }
 
-let TextInput =
-    let p = Common.Plugin("textinput")
-    Class "TextInput"
+let Toolbar =
+    let p = Common.Plugin("toolbar")
+    Class "Toolbar"
     |+> [
             p.DefineConstructor()
-            p.DefineConstructor(TextInputConfig.Type)
+            p.DefineConstructor(ToolbarConfig.Type)
+
             p.DefineMethod("destroy")
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("option", T<string>)
             p.DefineMethod("refresh")
+            p.DefineMethod("updatePagePadding")
         ]

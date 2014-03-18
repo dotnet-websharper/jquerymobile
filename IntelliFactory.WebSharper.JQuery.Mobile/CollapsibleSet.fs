@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let CollapsibleSetConfig =
-    Pattern.Config "CollapsibleSetConfig" {
+    Pattern.ConfigObs "CollapsibleSetConfig" {
         Required = []
         Optional =
             [
@@ -24,12 +24,17 @@ let CollapsibleSetConfig =
 
                 "collapsedIcon", Common.Icon.Type
                 "corners", T<bool>
+                "defaults", T<bool>
+                "disabled", T<bool>
+                "enhanced", T<bool>
                 "expandedIcon", Common.Icon.Type
                 "iconpos", Common.IconPosition.Type
-                "initSelector", T<string>
                 "inset", T<bool>
                 "mini", T<bool>
-                "theme", T<string>
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 
@@ -39,5 +44,10 @@ let CollapsibleSet =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(CollapsibleSetConfig.Type)
+
+            p.DefineMethod("destroy")
+            p.DefineMethod("disable")
+            p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
             p.DefineMethod("refresh")
         ]

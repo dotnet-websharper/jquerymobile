@@ -16,16 +16,29 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let PageConfig =
-    Pattern.Config "PageConfig" {
+    Pattern.ConfigObs "PageConfig" {
         Required = []
         Optional =
             [
                 "beforecreate", T<Events.JEvent * JQuery -> unit>
                 "create", T<Events.JEvent * JQuery -> unit>
 
+                "closeBtn", Common.ButtonPosition.Type
+                "closeBtnText", T<string>
+                "corners", T<bool>
+                "defaults", T<bool>
+                "dialog", T<bool>
+                "disabled", T<bool>
                 "domCache", T<bool>
-                "keepNativeDefault", T<string>
+                "overlayTheme", Common.SwatchLetter.Type
                 "theme", Common.SwatchLetter.Type
+            ]
+        Obsolete =
+            [
+                "contentTheme", Common.SwatchLetter.Type
+                "initSelector", T<string>
+                "keepNative", T<string>
+                "keepNativeDefault", T<string>
             ]
     }
 
@@ -36,9 +49,11 @@ let Page =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(PageConfig.Type)
-            p.DefineFunc("keepNativeSelector", T<string>)
-            p.DefineMethod("removeContainerBackground")
-            p.DefineMethod("setContainerBackground", Common.SwatchLetter.Type)
+
+            p.DefineFunc("bindRemove", T<unit -> unit>)
+            p.DefineFunc("keepNativeSelector", T<string>) |> Obsolete
+            p.DefineMethod("removeContainerBackground") |> Obsolete 
+            p.DefineMethod("setContainerBackground", Common.SwatchLetter.Type) |> Obsolete
 
             Events.Define "beforecreate"
             |> WithSourceName "BeforeCreated"

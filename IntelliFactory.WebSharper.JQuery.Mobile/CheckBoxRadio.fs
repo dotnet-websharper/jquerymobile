@@ -16,14 +16,22 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let CheckBoxRadioConfig =
-    Pattern.Config "CheckBoxRadioConfig" {
+    Pattern.ConfigObs "CheckBoxRadioConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
+                "defaults", T<bool>
+                "disabled", T<bool>
+                "enhanced", T<bool>
+                "iconpos", Common.IconPosition.Type
                 "mini", T<bool>
-                "theme", T<string>
+                "wrapperClass", T<string>
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 
@@ -34,7 +42,9 @@ let CheckBoxRadio =
             p.DefineConstructor()
             p.DefineConstructor(CheckBoxRadioConfig.Type)
 
-            p.DefineMethod("enable")
+            p.DefineMethod("destroy")
             p.DefineMethod("disable")
+            p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
             p.DefineMethod("refresh")
         ]

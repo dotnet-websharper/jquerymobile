@@ -16,25 +16,33 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let ListViewConfig =
-    Pattern.Config "ListViewConfig" {
+    Pattern.ConfigObs "ListViewConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "countTheme", Common.SwatchLetter.Type
+                "autodividers", T<bool>
+                "autodividersSelector", T<JQuery -> string>
+                "defaults", T<bool>
+                "disabled", T<bool>
                 "dividerTheme", Common.SwatchLetter.Type
-                "filter", T<bool>
-                "filterCallback", T<unit -> unit>
-                "filterPlaceholder", T<string>
-                "filterTheme", Common.SwatchLetter.Type
-                "headerTheme", Common.SwatchLetter.Type
+                "hideDividers", T<bool>
                 "icon", Common.Icon.Type
-                "initSelector", T<string>
                 "inset", T<bool>
                 "splitIcon", Common.Icon.Type
                 "splitTheme", Common.SwatchLetter.Type
                 "theme", Common.SwatchLetter.Type
+            ]
+        Obsolete =
+            [
+                "countTheme", Common.SwatchLetter.Type
+                "filter", T<bool>
+                "filterCallback", T<string * string -> bool>
+                "filterPlaceholder", T<string>
+                "filterReveal", T<string>
+                "filterTheme", Common.SwatchLetter.Type
+                "initSelector", T<string>
             ]
     }
 
@@ -44,6 +52,6 @@ let ListView =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(ListViewConfig.Type)
-            p.DefineFunc("childPages", T<JQuery>)
+            
             p.DefineMethod("refresh")
         ]

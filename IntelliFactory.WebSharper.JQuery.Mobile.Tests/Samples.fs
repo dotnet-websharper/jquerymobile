@@ -78,6 +78,9 @@ module App =
             Load: unit -> bool
         }
 
+    let changePage (page: string) =
+        mobile.ChangePage(page, ChangePageConfig(Transition = "slide"))
+
     // Page Ids
     module Ids =
         let [<Literal>] HomePage  = "home"
@@ -95,7 +98,7 @@ module App =
                 A [ HRef ""; Text text ]
                 |>! OnClick (fun _ _ ->
                     selectedCategory <- Some category    
-                    Refs.ItemsPage |> mobile.ChangePage
+                    Refs.ItemsPage |> changePage
                 )
             ] 
         {

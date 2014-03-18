@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let ColumnToggleTableConfig =
-    Pattern.Config "ColumnToggleTableConfig" {
+    Pattern.ConfigObs "ColumnToggleTableConfig" {
         Required = []
         Optional =
             [
@@ -27,8 +27,12 @@ let ColumnToggleTableConfig =
 //                "classes.popup", T<string>
 //                "classes.priorityPrefix", T<string>
                 "columnBtnText", T<string>
-                "columnBtnTheme", T<string>
-                "columnPopupTheme", T<string>
+                "columnBtnTheme", Common.SwatchLetter.Type
+                "columnPopupTheme", Common.SwatchLetter.Type
+                "enhanced", T<bool>
+            ]
+        Obsolete =
+            [
             ]
     }
 
@@ -38,5 +42,6 @@ let ColumnToggleTable =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(ColumnToggleTableConfig.Type)
+            
             p.DefineMethod("refresh")
         ]

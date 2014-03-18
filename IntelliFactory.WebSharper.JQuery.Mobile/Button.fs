@@ -16,21 +16,27 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let ButtonConfig =
-    Pattern.Config "ButtonConfig" {
+    Pattern.ConfigObs "ButtonConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
                 "corners", T<bool>
+                "disabled", T<bool>
+                "enhanced", T<bool>
                 "icon", Common.Icon.Type
                 "iconpos", Common.IconPosition.Type
-                "iconshadow", T<bool>
-                "initSelector", T<string>
                 "inline", T<bool>
                 "mini", T<bool>
                 "shadow", T<bool>
                 "theme", T<string>
+                "wrapperClass", T<string>
+            ]
+        Obsolete =
+            [
+                "iconshadow", T<bool>
+                "initSelector", T<string>
             ]
     }
 
@@ -40,7 +46,10 @@ let Button =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(ButtonConfig.Type)
+            
+            p.DefineMethod("destroy")
             p.DefineMethod("disable")
             p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
             p.DefineMethod("refresh")
         ]

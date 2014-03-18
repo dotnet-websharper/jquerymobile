@@ -16,13 +16,19 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let NavBarConfig =
-    Pattern.Config "NavBarConfig" {
+    Pattern.ConfigObs "NavBarConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
+                "defaults", T<bool>
+                "disabled", T<bool>
                 "iconpos", Common.IconPosition.Type
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 

@@ -16,13 +16,18 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let TableConfig =
-    Pattern.Config "TableConfig" {
+    Pattern.ConfigObs "TableConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
 //                "classes.table", T<string>
+                "defaults", T<bool>
+                "disabled", T<bool>
+            ]
+        Obsolete =
+            [
                 "initSelector", T<string>
             ]
     }

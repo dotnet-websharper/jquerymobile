@@ -34,5 +34,6 @@ let ReflowTable =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(ReflowTableConfig.Type)
+
             p.DefineMethod("refresh")
         ]

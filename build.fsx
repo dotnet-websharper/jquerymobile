@@ -29,10 +29,10 @@ bt.Solution [
     bt.NuGet.CreatePackage()
         .Configure(fun c ->
             { c with
-                Title = Some "WebSharper.JQueryMobile-1.3.1"
+                Title = Some "WebSharper.JQueryMobile-1.4.2"
                 LicenseUrl = Some "http://websharper.com/licensing"
                 ProjectUrl = Some "https://github.com/intellifactory/websharper.jquerymobile"
-                Description = "WebSharper Extensions for JQuery Mobile 1.3.1"
+                Description = "WebSharper Extensions for JQuery Mobile 1.4.2"
                 RequiresLicenseAcceptance = true })
         .Add(ext)
 

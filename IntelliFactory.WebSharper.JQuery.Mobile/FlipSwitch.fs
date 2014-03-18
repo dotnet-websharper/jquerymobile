@@ -9,35 +9,41 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Pages & Dialogs / Dialogs.
-module IntelliFactory.WebSharper.JQuery.Mobile.Dialog
+/// See Components / Buttons.
+module IntelliFactory.WebSharper.JQuery.Mobile.FlipSwitch
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let DialogConfig =
-    Pattern.Config "DialogConfig" {
+let FlipSwitchConfig =
+    Pattern.Config "FlipSwitchConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-                "closeBtn", Common.ButtonPosition.Type
-                "closeBtnText", T<string>
                 "corners", T<bool>
                 "defaults", T<bool>
                 "disabled", T<bool>
-                "initSelector", T<string>
-                "overlayTheme", Common.SwatchLetter.Type
+                "enhanced", T<bool>
+                "mini", T<bool>
+                "offText", T<string>
+                "onText", T<string>
+                "theme", T<string>
+                "wrapperClass", T<string>
             ]
     }
-    |> Obsolete
 
-let Dialog =
-    let p = Common.Plugin("dialog")
-    Class "Dialog"
+let FlipSwitch =
+    let p = Common.Plugin("flipswitch")
+    Class "FlipSwitch"
     |+> [
             p.DefineConstructor()
-            p.DefineMethod("close")
+            p.DefineConstructor(FlipSwitchConfig.Type)
+            
+            p.DefineMethod("destroy")
+            p.DefineMethod("disable")
+            p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
+            p.DefineMethod("refresh")
         ]
-    |> Obsolete

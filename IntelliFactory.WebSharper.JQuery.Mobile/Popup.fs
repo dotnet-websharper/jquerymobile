@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let PopupConfig =
-    Pattern.Config "PopupConfig" {
+    Pattern.ConfigObs "PopupConfig" {
         Required = []
         Optional =
             [
@@ -25,16 +25,22 @@ let PopupConfig =
                 "beforeposition", T<Events.JEvent * JQuery -> unit>
                 "create", T<Events.JEvent * JQuery -> unit>
 
+                "arrow", T<obj>
                 "corners", T<bool>
+                "defaults", T<bool>
+                "disabled", T<bool>
                 "dismissible", T<bool>
                 "history", T<bool>
-                "initSelector", T<string>
                 "overlayTheme", Common.SwatchLetter.Type
                 "positionTo", Common.Positioning.Type
                 "shadow", T<bool>
-                "theme", T<string>
+                "theme", Common.SwatchLetter.Type
                 "tolerance", Common.Tolerance.Type
                 "transition", Common.Transition.Type
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 
@@ -58,9 +64,13 @@ let Popup =
             p.DefineConstructor()
             p.DefineConstructor(PopupConfig.Type)
 
+            p.DefineMethod("close")
+            p.DefineMethod("destroy")
+            p.DefineMethod("disable")
+            p.DefineMethod("enable")
             p.DefineMethod("open")
             p.DefineMethod("open", PopupOpenConfig.Type)
-            p.DefineMethod("close")
+            p.DefineMethod("reposition", T<obj>)
 
             Events.Define "beforeposition"
             |> WithSourceName "BeforePosition"

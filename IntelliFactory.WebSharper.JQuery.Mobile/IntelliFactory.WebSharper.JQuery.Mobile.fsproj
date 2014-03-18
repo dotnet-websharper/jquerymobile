@@ -18,13 +18,13 @@
     <Compile Include="CollapsibleSet.fs" />
     <Compile Include="ControlGroup.fs" />
     <Compile Include="Dialog.fs" />
-    <Compile Include="FixedToolbar.fs" />
-    <Compile Include="Footer.fs" />
-    <Compile Include="Header.fs" />
+    <Compile Include="Filterable.fs" />
+    <Compile Include="FlipSwitch.fs" />
     <Compile Include="ListView.fs" />
+    <Compile Include="Loader.fs" />
     <Compile Include="NavBar.fs" />
     <Compile Include="Page.fs" />
-    <Compile Include="PageLoading.fs" />
+    <Compile Include="PageContainer.fs" />
     <Compile Include="Panel.fs" />
     <Compile Include="Popup.fs" />
     <Compile Include="RangeSlider.fs" />
@@ -33,11 +33,12 @@
     <Compile Include="Table.fs" />
     <Compile Include="ColumnToggleTable.fs" />
     <Compile Include="ReflowTable.fs" />
+    <Compile Include="Tabs.fs" />
     <Compile Include="TextInput.fs" />
+    <Compile Include="Toolbar.fs" />
     <Compile Include="Definition.fs" />
     <Compile Include="Main.fs" />
   </ItemGroup>
-  <ItemGroup />
   <Target Name="Build" />
   <Target Name="Clean" />
 </Project>

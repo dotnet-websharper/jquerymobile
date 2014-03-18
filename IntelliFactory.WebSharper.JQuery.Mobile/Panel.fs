@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let PanelConfig =
-    Pattern.Config "PanelConfig" {
+    Pattern.ConfigObs "PanelConfig" {
         Required = []
         Optional =
             [
@@ -43,13 +43,18 @@ let PanelConfig =
 //                "classes.panelFixed", T<string>
 //                "classes.panelInner", T<string>
 //                "classes.panelOpen", T<string>
+                "defaults", T<bool>
+                "disabled", T<bool>
                 "dismissible", T<bool>
                 "display", T<string>
-                "initSelector", T<string>
                 "position", Common.PanelPosition.Type
                 "positionFixed", T<bool>
                 "swipeClose", T<string>
                 "theme", Common.SwatchLetter.Type
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 

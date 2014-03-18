@@ -9,47 +9,49 @@
 //-----------------------------------------------------------------
 // $end{copyright}
 
-/// See Components / Form Elements / Text inputs.
-module IntelliFactory.WebSharper.JQuery.Mobile.TextInput
+/// See API / Widgets / Filterable.
+module IntelliFactory.WebSharper.JQuery.Mobile.Filterable
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let TextInputConfig =
-    Pattern.ConfigObs "TextInputConfig" {
+let FilterableConfig =
+    Pattern.ConfigObs "FilterableConfig" {
         Required = []
         Optional =
             [
+                "beforefilter", T<Events.JEvent * JQuery -> unit>
                 "create", T<Events.JEvent * JQuery -> unit>
+                "filter", T<Events.JEvent * JQuery -> unit>
 
-                "autogrow", T<bool>
-                "clearBtn", T<bool>
-                "clearBtnText", T<string>
-                "corners", T<bool>
+                "children", T<obj>
                 "defaults", T<bool>
                 "disabled", T<bool>
                 "enhanced", T<bool>
-                "keyupTimeoutBuffer", T<int>
-                "mini", T<bool>
-                "preventFocusZoom", T<string>
-                "theme", Common.SwatchLetter.Type
-                "wrapperClass", T<string>
+                "filterCallback", T<int * string -> bool>
+                "filterReveal", T<bool>
+                "input", T<obj>
             ]
         Obsolete =
             [
-                "initSelector", T<string>
+                "filterPlaceholder", T<string>
+                "filterTheme", T<string>
             ]
     }
 
-let TextInput =
-    let p = Common.Plugin("textinput")
-    Class "TextInput"
+let Filterable =
+    let p = Common.Plugin("filterable")
+    Class "Filterable"
     |+> [
             p.DefineConstructor()
-            p.DefineConstructor(TextInputConfig.Type)
+            p.DefineConstructor(FilterableConfig.Type)
+            
             p.DefineMethod("destroy")
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("option", T<string>)
             p.DefineMethod("refresh")
+
+            Events.Define "beforefilter" |> WithSourceName "BeforeFiltered"
+            Events.Define "filter" |> WithSourceName "Filtered"
         ]

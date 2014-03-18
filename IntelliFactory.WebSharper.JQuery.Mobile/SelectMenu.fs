@@ -16,17 +16,21 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let SelectMenuConfig =
-    Pattern.Config "SelectMenuConfig" {
+    Pattern.ConfigObs "SelectMenuConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
+                "closeText", T<string>
                 "corners", T<bool>
+                "defaults", T<bool>
+                "disabled", T<bool>
+                "dividerTheme", Common.SwatchLetter.Type
+                "hidePlaceholderMenuItems", T<bool>
                 "icon", Common.Icon.Type
                 "iconpos", Common.IconPosition.Type
                 "iconshadow", T<bool>
-                "initSelector", T<string>
                 "inline", T<bool>
                 "mini", T<bool>
                 "nativeMenu", T<bool>
@@ -34,6 +38,10 @@ let SelectMenuConfig =
                 "preventFocusZoom", T<bool>
                 "shadow", T<bool>
                 "theme", Common.SwatchLetter.Type
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 
@@ -44,6 +52,7 @@ let SelectMenu =
             p.DefineConstructor()
             p.DefineConstructor(SelectMenuConfig.Type)
             p.DefineMethod("close")
+            p.DefineMethod("destroy")
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("open")

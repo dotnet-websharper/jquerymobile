@@ -10,47 +10,38 @@
 // $end{copyright}
 
 /// See Components / Content Formatting / Collapsible content blocks.
-module IntelliFactory.WebSharper.JQuery.Mobile.Collapsible
+module IntelliFactory.WebSharper.JQuery.Mobile.Tabs
 
 open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
-let CollapsibleConfig =
-    Pattern.ConfigObs "CollapsibleConfig" {
+let TabsConfig =
+    Pattern.Config "TabsConfig" {
         Required = []
         Optional =
             [
-                "collapse", T<Events.JEvent * JQuery -> unit>
+                "activate", T<Events.JEvent * JQuery -> unit>
+                "beforeActivate", T<Events.JEvent * JQuery -> unit>
+                "beforeLoad", T<Events.JEvent * JQuery -> unit>
                 "create", T<Events.JEvent * JQuery -> unit>
-                "expand", T<Events.JEvent * JQuery -> unit>
+                "load", T<Events.JEvent * JQuery -> unit>
 
-                "collapseCueText", T<string>
-                "collapsed", T<bool>
-                "collapsedIcon", Common.Icon.Type
-                "corners", T<bool>
-                "defaults", T<bool>
+                "active", T<obj>
+                "collapsible", T<bool>
                 "disabled", T<bool>
-                "enhanced", T<bool>
-                "expandCueText", T<string>
-                "expandedIcon", Common.Icon.Type
-                "heading", T<string>
-                "iconpos", Common.IconPosition.Type
-                "inset", T<bool>
-                "mini", T<bool>
-                "theme", Common.SwatchLetter.Type
-            ]
-        Obsolete = 
-            [
-                "initSelector", T<string>
+                "event", T<string>
+                "heightStyle", T<string>
+                "hide", T<obj>
+                "show", T<obj>
             ]
     }
 
-let Collapsible =
-    let p = Common.Plugin("collapsible")
-    Class "Collapsible"
+let Tabs =
+    let p = Common.Plugin("tabs")
+    Class "Tabs"
     |+> [
             p.DefineConstructor()
-            p.DefineConstructor(CollapsibleConfig.Type)
+            p.DefineConstructor(TabsConfig.Type)
 
             Events.Define "collapse"
             |> WithSourceName "Collapse"
@@ -60,5 +51,9 @@ let Collapsible =
             p.DefineMethod("destroy")
             p.DefineMethod("disable")
             p.DefineMethod("enable")
+            p.DefineMethod("load", T<obj>)
             p.DefineMethod("option", T<string>)
+            p.DefineMethod("refresh")
+            p.DefineMethod("widget")
+
         ]

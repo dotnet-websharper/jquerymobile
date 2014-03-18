@@ -24,6 +24,7 @@ let SliderConfig =
                 "start", T<Events.JEvent * JQuery -> unit>
                 "stop", T<Events.JEvent * JQuery -> unit>
 
+                "defaults", T<bool>
                 "disabled", T<bool>
                 "highlight", T<bool>
                 "initSelector", T<string>
@@ -32,6 +33,7 @@ let SliderConfig =
                 "trackTheme", Common.SwatchLetter.Type
             ]
     }
+    |> Obsolete
 
 let Slider =
     let p = Common.Plugin("slider")
@@ -48,4 +50,5 @@ let Slider =
 
             Events.Define "stop"
             |> WithSourceName "Stopped"
-        ]
+        ]        
+    |> Obsolete

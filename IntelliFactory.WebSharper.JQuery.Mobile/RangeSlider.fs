@@ -23,7 +23,9 @@ let RangeSliderConfig =
                 "create", T<Events.JEvent * JQuery -> unit>
                 "normalize", T<Events.JEvent * JQuery -> unit>
 
+                "defaults", T<bool>
                 "disabled", T<bool>
+                "enhanced", T<bool>
                 "highlight", T<bool>
                 "initSelector", T<string>
                 "mini", T<bool>
@@ -31,6 +33,7 @@ let RangeSliderConfig =
                 "trackTheme", Common.SwatchLetter.Type
             ]
     }
+    |> Obsolete
 
 let RangeSlider =
     let p = Common.Plugin("rangeslider")
@@ -38,10 +41,14 @@ let RangeSlider =
     |+> [
             p.DefineConstructor()
             p.DefineConstructor(RangeSliderConfig.Type)
-            p.DefineMethod("enable")
+            
+            p.DefineMethod("destroy")
             p.DefineMethod("disable")
+            p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
             p.DefineMethod("refresh")
 
             Events.Define "normalize"
             |> WithSourceName "Normalize"
         ]
+    |> Obsolete

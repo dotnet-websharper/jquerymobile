@@ -16,18 +16,24 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let ControlGroupConfig =
-    Pattern.Config "ControlGroupConfig" {
+    Pattern.ConfigObs "ControlGroupConfig" {
         Required = []
         Optional =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
                 "corners", T<bool>
+                "defaults", T<bool>
+                "disabled", T<bool>
                 "excludeInvisible", T<bool>
-                "initSelector", T<string>
                 "mini", T<bool>
                 "shadow", T<bool>
+                "theme", Common.SwatchLetter.Type
                 "type", Common.ControlGroupType.Type
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
 
@@ -39,4 +45,8 @@ let ControlGroup =
             p.DefineConstructor(ControlGroupConfig.Type)
 
             p.DefineFunc("container", T<JQuery>)
+            p.DefineMethod("destroy")
+            p.DefineMethod("disable")
+            p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
         ]

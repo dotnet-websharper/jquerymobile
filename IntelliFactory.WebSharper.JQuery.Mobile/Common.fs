@@ -133,6 +133,10 @@ type Plugin(plugin: string) =
     member this.DefineFunc(jsName, retTy) =
         this.DefineFunc(jsName, getSharpName jsName, retTy)
 
+    member this.DefineFunc(jsName, arg: Type.Type, retTy) =
+        getSharpName jsName => T<JQuery>?j * arg?c ^-> retTy
+        |> WithInline (sprintf "$j.%s('%s', $c)" plugin jsName)
+
     member this.DefineFunc(jsName, sharpName, retTy) =
         sharpName => T<JQuery>?j ^-> retTy
         |> WithInline (sprintf "$j.%s('%s')" plugin jsName)
