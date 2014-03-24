@@ -125,8 +125,7 @@ module App =
             {
                 Html =
                     PageDiv Ids.ItemsPage [
-                        HTML5.Attr.Data "add-back-btn" "true" ] -< [
-                        HeaderDiv [ title ]
+                        HeaderDiv [ HTML5.Attr.Data "add-back-btn" "true" ] -< [ title ]
                         ContentDiv [
                             description
                             ListViewUL [ itemsList ]

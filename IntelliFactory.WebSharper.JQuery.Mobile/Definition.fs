@@ -174,6 +174,7 @@ let Events =
     Class "Events"
     |+> [
             ev0 "hashchange" |> WithSourceName "HashChange"
+            ev0 "mobileinit" |> WithSourceName "MobileInit"
             ev2 "navigate" T<obj> |> WithSourceName "Navigate" 
             ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
             ev2 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange"
