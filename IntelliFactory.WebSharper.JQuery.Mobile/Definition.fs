@@ -18,62 +18,26 @@ open IntelliFactory.WebSharper.JQuery
 let ButtonMarkup =
     Class "ButtonMarkup"
     |+> Protocol [
-            "hoverDelay" =@ T<int>
+            "hoverDelay" =@ T<int> |> Obsolete
         ]
 
-let PageLoadConfig =
-    Pattern.Config "PageLoadConfig" {
-        Required = []
-        Optional =
-            [
-                "data", T<obj> + T<string>
-                "loadMsgDelay", T<int>
-                "pageContainer", T<JQuery>
-                "reloadPage", T<bool>
-                "role", T<string>
-                "showLoadMsg", T<bool>
-                "type", T<string>
-            ]
-    }
-
-let Deferred =
-    Class "Deferred"
+let DegradeInputs =
+    Class "DegradeInputs"
     |+> Protocol [
-            "resolve" => T<string> * PageLoadConfig.Type * T<JQuery> ^-> T<unit>
-            "reject" => T<string> * PageLoadConfig.Type ^-> T<unit>
-        ]
-
-let PageChangeConfig =
-    Pattern.Config "ChangePageConfig" {
-        Required = []
-        Optional =
-        [
-            "allowSamePageTransition", T<bool>
-            "changeHash", T<bool>
-            "data", T<obj>
-            "dataUrl", T<string>
-            "pageContainer", T<JQuery>
-            "reloadPage", T<bool>
-            "reverse", T<bool>
-            "role", T<string>
-            "showLoadMsg", T<bool>
-            "transition", T<string>
-            "type", T<string>
-        ]
-    }
-
-let LoadingConfig =
-    Pattern.Config "LoadingConfig" {
-        Required = []
-        Optional =
-        [
-            "html", T<string>
-            "theme", T<string>
-            "text", T<string>
-            "textonly", T<bool>
-            "textVisible", T<bool>
-        ]
-    }
+            "color"          =@ T<bool> + T<string>
+            "date"           =@ T<bool> + T<string>
+            "datetime"       =@ T<bool> + T<string>
+            "datetime-local" =@ T<bool> + T<string>
+            "email"          =@ T<bool> + T<string>
+            "month"          =@ T<bool> + T<string>
+            "number"         =@ T<bool> + T<string>
+            "range"          =@ T<bool> + T<string>
+            "search"         =@ T<bool> + T<string>
+            "tel"            =@ T<bool> + T<string>
+            "time"           =@ T<bool> + T<string>
+            "url"            =@ T<bool> + T<string>
+            "week"           =@ T<bool> + T<string>
+        ]                               
 
 let Special =
     let s c x t =
@@ -107,7 +71,7 @@ let PageChangeEventArgs =
     Class "PageChangeEventArgs"
     |+> Protocol [
             "toPage" =? T<JQuery> + T<string>
-            "options"  =? PageChangeConfig.Type
+            "options"  =? PageContainer.PageChangeConfig.Type
         ]
 
 let PageBeforeLoadEventArgs =
@@ -117,7 +81,7 @@ let PageBeforeLoadEventArgs =
             "absUrl" =? T<string>
             "dataUrl" =? T<string>
             "deferred" =? T<Deferred>
-            "options" =? PageLoadConfig.Type
+            "options" =? PageContainer.PageLoadConfig.Type
         ]
 
 let PageLoadEventArgs =
@@ -126,7 +90,7 @@ let PageLoadEventArgs =
             "url" =? T<string>
             "absUrl" =? T<string>
             "dataUrl" =? T<string>
-            "options" =? PageLoadConfig.Type
+            "options" =? PageContainer.PageLoadConfig.Type
             "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
             "textStatus" =? T<string>
         ]
@@ -138,7 +102,7 @@ let PageLoadFailedEventArgs =
             "absUrl" =? T<string>
             "dataUrl" =? T<string>
             "deferred" =? T<Deferred>
-            "options" =? PageLoadConfig.Type
+            "options" =? PageContainer.PageLoadConfig.Type
             "xhr" =? T<IntelliFactory.WebSharper.JQuery.JqXHR>
             "textStatus" =? T<string>
             "errorThrown" =? T<obj> + T<string>
@@ -275,35 +239,39 @@ let Mobile =
 
             // Configuration Defaults
 
-            "activeBtnClass" =@ T<string>
-            "activePageClass" =@ T<string>
+            "activeBtnClass" =@ T<string> |> Obsolete
+            "activePageClass" =@ T<string> |> Obsolete
             "ajaxEnabled" =@ T<bool>
             "allowCrossdomainPages" =@ T<bool>
             "autoInitializePage" =@ T<bool>
             "buttonMarkup" =? ButtonMarkup
-            "defaultDialogTransition" =@ T<string>
+            "defaultDialogTransition" =@ T<string> |> Obsolete
             "defaultPageTransition" =@ T<string>
+            "degradeInputs" =@ DegradeInputs
             "dynamicBaseEnabled" =@ T<bool>
+            "focusClass" =@ T<string> |> Obsolete
             "getMaxScrollForTransition" =@ T<int>
             "gradeA" =@ T<unit -> bool>
             "hasListeningEnabled" =@ T<bool>
             "ignoreContentEnabled" =@ T<bool>
+            "keepNative" =@ T<string>
             "linkBindingEnabled" =@ T<bool>
             "maxTransitionWidth" =@ T<int> + T<bool> 
-            "minScrollBack" =@ T<int>
+            "minScrollBack" =@ T<int> |> Obsolete
             "ns" =@ T<string>
             "pageLoadErrorMessage" =@ T<string>
             "pageLoadErrorMessageTheme" =@ T<string>
             "phonegapNavigationEnabled" =@ T<bool>
             "pushStateEnabled" =@ T<bool>
-            "subPageUrlKey" =@ T<string>
+            "subPageUrlKey" =@ T<string> |> Obsolete
             "transitionFallbacks" =? TransitionFallbacks
 
             // Methods and utilities
 
-            "changePage" => (T<JQuery> + T<string>)?``to`` * !? PageChangeConfig?``options`` ^-> T<unit>
-            "loadPage" => (T<string> + T<obj>)?url * !? PageLoadConfig?``options`` ^-> T<unit>
-            "loading" => T<string> * !? LoadingConfig ^-> T<unit>
+            "changePage" => (T<JQuery> + T<string>)?``to`` * !? PageContainer.PageChangeConfig?``options`` ^-> T<unit> |> Obsolete
+            "degradeInputsWithin" => T<Element>?target ^-> T<unit>
+            "getInheritedTheme" => T<JQuery>?el * Common.SwatchLetter?defaultTheme ^-> Common.SwatchLetter
+            "loadPage" => (T<string> + T<obj>)?url * !? PageContainer.PageLoadConfig?``options`` ^-> T<unit> |> Obsolete
             "navigate" => (T<string> + T<obj>)?url * !? T<obj>?``data`` ^-> T<unit>
             
             "path" =? Path

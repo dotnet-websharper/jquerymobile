@@ -66,6 +66,8 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Page.Page
 
         PageContainer.PageContainerConfig
+        PageContainer.PageLoadConfig
+        PageContainer.PageChangeConfig
         PageContainer.PageContainer
 
         Panel.PanelConfig
@@ -103,10 +105,6 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         TextInput.TextInput
 
         Definition.ButtonMarkup
-        Definition.PageLoadConfig
-        Definition.Deferred
-        Definition.PageChangeConfig
-        Definition.LoadingConfig
         Definition.Special
         Definition.Orientation
         Definition.OrientationChangeEventArgs

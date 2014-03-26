@@ -79,7 +79,8 @@ module App =
         }
 
     let changePage (page: string) =
-        mobile.ChangePage(page, ChangePageConfig(Transition = "slide"))
+        PageContainer.Change(JQuery.Of ":mobile-pagecontainer", page, ChangePageConfig(Transition = "slide"))
+        //mobile.ChangePage(page, ChangePageConfig(Transition = "slide"))
 
     // Page Ids
     module Ids =
@@ -168,12 +169,14 @@ type AppControl() =
                             (page :> IPagelet).Render()
                             JQuery.Of page.Body
                         | p -> p
-                    if not (pageObj.Load()) then e.PreventDefault() //App.mobile.ChangePage(toPage, data.Options)
+                    if not (pageObj.Load()) then e.PreventDefault()
                 | None _ -> ()
             | _ -> ()
         )
-        upcast Div [] |>! OnAfterRender (fun _ -> App.Refs.HomePage |> App.mobile.ChangePage)    
-
+        upcast Div [] 
+        |>! OnAfterRender (fun _ ->
+            PageContainer.Change(JQuery.Of ":mobile-pagecontainer", App.Refs.HomePage, ChangePageConfig(ChangeHash = false))
+        )    
 
 module SampleInternals =
 

@@ -161,27 +161,41 @@ type Plugin(plugin: string) =
         |> WithInline (sprintf "$j.%s($cfg)" plugin)
 
     member this.DefineFunc(jsName, retTy) =
-        this.DefineFunc(jsName, getSharpName jsName, retTy)
+        getSharpName jsName => T<JQuery>?j ^-> retTy
+        |> WithInline (sprintf "$j.%s('%s')" plugin jsName)
 
     member this.DefineFunc(jsName, arg: Type.Type, retTy) =
         getSharpName jsName => T<JQuery>?j * arg?c ^-> retTy
         |> WithInline (sprintf "$j.%s('%s', $c)" plugin jsName)
 
-    member this.DefineFunc(jsName, sharpName, retTy) =
-        sharpName => T<JQuery>?j ^-> retTy
-        |> WithInline (sprintf "$j.%s('%s')" plugin jsName)
+    member this.DefineFunc(jsName, arg1: Type.Type, arg2: Type.Type, retTy) =
+        getSharpName jsName => T<JQuery>?j * arg1?c1 * arg2?c2 ^-> retTy
+        |> WithInline (sprintf "$j.%s('%s', $c1, $c2)" plugin jsName)
+
+//    member this.DefineFunc(jsName, sharpName, retTy) =
+//        sharpName => T<JQuery>?j ^-> retTy
+//        |> WithInline (sprintf "$j.%s('%s')" plugin jsName)
 
     member this.DefineMethod(jsName: string) =
-        this.DefineMethod(jsName, getSharpName jsName)
-
-    member this.DefineMethod(jsName: string, arg: Type.Type) =
-        this.DefineMethod(jsName, getSharpName jsName, arg)
-
-    member this.DefineMethod(jsName, sharpName) =
-        sharpName => T<JQuery>?j ^-> T<unit>
+        getSharpName jsName => T<JQuery>?j ^-> T<unit>
         |> WithInline (sprintf "$j.%s('%s')" plugin jsName)
 
-    member this.DefineMethod(jsName, sharpName, arg: Type.Type) =
-        sharpName => T<JQuery>?j * arg?c ^-> T<unit>
+    member this.DefineMethod(jsName: string, arg: Type.Type) =
+        getSharpName jsName => T<JQuery>?j * arg?c ^-> T<unit>
         |> WithInline (sprintf "$j.%s('%s', $c)" plugin jsName)
+
+    member this.DefineMethod(jsName: string, arg1: Type.Type, arg2: Type.Type) =
+        getSharpName jsName => T<JQuery>?j * arg1?c1 * arg2?c2 ^-> T<unit>
+        |> WithInline (sprintf "$j.%s('%s', $c1, $c2)" plugin jsName)
+
+
+        //this.DefineMethod(jsName, getSharpName jsName, arg)
+
+//    member this.DefineMethod(jsName, sharpName) =
+//        sharpName => T<JQuery>?j ^-> T<unit>
+//        |> WithInline (sprintf "$j.%s('%s')" plugin jsName)
+//
+//    member this.DefineMethod(jsName, sharpName, arg: Type.Type) =
+//        sharpName => T<JQuery>?j * arg?c ^-> T<unit>
+//        |> WithInline (sprintf "$j.%s('%s', $c)" plugin jsName)
 

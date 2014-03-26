@@ -16,7 +16,7 @@ open IntelliFactory.WebSharper.InterfaceGenerator
 open IntelliFactory.WebSharper.JQuery
 
 let PageContainerConfig =
-    Pattern.ConfigObs "PageContainerConfig" {
+    Pattern.Config "PageContainerConfig" {
         Required = []
         Optional =
             [
@@ -36,8 +36,45 @@ let PageContainerConfig =
                 "disabled", T<bool>
                 "theme", Common.SwatchLetter.Type
             ]
+    }
+
+let PageLoadConfig =
+    Pattern.ConfigObs "PageLoadConfig" {
+        Required = []
+        Optional =
+            [
+                "data", T<obj> + T<string>
+                "loadMsgDelay", T<int>
+                "pageContainer", T<JQuery>
+                "role", T<string>
+                "showLoadMsg", T<bool>
+                "type", T<string>
+            ]
         Obsolete =
             [
+                "reloadPage", T<bool>
+            ]
+    }
+
+let PageChangeConfig =
+    Pattern.ConfigObs "ChangePageConfig" {
+        Required = []
+        Optional =
+            [
+                "allowSamePageTransition", T<bool>
+                "changeHash", T<bool>
+                "data", T<obj>
+                "dataUrl", T<string>
+                "pageContainer", T<JQuery>
+                "reverse", T<bool>
+                "role", T<string>
+                "showLoadMsg", T<bool>
+                "transition", T<string>
+                "type", T<string>
+            ]
+        Obsolete =
+            [
+                "reloadPage", T<bool>
             ]
     }
 
@@ -48,7 +85,7 @@ let PageContainer =
             p.DefineConstructor()
             p.DefineConstructor(PageContainerConfig.Type)
 
-            p.DefineMethod("change", T<string * obj>)
+            p.DefineMethod("change", T<string> + T<JQuery>, PageChangeConfig.Type)
             p.DefineFunc("getActivePage", T<JQuery>)
-            p.DefineFunc("load", T<string * obj>, T<Promise>)
+            p.DefineFunc("load", T<string>, PageLoadConfig.Type, T<Promise>)
         ]
