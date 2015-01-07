@@ -1,6 +1,6 @@
 ﻿namespace IntelliFactory.WebSharper.JQuery.Mobile.Tests
 
-open IntelliFactory.Html
+open IntelliFactory.WebSharper.Html.Server
 open IntelliFactory.WebSharper.Sitelets
 
 type Action =

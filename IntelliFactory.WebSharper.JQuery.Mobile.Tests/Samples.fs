@@ -16,9 +16,8 @@ namespace IntelliFactory.WebSharper.JQuery.Mobile.Tests
 open IntelliFactory.WebSharper
 open IntelliFactory.WebSharper.JQuery
 open IntelliFactory.WebSharper.JQuery.Mobile
-open IntelliFactory.WebSharper.Html
-//open IntelliFactory.WebSharper.EcmaScript
-//open IntelliFactory.WebSharper.JavaScript
+open IntelliFactory.WebSharper.Html.Client
+open IntelliFactory.WebSharper.JavaScript
 
 type private E =
     IntelliFactory.WebSharper.JQuery.Mobile.Events
@@ -165,18 +164,18 @@ type AppControl() =
                         match body.Children pageUrl with
                         | p when p.Length = 0 ->
                             let page = pageObj.Html
-                            body.Append page.Body |> ignore
-                            (page :> IPagelet).Render()
+                            body.Append page.Dom |> ignore
+                            page.Render()
                             JQuery.Of page.Body
                         | p -> p
                     if not (pageObj.Load()) then e.PreventDefault()
                 | None _ -> ()
             | _ -> ()
         )
-        upcast Div [] 
+        Div [] 
         |>! OnAfterRender (fun _ ->
             PageContainer.Change(JQuery.Of ":mobile-pagecontainer", App.Refs.HomePage, ChangePageConfig(ChangeHash = false))
-        )    
+        ) :> _   
 
 module SampleInternals =
 
@@ -268,7 +267,7 @@ module SampleInternals =
         let home =
             let header =
                 Div [HTML5.Attr.Data "role" "header"
-                     H1 [Text "Ice Cream Order Form"] :> IPagelet
+                     H1 [Text "Ice Cream Order Form"] :> _
                     ]
         
             let content =
@@ -283,7 +282,7 @@ module SampleInternals =
                     Label [
                         Attr.For name
                         Text name
-                    ] :> IPagelet
+                    ] :> Pagelet
 
                 Div [
                     HTML5.Attr.Data "role" "content"
@@ -296,19 +295,19 @@ module SampleInternals =
                               Label [
                                 Attr.For "name"
                                 Text "Your name:"
-                              ]  :> IPagelet
+                              ]  :> _
                               Input [
                                 Attr.Type "text"
                                 Attr.Name "name"
                                 Attr.Value ""
-                              ]  :> IPagelet
+                              ]  :> _
                            ]
                            // Flavour field
                            Div [
                               HTML5.Attr.Data "role" "controlgroup"
                               Legend [
                                 Text "Which flavours would you like?"
-                              ] :> IPagelet
+                              ] :> _
                               checkbox "Vanilla"
                               checkbox "Chocolate"
                               checkbox "Strawberry"
@@ -383,7 +382,7 @@ module SampleInternals =
                                         HTML5.Attr.Data "theme" "a"
                                         Attr.Type "submit"
                                         Text "Cancel"
-                                    ] :> IPagelet
+                                    ] :> _
                                 ]
                                 Div [
                                     Attr.Class "ui-block-b"
@@ -396,14 +395,14 @@ module SampleInternals =
                                 ]
                               ]
                            ]
-                    ] :> IPagelet
-                ] :> IPagelet
+                    ] :> _
+                ]
                 
             let page = 
                 Div [HTML5.Attr.Data "role" "page"
                      Attr.Id "home"
-                     header  :> IPagelet
-                     content]
+                     header  :> _
+                     content :> _]
                 
             page
 
@@ -421,7 +420,7 @@ module SampleInternals =
             ]
 
         let jqb = JQuery.JQuery.Of(header.Body)
-        E.Tap.On(jqb, fun event -> JavaScript.Alert("Tapped on:" + string event.PageX + "," + string event.PageY))
+        E.Tap.On(jqb, fun event -> JavaScript.JS.Alert("Tapped on:" + string event.PageX + "," + string event.PageY))
 
         let content =
             Div [
@@ -431,7 +430,7 @@ module SampleInternals =
             ]
 
         E.Swipe.On(JQuery.Of(content.Body), fun event ->
-            JavaScript.Alert("Swipped on"))
+            JavaScript.JS.Alert("Swipped on"))
 
         let footer =
             Div [
@@ -441,10 +440,10 @@ module SampleInternals =
             ]
 
         E.VMouseDown.On(JQuery.Of(content.Body), fun mouseEvent ->
-            JavaScript.Alert(string mouseEvent.Event.PageX))
+            JavaScript.JS.Alert(string mouseEvent.Event.PageX))
 
         E.ScrollStart.On(JQuery.Of(footer.Body), fun event ->
-            JavaScript.Alert("Scrolled on"))
+            JavaScript.JS.Alert("Scrolled on"))
 
         let page = 
             Div [
@@ -490,7 +489,7 @@ type Samples() =
     override this.Body = 
 //        SampleInternals.SimplePage () :> IPagelet
 //        SampleInternals.SimpleNavigation () :> IPagelet
-        SampleInternals.FormTypes () :> IPagelet
+        SampleInternals.FormTypes () :> _
 //        SampleInternals.EventTestPage() :> IPagelet
 //        SampleInternals.UtilsTestPage() :> IPagelet
 

@@ -1,0 +1,13 @@
+**/bin
+**/obj
+*.min.js
+*.suo
+*.user
+*.vsix
+*~
+**/Scripts/WebSharper/
+**/Content/WebSharper/
+/build/
+/packages/
+/tools/packages/
+

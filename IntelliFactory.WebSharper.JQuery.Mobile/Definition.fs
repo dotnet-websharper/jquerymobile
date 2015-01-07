@@ -12,7 +12,7 @@
 module IntelliFactory.WebSharper.JQuery.Mobile.Definition
 
 open IntelliFactory.WebSharper.InterfaceGenerator
-open IntelliFactory.WebSharper.Dom
+open IntelliFactory.WebSharper.JavaScript.Dom
 open IntelliFactory.WebSharper.JQuery
 
 let ButtonMarkup =
