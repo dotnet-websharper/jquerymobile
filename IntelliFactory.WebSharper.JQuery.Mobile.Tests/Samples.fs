@@ -28,14 +28,14 @@ module App =
     let mobile = Mobile.Instance
 
     let HeaderDiv cont =
-        Div [ HTML5.Attr.Data "role" "header" ] -< cont
+        Div [ Attr.Data "role" "header" ] -< cont
 
     let ContentDiv cont =
-        Div [ HTML5.Attr.Data "role" "content" ] -< cont
+        Div [ Attr.Data "role" "content" ] -< cont
 
     let PageDiv id' cont =
         Div [
-            HTML5.Attr.Data "role" "page"
+            Attr.Data "role" "page"
             Id id'
         ] -< cont |>! OnAfterRender (fun el ->
             JQuery.Of el.Body |> Mobile.Page.Init
@@ -43,8 +43,8 @@ module App =
 
     let ListViewUL cont =
         UL [
-            HTML5.Attr.Data "role" "listview"
-            HTML5.Attr.Data "inset" "true"
+            Attr.Data "role" "listview"
+            Attr.Data "inset" "true"
         ] -< cont   
 
     // Data
@@ -125,7 +125,7 @@ module App =
             {
                 Html =
                     PageDiv Ids.ItemsPage [
-                        HeaderDiv [ HTML5.Attr.Data "add-back-btn" "true" ] -< [ title ]
+                        HeaderDiv [ Attr.Data "add-back-btn" "true" ] -< [ title ]
                         ContentDiv [
                             description
                             ListViewUL [ itemsList ]
@@ -154,7 +154,7 @@ type AppControl() =
 
     [<JavaScript>]
     override this.Body =
-        Mobile.Events.PageBeforeChange.On(JQuery.Of Dom.Document.Current, fun (e, data) ->
+        Mobile.Events.PageBeforeChange.On(JQuery.Of JS.Document, fun (e, data) ->
             match data.ToPage with
             | :? string as pageUrl -> 
                 match App.getJQMPage pageUrl with
@@ -187,18 +187,18 @@ module SampleInternals =
     [<JavaScript>]
     let SimplePage () =
         let header =
-            Div [HTML5.Attr.Data "role" "header"] -< [H1 [Text "Page Title"]]
+            Div [Attr.Data "role" "header"] -< [H1 [Text "Page Title"]]
 
         let content =
-            Div [HTML5.Attr.Data "role" "content" ] -< [
+            Div [Attr.Data "role" "content" ] -< [
                  P [Text "Lorem ipsum dolor sit amet, consectetur adipiscing"]
             ]
 
         let footer =
-            Div [HTML5.Attr.Data "role" "footer" ] -< [H4 [Text "Page Footer"]]
+            Div [Attr.Data "role" "footer" ] -< [H4 [Text "Page Footer"]]
 
         let page = 
-            Div [HTML5.Attr.Data "role" "page" ] 
+            Div [Attr.Data "role" "page" ] 
             -<  [header; content; footer]
 
         page
@@ -209,16 +209,16 @@ module SampleInternals =
 
 
     [<JavaScript>] 
-    let HeaderDiv() = Div [HTML5.Attr.Data "role" "header"]
+    let HeaderDiv() = Div [Attr.Data "role" "header"]
 
     [<JavaScript>] 
-    let ContentDiv() = Div [HTML5.Attr.Data "role" "content"]
+    let ContentDiv() = Div [Attr.Data "role" "content"]
 
     [<JavaScript>] 
-    let FooterDiv() = Div [HTML5.Attr.Data "role" "footer"]
+    let FooterDiv() = Div [Attr.Data "role" "footer"]
 
     [<JavaScript>] 
-    let PageDiv id' = Div [HTML5.Attr.Data "role" "page"; Id id']
+    let PageDiv id' = Div [Attr.Data "role" "page"; Id id']
 
 
     [<JavaScript>]
@@ -266,7 +266,7 @@ module SampleInternals =
     let FormTypes () = 
         let home =
             let header =
-                Div [HTML5.Attr.Data "role" "header"
+                Div [Attr.Data "role" "header"
                      H1 [Text "Ice Cream Order Form"] :> _
                     ]
         
@@ -285,13 +285,13 @@ module SampleInternals =
                     ] :> Pagelet
 
                 Div [
-                    HTML5.Attr.Data "role" "content"
+                    Attr.Data "role" "content"
                     Form [ Action "#"
                            Method "get"
                            // Name Field
                            ] -< [
                            Div [
-                              HTML5.Attr.Data "role" "fieldcontain"
+                              Attr.Data "role" "fieldcontain"
                               Label [
                                 Attr.For "name"
                                 Text "Your name:"
@@ -304,7 +304,7 @@ module SampleInternals =
                            ]
                            // Flavour field
                            Div [
-                              HTML5.Attr.Data "role" "controlgroup"
+                              Attr.Data "role" "controlgroup"
                               Legend [
                                 Text "Which flavours would you like?"
                               ] :> _
@@ -314,7 +314,7 @@ module SampleInternals =
                            ]
                            // Cones Field
                            Div [
-                              HTML5.Attr.Data "role" "fieldcontain"
+                              Attr.Data "role" "fieldcontain"
                               ] -< [
                               Label [
                                 Attr.For "quantity"
@@ -325,17 +325,17 @@ module SampleInternals =
                                 Attr.Name "quantity"
                                 Attr.Id   "quantity"
                                 Attr.Value "1"
-                                HTML5.Attr.Min "1" 
-                                HTML5.Attr.Max "100"
+                                Attr.Min "1" 
+                                Attr.Max "100"
                               ]
                            ]
                            // Sprinkles Field
                            Div [
-                              HTML5.Attr.Data "role" "fieldcontain" 
+                              Attr.Data "role" "fieldcontain" 
                               ] -< [
                               Label [Attr.For "sprinkles";Text "Sprinkles:"]
                               Select [
-                                HTML5.Attr.Data "role" "slider"
+                                Attr.Data "role" "slider"
                                 Attr.Name "sprinkles"
                                 Attr.Id   "sprinkles"
                                 ] -< [
@@ -345,7 +345,7 @@ module SampleInternals =
                            ]
                            // Store Field
                            Div [
-                              HTML5.Attr.Data "role" "fieldcontain" 
+                              Attr.Data "role" "fieldcontain" 
                               ] -< [
                               Label [Attr.For "store"; Text "Collect from store:"]
                               Select [
@@ -379,7 +379,7 @@ module SampleInternals =
                                 Div [ 
                                     Attr.Class "ui-block-a"
                                     Button [
-                                        HTML5.Attr.Data "theme" "a"
+                                        Attr.Data "theme" "a"
                                         Attr.Type "submit"
                                         Text "Cancel"
                                     ] :> _
@@ -388,7 +388,7 @@ module SampleInternals =
                                     Attr.Class "ui-block-b"
                                     ] -< [
                                     Button [
-                                        HTML5.Attr.Data "theme" "a"
+                                        Attr.Data "theme" "a"
                                         Attr.Type "submit"
                                         Text "Order Ice Cream"
                                     ]
@@ -399,7 +399,7 @@ module SampleInternals =
                 ]
                 
             let page = 
-                Div [HTML5.Attr.Data "role" "page"
+                Div [Attr.Data "role" "page"
                      Attr.Id "home"
                      header  :> _
                      content :> _]
@@ -414,7 +414,7 @@ module SampleInternals =
     let EventTestPage () =
         let header =
             Div [
-                HTML5.Attr.Data "role" "header" 
+                Attr.Data "role" "header" 
                 ] -< [
                 H1 [Text "Tap me!"]
             ]
@@ -424,7 +424,7 @@ module SampleInternals =
 
         let content =
             Div [
-                HTML5.Attr.Data "role" "content"
+                Attr.Data "role" "content"
                 ] -< [
                 P [Text "Swipe me!"]
             ]
@@ -434,7 +434,7 @@ module SampleInternals =
 
         let footer =
             Div [
-                HTML5.Attr.Data "role" "footer"
+                Attr.Data "role" "footer"
                 ] -< [
                 H4 [Text "Scroll me!"]
             ]
@@ -447,7 +447,7 @@ module SampleInternals =
 
         let page = 
             Div [
-                HTML5.Attr.Data "role" "page"
+                Attr.Data "role" "page"
                 ] -< [
                 header
                 content
@@ -460,21 +460,21 @@ module SampleInternals =
     let UtilsTestPage () =
         let header =
             Div [
-                HTML5.Attr.Data "role" "header"
+                Attr.Data "role" "header"
                 ] -< [
                 H1 [Text "Page 1"]
             ]
         
         let content =
             Div [
-                HTML5.Attr.Data "role" "content"
+                Attr.Data "role" "content"
                 ] -< [
                 P [Text "Content"]
             ]
         
         let page = 
             Div [
-                HTML5.Attr.Data "role" "page"
+                Attr.Data "role" "page"
                 ] -< [
                 header
                 content
