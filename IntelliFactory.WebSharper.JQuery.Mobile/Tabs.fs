@@ -39,7 +39,7 @@ let TabsConfig =
 let Tabs =
     let p = Common.Plugin("tabs")
     Class "Tabs"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(TabsConfig.Type)
 

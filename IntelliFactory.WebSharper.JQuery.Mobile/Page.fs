@@ -46,7 +46,7 @@ let PageConfig =
 let Page =
     let p = Common.Plugin("page")
     Class "Page"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(PageConfig.Type)
 

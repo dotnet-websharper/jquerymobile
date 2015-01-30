@@ -44,7 +44,7 @@ let TextInputConfig =
 let TextInput =
     let p = Common.Plugin("textinput")
     Class "TextInput"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(TextInputConfig.Type)
             p.DefineMethod("destroy")

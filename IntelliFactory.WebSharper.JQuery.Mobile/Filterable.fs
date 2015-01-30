@@ -42,7 +42,7 @@ let FilterableConfig =
 let Filterable =
     let p = Common.Plugin("filterable")
     Class "Filterable"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(FilterableConfig.Type)
             

@@ -81,7 +81,7 @@ let PageChangeConfig =
 let PageContainer =
     let p = Common.Plugin("pagecontainer")  
     Class "PageContainer"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(PageContainerConfig.Type)
 

@@ -31,7 +31,7 @@ let ReflowTableConfig =
 let ReflowTable =
     let p = Common.Plugin("table")
     Class "ReflowTable"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(ReflowTableConfig.Type)
 

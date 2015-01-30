@@ -38,7 +38,7 @@ let CheckBoxRadioConfig =
 let CheckBoxRadio =
     let p = Common.Plugin("checkboxradio")
     Class "CheckBoxRadio"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(CheckBoxRadioConfig.Type)
 

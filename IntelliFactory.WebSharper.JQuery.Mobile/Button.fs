@@ -43,7 +43,7 @@ let ButtonConfig =
 let Button =
     let p = Common.Plugin("button")
     Class "Button"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(ButtonConfig.Type)
             

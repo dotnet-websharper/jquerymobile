@@ -38,7 +38,7 @@ let RangeSliderConfig =
 let RangeSlider =
     let p = Common.Plugin("rangeslider")
     Class "RangeSlider"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(RangeSliderConfig.Type)
             

@@ -21,7 +21,7 @@ let Handler1 t = t ^-> T<unit>
 let Event0 =
     let h = Handler0
     Class "Event"
-    |+> Protocol [
+    |+> Instance [
             "name" =? T<string>
             |> WithGetterInline "$this"
             "trigger" => T<JQuery>?jQ ^-> T<unit>
@@ -37,10 +37,10 @@ let Event0 =
         ]
 
 let Event1 =
-    Generic / fun t ->
+    Generic - fun t ->
         let h = Handler1 t
         Class "Event`1"
-        |+> Protocol [
+        |+> Instance [
                 "name" =? T<string>
                 |> WithGetterInline "$this"
                 "trigger" => T<JQuery>?jQ * t?par ^-> T<unit>
@@ -60,5 +60,5 @@ let Define name =
      |> WithGetterInline (sprintf @"'%s'" name)
 
 let DefineTyped name (ty: Type.Type) =
-    name =? Event1 ty
+    name =? Event1.[ty]
     |> WithGetterInline (sprintf "'%s'" name)

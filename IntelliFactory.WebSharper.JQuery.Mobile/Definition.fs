@@ -17,13 +17,13 @@ open IntelliFactory.WebSharper.JQuery
 
 let ButtonMarkup =
     Class "ButtonMarkup"
-    |+> Protocol [
+    |+> Instance [
             "hoverDelay" =@ T<int> |> Obsolete
         ]
 
 let DegradeInputs =
     Class "DegradeInputs"
-    |+> Protocol [
+    |+> Instance [
             "color"          =@ T<bool> + T<string>
             "date"           =@ T<bool> + T<string>
             "datetime"       =@ T<bool> + T<string>
@@ -45,7 +45,7 @@ let Special =
         |> WithGetterInline (sprintf "jQuery.event.special.%s.%s" c x)
         |> WithSetterInline (sprintf "jQuery.event.special.%s.%s = $value" c x)
     Class "Special"
-    |+> [
+    |+> Static [
             s "tap" "tapholdThreshold" T<int>
             s "swipe" "scrollSupressionThreshold" T<int>
             s "swipe" "durationThreshold" T<int>
@@ -61,7 +61,7 @@ let Orientation =
 
 let OrientationChangeEventArgs =
     Class "OrientationChangeEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "orientation" =? Orientation
             "event" =? T<IntelliFactory.WebSharper.JQuery.Event>
             |> WithGetterInline "$this"
@@ -69,14 +69,14 @@ let OrientationChangeEventArgs =
 
 let PageChangeEventArgs =
     Class "PageChangeEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "toPage" =? T<JQuery> + T<string>
             "options"  =? PageContainer.PageChangeConfig.Type
         ]
 
 let PageBeforeLoadEventArgs =
     Class "PageBeforeLoadEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "url" =? T<string>
             "absUrl" =? T<string>
             "dataUrl" =? T<string>
@@ -86,7 +86,7 @@ let PageBeforeLoadEventArgs =
 
 let PageLoadEventArgs =
     Class "PageLoadEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "url" =? T<string>
             "absUrl" =? T<string>
             "dataUrl" =? T<string>
@@ -97,7 +97,7 @@ let PageLoadEventArgs =
 
 let PageLoadFailedEventArgs =
     Class "PageLoadFailedEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "url" =? T<string>
             "absUrl" =? T<string>
             "dataUrl" =? T<string>
@@ -110,19 +110,19 @@ let PageLoadFailedEventArgs =
 
 let PageHideEventArgs =
     Class "PageHideEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "nextPage" =? T<JQuery>
         ]
 
 let PageShowEventArgs =
     Class "PageShowEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "prevPage" =? T<JQuery>
         ]
 
 let VMouseEventArgs =
     Class "VMouseEventArgs"
-    |+> Protocol [
+    |+> Instance [
             "screenX" =? T<int>
             "screenY" =? T<int>
             "clientX" =? T<int>
@@ -136,7 +136,7 @@ let Events =
     let ev1 name ty = Events.DefineTyped name ty
     let ev2 name ty = Events.DefineTyped name (T<IntelliFactory.WebSharper.JQuery.Event> * ty)
     Class "Events"
-    |+> [
+    |+> Static [
             ev0 "hashchange" |> WithSourceName "HashChange"
             ev0 "mobileinit" |> WithSourceName "MobileInit"
             ev2 "navigate" T<obj> |> WithSourceName "Navigate" 
@@ -175,7 +175,7 @@ let Events =
 
 let URL =
     Class "URL"
-    |+> Protocol
+    |+> Instance
         [
             "hash" =? T<string>
             "host" =? T<string>
@@ -197,7 +197,7 @@ let URL =
 
 let Path =
     Class "Path"
-    |+> Protocol
+    |+> Instance
         [
             "parseUrl" => T<string> ^-> URL
             "makePathAbsolute" => T<string>?relPath * T<string>?absPath ^-> T<string>
@@ -210,7 +210,7 @@ let Path =
 
 let TransitionFallbacks =
     Class "TransitionFallbacks"
-    |+> Protocol
+    |+> Instance
         [
             "fade" =? Common.Transition.Type    
             "flip" =? Common.Transition.Type  
@@ -227,14 +227,14 @@ let Mobile =
     let self = Type.New()
     Class "Mobile"
     |=> self
-    |+> [
+    |+> Static [
             "Instance" =? self
             |> WithGetterInline "jQuery.mobile"
 
             "Use" => T<unit->unit>
             |> WithInline "undefined"
         ]
-    |+> Protocol
+    |+> Instance
         [
 
             // Configuration Defaults
@@ -283,7 +283,7 @@ let Mobile =
 
 let JQuery =
     Class "JQuery"
-    |+> [
+    |+> Static [
 
             // Events
 

@@ -36,7 +36,7 @@ let DialogConfig =
 let Dialog =
     let p = Common.Plugin("dialog")
     Class "Dialog"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineMethod("close")
         ]

@@ -41,7 +41,7 @@ let CollapsibleSetConfig =
 let CollapsibleSet =
     let p = Common.Plugin("collapsible-set")
     Class "Accordion"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(CollapsibleSetConfig.Type)
 

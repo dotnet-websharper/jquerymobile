@@ -35,7 +35,7 @@ let LoaderConfig =
 let Loader =
     let p = Common.Plugin("loader")  
     Class "Loader"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(LoaderConfig.Type)
             

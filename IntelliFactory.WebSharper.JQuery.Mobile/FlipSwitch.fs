@@ -37,7 +37,7 @@ let FlipSwitchConfig =
 let FlipSwitch =
     let p = Common.Plugin("flipswitch")
     Class "FlipSwitch"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(FlipSwitchConfig.Type)
             

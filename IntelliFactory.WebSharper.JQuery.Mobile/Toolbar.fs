@@ -48,7 +48,7 @@ let ToolbarConfig =
 let Toolbar =
     let p = Common.Plugin("toolbar")
     Class "Toolbar"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(ToolbarConfig.Type)
 

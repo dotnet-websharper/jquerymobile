@@ -35,7 +35,7 @@ let NavBarConfig =
 let NavBar =
     let p = Common.Plugin("navbar")   
     Class "NavBar"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(NavBarConfig.Type)
         ]

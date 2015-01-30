@@ -39,7 +39,7 @@ let ColumnToggleTableConfig =
 let ColumnToggleTable =
     let p = Common.Plugin("table")
     Class "ColumnToggleTable"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(ColumnToggleTableConfig.Type)
             

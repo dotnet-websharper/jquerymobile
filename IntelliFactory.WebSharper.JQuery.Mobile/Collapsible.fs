@@ -48,7 +48,7 @@ let CollapsibleConfig =
 let Collapsible =
     let p = Common.Plugin("collapsible")
     Class "Collapsible"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(CollapsibleConfig.Type)
 

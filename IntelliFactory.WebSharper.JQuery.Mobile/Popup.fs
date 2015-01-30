@@ -60,7 +60,7 @@ let Popup =
     let p = Common.Plugin("popup")
 
     Class "Popup"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(PopupConfig.Type)
 

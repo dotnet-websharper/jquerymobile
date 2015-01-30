@@ -48,7 +48,7 @@ let SelectMenuConfig =
 let SelectMenu =
     let p = Common.Plugin("selectmenu")
     Class "SelectMenu"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(SelectMenuConfig.Type)
             p.DefineMethod("close")

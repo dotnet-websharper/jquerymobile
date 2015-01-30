@@ -40,7 +40,7 @@ let ControlGroupConfig =
 let ControlGroup =
     let p = Common.Plugin("controlgroup")
     Class "ControlGroup"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(ControlGroupConfig.Type)
 

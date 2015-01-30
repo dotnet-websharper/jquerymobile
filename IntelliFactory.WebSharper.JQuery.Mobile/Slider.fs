@@ -38,7 +38,7 @@ let SliderConfig =
 let Slider =
     let p = Common.Plugin("slider")
     Class "Slider"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(SliderConfig.Type)
             p.DefineMethod("enable")

@@ -49,7 +49,7 @@ let ListViewConfig =
 let ListView =
     let p = Common.Plugin("listview")
     Class "ListView"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(ListViewConfig.Type)
             

@@ -27,7 +27,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Common.SwatchLetter
 
         Events.Event0
-        Generic - Events.Event1
+        Events.Event1
 
         Button.ButtonConfig
         Button.Button

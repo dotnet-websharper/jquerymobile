@@ -35,7 +35,7 @@ let TableConfig =
 let Table =
     let p = Common.Plugin("table")
     Class "Table"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(TableConfig.Type)
         ]

@@ -61,7 +61,7 @@ let PanelConfig =
 let Panel =
     let p = Common.Plugin("panel")   
     Class "Panel"
-    |+> [
+    |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(PanelConfig.Type)
 

@@ -19,7 +19,7 @@ let Positioning =
     let self = Type.New()
     Class "Positioning"
     |=> self
-    |+> [
+    |+> Static [
             "jQuerySelector" => T<string>?s ^-> self
             |> WithInline "$s"
             "origin" =? self
@@ -40,7 +40,7 @@ let Tolerance =
     let self = Type.New()
     Class "Tolerance"
     |=> self
-    |+> [
+    |+> Static [
             "create" => T<int>?top * T<int>?right * T<int>?bottom * T<int>?left ^-> self
             |> WithInline "[$top,$right,$bottom,$left].join(',')"
         ]
