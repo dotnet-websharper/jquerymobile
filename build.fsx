@@ -13,11 +13,11 @@ let bt =
     bt.WithFramework(bt.Framework.Net40)
 
 let ext =
-    bt.WebSharper.Extension("IntelliFactory.WebSharper.JQuery.Mobile")
+    bt.WebSharper.Extension("WebSharper.JQuery.Mobile")
     |> fun main -> main.SourcesFromProject()
 
 let tests =
-    bt.WebSharper.HtmlWebsite("IntelliFactory.WebSharper.JQuery.Mobile.Tests")
+    bt.WebSharper.HtmlWebsite("WebSharper.JQuery.Mobile.Tests")
     |> fun tests ->
         tests.SourcesFromProject().References(fun r ->
             [r.Project ext])
