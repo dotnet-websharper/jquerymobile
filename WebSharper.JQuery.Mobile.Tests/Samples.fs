@@ -231,7 +231,7 @@ module SampleInternals =
             let content =
                 ContentDiv() -< [ 
                     P [
-                        A [ Attr.HRef ""; Text "About this app" ]               // Attr.HRef "#about"
+                        A [ HRef ""; Text "About this app" ]               // Attr.HRef "#about"
 //                        |>! OnClick (fun _ _ -> MobileInstance.ChangePage(JQuery.Of("#about")) )
                         |>! OnClick (fun _ _ -> MobileInstance.ChangePage(JQuery.Of("#about")) )
                     ] 
@@ -273,33 +273,33 @@ module SampleInternals =
             let content =
                 let checkbox (name: string) = 
                     Input [
-                        Attr.Type "checkbox" 
+                        Type "checkbox" 
                         Name name
                         Id name
-                        Attr.Class "custom"
+                        Class "custom"
                     ]
                     -- 
                     Label [
-                        Attr.For name
+                        For name
                         Text name
                     ] :> Pagelet
 
                 Div [
                     Attr.Data "role" "content"
-                    Form [ Action "#"
+                    Form [ Attr.Action "#"
                            Method "get"
                            // Name Field
                            ] -< [
                            Div [
                               Attr.Data "role" "fieldcontain"
                               Label [
-                                Attr.For "name"
+                                For "name"
                                 Text "Your name:"
                               ]  :> _
                               Input [
-                                Attr.Type "text"
-                                Attr.Name "name"
-                                Attr.Value ""
+                                Type "text"
+                                Name "name"
+                                Value ""
                               ]  :> _
                            ]
                            // Flavour field
@@ -317,14 +317,14 @@ module SampleInternals =
                               Attr.Data "role" "fieldcontain"
                               ] -< [
                               Label [
-                                Attr.For "quantity"
+                                For "quantity"
                                 Text "Number of cones:"
                               ]
                               Input [
-                                Attr.Type "range"
-                                Attr.Name "quantity"
-                                Attr.Id   "quantity"
-                                Attr.Value "1"
+                                Type "range"
+                                Name "quantity"
+                                Id   "quantity"
+                                Value "1"
                                 Attr.Min "1" 
                                 Attr.Max "100"
                               ]
@@ -333,63 +333,63 @@ module SampleInternals =
                            Div [
                               Attr.Data "role" "fieldcontain" 
                               ] -< [
-                              Label [Attr.For "sprinkles";Text "Sprinkles:"]
+                              Label [For "sprinkles"; Text "Sprinkles:"]
                               Select [
                                 Attr.Data "role" "slider"
-                                Attr.Name "sprinkles"
-                                Attr.Id   "sprinkles"
+                                Name "sprinkles"
+                                Id   "sprinkles"
                                 ] -< [
-                                Default.Tags.Option [Attr.Value "on"; Text "Yes"]
-                                Default.Tags.Option [Attr.Value "off"; Text "No"]
+                                Tags.Option [Value "on"; Text "Yes"]
+                                Tags.Option [Value "off"; Text "No"]
                               ]
                            ]
                            // Store Field
                            Div [
                               Attr.Data "role" "fieldcontain" 
                               ] -< [
-                              Label [Attr.For "store"; Text "Collect from store:"]
+                              Label [For "store"; Text "Collect from store:"]
                               Select [
-                                Attr.Name "store"
-                                Attr.Id   "store"
+                                Name "store"
+                                Id   "store"
                                 ] -< [
-                                Default.Tags.Option [
-                                    Attr.Value "mainStreet"
+                                Tags.Option [
+                                    Value "mainStreet"
                                     Text "Main Street"
                                 ]
-                                Default.Tags.Option [
-                                    Attr.Value "libertyAvenue"
+                                Tags.Option [
+                                    Value "libertyAvenue"
                                     Text "Liberty Avenue"
                                 ]
-                                Default.Tags.Option [
-                                    Attr.Value "circleSquare"
+                                Tags.Option [
+                                    Value "circleSquare"
                                     Text "Circle Square"
                                 ]
-                                Default.Tags.Option [
-                                    Attr.Value "angelRoad"
+                                Tags.Option [
+                                    Value "angelRoad"
                                     Text "Angel Road"
                                 ]
                               ]
                            ]
                            Div [
-                              Attr.Class "ui-body ui-body-b"
+                              Class "ui-body ui-body-b"
                               ] -< [
                               FieldSet [
-                                Attr.Class "ui-grid-a"
+                                Class "ui-grid-a"
                                 ] -< [
                                 Div [ 
-                                    Attr.Class "ui-block-a"
+                                    Class "ui-block-a"
                                     Button [
                                         Attr.Data "theme" "a"
-                                        Attr.Type "submit"
+                                        Type "submit"
                                         Text "Cancel"
                                     ] :> _
                                 ]
                                 Div [
-                                    Attr.Class "ui-block-b"
+                                    Class "ui-block-b"
                                     ] -< [
                                     Button [
                                         Attr.Data "theme" "a"
-                                        Attr.Type "submit"
+                                        Type "submit"
                                         Text "Order Ice Cream"
                                     ]
                                 ]
@@ -400,7 +400,7 @@ module SampleInternals =
                 
             let page = 
                 Div [Attr.Data "role" "page"
-                     Attr.Id "home"
+                     Id "home"
                      header  :> _
                      content :> _]
                 
