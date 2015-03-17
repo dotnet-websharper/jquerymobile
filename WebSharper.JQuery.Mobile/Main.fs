@@ -105,6 +105,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         TextInput.TextInput
 
         Definition.ButtonMarkup
+        Definition.DegradeInputs
         Definition.Special
         Definition.Orientation
         Definition.OrientationChangeEventArgs
