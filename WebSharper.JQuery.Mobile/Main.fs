@@ -120,6 +120,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Definition.Path
         Definition.Mobile
         Definition.JQuery
+        Definition.TransitionFallbacks
     ]
 
 let JQMAssembly =
