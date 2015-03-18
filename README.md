@@ -40,11 +40,13 @@ the page.
 First, some helpers to set the custom attributes to an element:
 
 ```fsharp
+open WebSharper.JQuery
+
 [<JavaScript>]
 let SetAttr attr value elem =
     elem
     |>! OnAfterRender (fun elem ->
-            JQuery.JQuery.Of(elem.Body).Attr(attr, value).Ignore)
+        JQuery.Of(elem.Body).Attr(attr, value).Ignore)
 
 [<JavaScript>]
 let AddDataRole role elem = SetAttr "data-role" role elem
@@ -57,9 +59,12 @@ dummy `UseJQueryMobile` will force the static analyzer to add the
 reference of the JQuery Mobile extension.
 
 ```fsharp
+open WebSharper.JQuery
+open WebSharper.JQuery.Mobile
+
 [<JavaScript>]
 let SimplePage () = 
-    JQuery.Mobile.JQuery.UseJQueryMobile // should trigger webresource.
+    Mobile.Use() // triggers webresource.
     let header =
         Div [H1 [Text "Page Title"]]
         |> AddDataRole "header"
@@ -90,18 +95,19 @@ the jQuery object under the `Mobile` namespace. Is possible to build
 it from any jQuery object as it's shown in the following example:
 
 ```fsharp
-JQuery.Mobile.JQuery.Of(JQuery.JQuery.Of(header.Body)).Tap(
-    fun _ event -> 
-        JavaScript.Alert("Tapped on: " + string event.PageX + "," + string event.PageY)
-    ).Base.Ignore
+Mobile.Events.Tap.On(JQuery.Of(header.Body), fun event -> 
+    JS.Alert("Tapped on: " + string event.PageX + "," + string event.PageY)
+)
 ```
 
 ### Configuration properties and utilities
 
 They jQuery Mobile also provides different utilities and configuration
-values. These are available under the `Mobile` property. For example:
+values. These are available under the `Mobile.Instance` property. For example:
 
 ```fsharp
-JQuery.Mobile.JQuery.Mobile.DefaultTransition
+open WebSharper.JQuery.Mobile
+
+Mobile.Instance.DefaultPageTransition
 ```
 
