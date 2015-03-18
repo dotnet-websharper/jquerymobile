@@ -105,6 +105,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         TextInput.TextInput
 
         Definition.ButtonMarkup
+        Definition.DegradeInputs
         Definition.Special
         Definition.Orientation
         Definition.OrientationChangeEventArgs
@@ -120,6 +121,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         Definition.Path
         Definition.Mobile
         Definition.JQuery
+        Definition.TransitionFallbacks
     ]
 
 let JQMAssembly =

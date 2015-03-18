@@ -9,9 +9,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ivy.xml = ivy.xml
 	EndProjectSection
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.JQuery.Mobile", "IntelliFactory.WebSharper.JQuery.Mobile\IntelliFactory.WebSharper.JQuery.Mobile.fsproj", "{09FF3F57-1D1A-4537-AF3E-9B957DBD961E}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQuery.Mobile", "WebSharper.JQuery.Mobile\WebSharper.JQuery.Mobile.fsproj", "{09FF3F57-1D1A-4537-AF3E-9B957DBD961E}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IntelliFactory.WebSharper.JQuery.Mobile.Tests", "IntelliFactory.WebSharper.JQuery.Mobile.Tests\IntelliFactory.WebSharper.JQuery.Mobile.Tests.fsproj", "{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQuery.Mobile.Tests", "WebSharper.JQuery.Mobile.Tests\WebSharper.JQuery.Mobile.Tests.fsproj", "{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
