@@ -3,7 +3,7 @@ open IntelliFactory.Build
 
 let bt =
     let bt =
-      BuildTool().PackageId("WebSharper.JQueryMobile", "3.0-alpha").References(fun r ->
+      BuildTool().PackageId("WebSharper.JQueryMobile", "3.0").References(fun r ->
         [
             r.Assembly "System.Runtime.Serialization"
             r.Assembly "System.ServiceModel.Web"
