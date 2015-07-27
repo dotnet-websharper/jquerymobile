@@ -18,14 +18,14 @@ module Skin =
         Content.Template<Page>("~/Main.html")
             .With("body", fun x -> x.Body)
 
-    let WithTemplate body : Content<Action> =
-        Content.WithTemplate MainTemplate <| fun context ->
+    let WithTemplate body ctx : Async<Content<Action>> =
+        Content.WithTemplate MainTemplate
             {
-                Body =  body context
+                Body = body
             }
 
 module Site =
-    let App = Skin.WithTemplate <| fun ctx -> [ Div [ new AppControl() ] ]
+    let App = Skin.WithTemplate [ Div [ new AppControl() ] ]
 
 [<Sealed>]
 type Sample() =
