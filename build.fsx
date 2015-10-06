@@ -4,6 +4,7 @@ open IntelliFactory.Build
 let bt =
     BuildTool().PackageId("WebSharper.JQueryMobile")
         .VersionFrom("WebSharper")
+        .WithFSharpVersion(FSharpVersion.FSharp30)
         .WithFramework(fun fw -> fw.Net40)
 
 let ext =
@@ -14,7 +15,10 @@ let tests =
     bt.WebSharper.HtmlWebsite("WebSharper.JQuery.Mobile.Tests")
     |> fun tests ->
         tests.SourcesFromProject().References(fun r ->
-            [r.Project ext])
+            [
+                r.NuGet("WebSharper.Html").Reference()
+                r.Project ext
+            ])
 
 bt.Solution [
     ext

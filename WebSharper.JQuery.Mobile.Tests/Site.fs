@@ -11,7 +11,7 @@ module Skin =
 
     type Page =
         {
-            Body : list<Content.HtmlElement>
+            Body : list<Element>
         }
 
     let MainTemplate =
