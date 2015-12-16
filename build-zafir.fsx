@@ -22,7 +22,7 @@ let tests =
 
 bt.Solution [
     ext
-    tests
+//    tests
 
     bt.NuGet.CreatePackage()
         .Configure(fun c ->
