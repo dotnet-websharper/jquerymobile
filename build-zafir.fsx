@@ -16,7 +16,7 @@ let tests =
     |> fun tests ->
         tests.SourcesFromProject().References(fun r ->
             [
-                r.NuGet("Zafir.Html").Reference()
+                r.NuGet("Zafir.Html").Latest(true).ForceFoundVersion().Reference()
                 r.Project ext
             ])
 
