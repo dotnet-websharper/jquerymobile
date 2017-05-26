@@ -128,10 +128,10 @@ let JQMAssembly =
     Assembly [
         Namespace "WebSharper.JQuery.Mobile" ClassList  
         Namespace "WebSharper.JQuery.Mobile.Resources" [
-                Resource "JQueryMobileJs" "//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"
+                Resource "JQueryMobileJs" "//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"
                 |> fun r -> r.AssemblyWide()
                 |> RequiresExternal [T<WebSharper.JQuery.Resources.JQuery>]
-                Resource "JQueryMobileCss" "//code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css"
+                Resource "JQueryMobileCss" "//code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.css"
                 |> fun r -> r.AssemblyWide()
             ]
 //        Namespace "WebSharper.JQuery.Mobile.Enums" [

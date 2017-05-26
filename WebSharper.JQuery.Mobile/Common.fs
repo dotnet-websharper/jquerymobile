@@ -16,15 +16,13 @@ open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
 let Positioning =
-    let self = Type.New()
     Class "Positioning"
-    |=> self
     |+> Static [
-            "jQuerySelector" => T<string>?s ^-> self
+            "jQuerySelector" => T<string>?s ^-> TSelf
             |> WithInline "$s"
-            "origin" =? self
+            "origin" =? TSelf
             |> WithGetterInline "'origin'"
-            "window" =? self
+            "window" =? TSelf
             |> WithGetterInline "'window'"
         ]
 
@@ -37,11 +35,9 @@ let Relation =
     ]
 
 let Tolerance =
-    let self = Type.New()
     Class "Tolerance"
-    |=> self
     |+> Static [
-            "create" => T<int>?top * T<int>?right * T<int>?bottom * T<int>?left ^-> self
+            "create" => T<int>?top * T<int>?right * T<int>?bottom * T<int>?left ^-> TSelf
             |> WithInline "[$top,$right,$bottom,$left].join(',')"
         ]
 

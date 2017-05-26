@@ -224,11 +224,9 @@ let TransitionFallbacks =
         ]
 
 let Mobile =
-    let self = Type.New()
     Class "Mobile"
-    |=> self
     |+> Static [
-            "Instance" =? self
+            "Instance" =? TSelf
             |> WithGetterInline "jQuery.mobile"
 
             "Use" => T<unit->unit>
