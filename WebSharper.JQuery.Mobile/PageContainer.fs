@@ -47,6 +47,7 @@ let PageLoadConfig =
                 "loadMsgDelay", T<int>
                 "pageContainer", T<JQuery>
                 "role", T<string>
+                "reload", T<bool>
                 "showLoadMsg", T<bool>
                 "type", T<string>
             ]
@@ -65,7 +66,8 @@ let PageChangeConfig =
                 "changeHash", T<bool>
                 "data", T<obj>
                 "dataUrl", T<string>
-                "pageContainer", T<JQuery>
+                "loadMsgDelay", T<int>
+                "reload", T<bool>
                 "reverse", T<bool>
                 "role", T<string>
                 "showLoadMsg", T<bool>

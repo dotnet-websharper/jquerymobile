@@ -50,8 +50,11 @@ let Filterable =
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("refresh")
 
-            Events.Define "beforefilter" |> WithSourceName "BeforeFiltered"
-            Events.Define "filter" |> WithSourceName "Filtered"
+            Events.DefineTyped "filterablebeforefilter" T<obj> |> WithSourceName "BeforeFiltered"
+            Events.DefineTyped "filterablefilter" T<obj> |> WithSourceName "Filtered"
         ]

@@ -15,6 +15,25 @@ module WebSharper.JQuery.Mobile.Panel
 open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
+let Cl =
+    Pattern.Config "PanelClasses" {
+        Required = []
+        Optional =
+            [
+                "animate", T<string>
+                "modal", T<string>
+                "modalOpen", T<string>
+                "pageContainer", T<string>
+                "pageContentPrefix", T<string>
+                "pageFixedToolbar", T<string>
+                "panel", T<string>
+                "panelClosed", T<string>
+                "panelFixed", T<string>
+                "panelInner", T<string>
+                "panelOpen", T<string>
+            ]
+    }
+
 let PanelConfig =
     Pattern.ConfigObs "PanelConfig" {
         Required = []
@@ -27,22 +46,7 @@ let PanelConfig =
                 "open", T<Events.JEvent * JQuery -> unit>
                 
                 "animate", T<bool>
-//                "classes.animate", T<string>
-//                "classes.contentFixedToolbar", T<string>
-//                "classes.contentFixedToolbarClosed", T<string>
-//                "classes.contentFixedToolbarOpen", T<string>
-//                "classes.contentWrap", T<string>
-//                "classes.contentWrapClosed", T<string>
-//                "classes.contentWrapOpen", T<string>
-//                "classes.modal", T<string>
-//                "classes.modalOpen", T<string>
-//                "classes.pagePanel", T<string>
-//                "classes.pagePanelOpen", T<string>
-//                "classes.panel", T<string>
-//                "classes.panelClosed", T<string>
-//                "classes.panelFixed", T<string>
-//                "classes.panelInner", T<string>
-//                "classes.panelOpen", T<string>
+                "classes", Cl.Type
                 "defaults", T<bool>
                 "disabled", T<bool>
                 "dismissible", T<bool>

@@ -15,6 +15,18 @@ module WebSharper.JQuery.Mobile.ColumnToggleTable
 open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
+let CL =
+    Pattern.Config "CTTClasses" {
+        Required = []
+        Optional =
+            [
+                "columnBtn", T<string>
+                "columnToggleTable", T<string>
+                "popup", T<string>
+                "priorityPrefix", T<string>
+            ]
+    }
+
 let ColumnToggleTableConfig =
     Pattern.ConfigObs "ColumnToggleTableConfig" {
         Required = []
@@ -22,10 +34,7 @@ let ColumnToggleTableConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-//                "classes.columnBtn", T<string>
-//                "classes.columnToggleTable", T<string>
-//                "classes.popup", T<string>
-//                "classes.priorityPrefix", T<string>
+                "classes", CL.Type
                 "columnBtnText", T<string>
                 "columnBtnTheme", Common.SwatchLetter.Type
                 "columnPopupTheme", Common.SwatchLetter.Type

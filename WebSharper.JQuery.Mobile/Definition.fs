@@ -141,20 +141,20 @@ let Events =
             ev0 "mobileinit" |> WithSourceName "MobileInit"
             ev2 "navigate" T<obj> |> WithSourceName "Navigate" 
             ev1 "orientationchange" OrientationChangeEventArgs.Type |> WithSourceName "OrientationChange"
-            ev2 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange"
+            ev2 "pagebeforechange" PageChangeEventArgs.Type |> WithSourceName "PageBeforeChange" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerbeforechange event instead"
             ev0 "pagebeforecreate" |> WithSourceName "PageBeforeCreate"
-            ev2 "pagebeforehide" PageHideEventArgs.Type |> WithSourceName "PageBeforeHide"
-            ev2 "pagebeforeload" PageBeforeLoadEventArgs.Type |> WithSourceName "PageBeforeLoad"
-            ev2 "pagebeforeshow" PageShowEventArgs.Type |> WithSourceName "PageBeforeShow"
-            ev2 "pagechange" PageChangeEventArgs.Type |> WithSourceName "PageChange"
-            ev2 "pagechangefailed" PageChangeEventArgs.Type |> WithSourceName "PageChangeFailed"
-            ev0 "pagecreate" |> WithSourceName "PageCreate"
-            ev2 "pagehide" PageHideEventArgs.Type |> WithSourceName "PageHide"
-            ev0 "pageinit" |> WithSourceName "PageInit"
-            ev2 "pageload" PageLoadEventArgs.Type |> WithSourceName "PageLoad"
-            ev2 "pageloadfailed" PageLoadFailedEventArgs.Type |> WithSourceName "PageLoadFailed"
-            ev0 "pageremove" |> WithSourceName "PageRemove"    
-            ev2 "pageshow" PageShowEventArgs.Type |> WithSourceName "PageShow"    
+            ev2 "pagebeforehide" PageHideEventArgs.Type |> WithSourceName "PageBeforeHide" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerbeforehide event instead"
+            ev2 "pagebeforeload" PageBeforeLoadEventArgs.Type |> WithSourceName "PageBeforeLoad" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerbeforeload event instead"
+            ev2 "pagebeforeshow" PageShowEventArgs.Type |> WithSourceName "PageBeforeShow" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerbeforeshow event instead"
+            ev2 "pagechange" PageChangeEventArgs.Type |> WithSourceName "PageChange" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerchange event instead"
+            ev2 "pagechangefailed" PageChangeEventArgs.Type |> WithSourceName "PageChangeFailed" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerchangefailed event instead"
+            ev0 "pagecreate" |> WithSourceName "PageCreate" 
+            ev2 "pagehide" PageHideEventArgs.Type |> WithSourceName "PageHide" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerhide event instead"
+            ev0 "pageinit" |> WithSourceName "PageInit" |> ObsoleteWithMessage "Use the pagecreate event"
+            ev2 "pageload" PageLoadEventArgs.Type |> WithSourceName "PageLoad" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerload event instead"
+            ev2 "pageloadfailed" PageLoadFailedEventArgs.Type |> WithSourceName "PageLoadFailed" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerloadfailed event instead"
+            ev0 "pageremove" |> WithSourceName "PageRemove" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainerremove event instead"
+            ev2 "pageshow" PageShowEventArgs.Type |> WithSourceName "PageShow" |> ObsoleteWithMessage "Use the pagecontainer's pagecontainershow event instead"
             ev0 "scrollstart" |> WithSourceName "ScrollStart"
             ev0 "scrollstop" |> WithSourceName "ScrollStop"
             ev0 "swipe" |> WithSourceName "Swipe"
@@ -171,6 +171,72 @@ let Events =
             ev1 "vmouseout" VMouseEventArgs.Type |> WithSourceName "VMouseOut"
             ev1 "vmouseover" VMouseEventArgs.Type |> WithSourceName "VMouseOver"
             ev1 "vmouseup" VMouseEventArgs.Type |> WithSourceName "VMouseUp"
+
+            // widget related events
+            ev2 "buttoncreate" T<obj> |> WithSourceName "ButtonCreate"
+            
+            ev2 "checkbocradiocreate" T<obj> |> WithSourceName "CheckboxRadioCreate"
+
+            ev2 "collapsiblesetcreate" T<obj> |> WithSourceName "CollapsibleSetCreate"
+
+            ev2 "controlgroupcreate" T<obj> |> WithSourceName "ControlGroupCreate"
+
+            ev2 "dialogcreate" T<obj> |> WithSourceName "DialogCreate" |> ObsoleteWithMessage "Use the Page.Dialog extension's event or implement your dialog using the Popups widget"
+
+            ev2 "flipswitchcreate" T<obj> |> WithSourceName "FlipSwitchCreate"
+
+            ev2 "listviewcreate" T<obj> |> WithSourceName "ListViewCreate"
+
+            ev2 "loadingcreate" T<obj> |> WithSourceName "LoadingCreate"
+
+            ev2 "navbarcreate" T<obj> |> WithSourceName "NavBarCreate"
+
+            ev2 "pagecontainerbeforechange" T<obj> |> WithSourceName "PageContainerBeforeChange"
+            ev2 "pagecontainerbeforehide" T<obj> |> WithSourceName "PageContainerBeforeHide"
+            ev2 "pagecontainerbeforeload" T<obj> |> WithSourceName "PageContainerBeforeLoad"
+            ev2 "pagecontainerbeforeshow" T<obj> |> WithSourceName "PageContainerBeforeShow"
+            ev2 "pagecontainerbeforetransition" T<obj> |> WithSourceName "PageContainerBeforeTransition"
+            ev2 "pagecontainerchange" T<obj> |> WithSourceName "PageContainerChange"
+            ev2 "pagecontainerchangefailed" T<obj> |> WithSourceName "PageContainerChangeFailed"
+            ev2 "pagecontainercreate" T<obj> |> WithSourceName "PageContainerCreate"
+            ev2 "pagecontainerhide" T<obj> |> WithSourceName "PageContainerHide"
+            ev2 "pagecontainerload" T<obj> |> WithSourceName "PageContainerLoad"
+            ev2 "pagecontainerloadfailed" T<obj> |> WithSourceName "PageContainerLoadFailed"
+            ev2 "pagecontainerremove" T<obj> |> WithSourceName "PageContainerRemove"
+            ev2 "pagecontainershow" T<obj> |> WithSourceName "PageContainerShow"
+            ev2 "pagecontainertransition" T<obj> |> WithSourceName "PageContainerTransition"
+
+            ev2 "panelbeforeclose" T<obj> |> WithSourceName "PanelBeforeClose"
+            ev2 "panelbeforeopen" T<obj> |> WithSourceName "PanelBeforeOpen"
+            ev2 "panelclose" T<obj> |> WithSourceName "PanelClose"
+            ev2 "panelcreate" T<obj> |> WithSourceName "PanelCreate"
+            ev2 "panelopen" T<obj> |> WithSourceName "PanelOpen"
+
+            ev2 "popupafterclose" T<obj> |> WithSourceName "PopupAfterClose"
+            ev2 "popupafteropen" T<obj> |> WithSourceName "PopupAfterOpen"
+            ev2 "popupbeforeposition" T<obj> |> WithSourceName "PopupBeforePosition"
+            ev2 "popupcreate" T<obj> |> WithSourceName "PopupCreate"
+
+            ev2 "rangeslidercreate" T<obj> |> WithSourceName "RangeSliderCreate"
+            ev2 "rangeslidernormalize" T<obj> |> WithSourceName "RangeSliderNormalize"
+
+            ev2 "selectcreate" T<obj> |> WithSourceName "SelectMenuCreate"
+
+            ev2 "slidercreate" T<obj> |> WithSourceName "SliderCreate"
+            ev2 "sliderstart" T<obj> |> WithSourceName "SliderStart"
+            ev2 "sliderstop" T<obj> |> WithSourceName "SliderStop"
+
+            ev2 "tablecreate" T<obj> |> WithSourceName "TableCreate"
+
+            ev2 "tabsactivate" T<obj> |> WithSourceName "TabsActivate"
+            ev2 "tabsbeforeactivate" T<obj> |> WithSourceName "TabsBeforeActivate"
+            ev2 "tabsbeforeload" T<obj> |> WithSourceName "TabsBeforeLoad"
+            ev2 "tabscreate" T<obj> |> WithSourceName "TabsCreate"
+            ev2 "tabsload" T<obj> |> WithSourceName "TabsLoad"
+
+            ev2 "textinputcreate" T<obj> |> WithSourceName "TextInputCreate"
+
+            ev2 "toolbarcreate" T<obj> |> WithSourceName "ToolbarCreate"
         ]
 
 let URL =
@@ -206,6 +272,11 @@ let Path =
             "isRelativeUrl" => T<string> ^-> T<bool>
             "isAbsoluteUrl" => T<string> ^-> T<bool>
             "get" => T<string> ^-> T<string>
+
+            "getDocumentBase" => T<bool> ^-> T<string>
+            "getDocumentUrl" => T<bool> ^-> T<string>
+            "getLocation" => T<unit> ^-> T<string>
+            "parseLocation" => T<unit> ^-> URL
         ]
 
 let TransitionFallbacks =
@@ -242,7 +313,7 @@ let Mobile =
             "ajaxEnabled" =@ T<bool>
             "allowCrossdomainPages" =@ T<bool>
             "autoInitializePage" =@ T<bool>
-            "buttonMarkup" =? ButtonMarkup
+            "buttonMarkup" =? ButtonMarkup |> Obsolete
             "defaultDialogTransition" =@ T<string> |> Obsolete
             "defaultPageTransition" =@ T<string>
             "degradeInputs" =@ DegradeInputs
@@ -266,15 +337,19 @@ let Mobile =
 
             // Methods and utilities
 
-            "changePage" => (T<JQuery> + T<string>)?``to`` * !? PageContainer.PageChangeConfig?``options`` ^-> T<unit> |> Obsolete
+            "changePage" => (T<JQuery> + T<string>)?``to`` * !? PageContainer.PageChangeConfig?``options`` ^-> T<unit> |> ObsoleteWithMessage "Use the pagecontainer widget's change method instead."
             "degradeInputsWithin" => T<Element>?target ^-> T<unit>
+            "getDocumentBase" => T<bool> ^-> T<string> |> ObsoleteWithMessage "Use the Path.GetDocumentBase function instead"
+            "getDocumentUrl" => T<bool> ^-> T<string> |> ObsoleteWithMessage "Use the Path.GetDocumentUrl function instead"
             "getInheritedTheme" => T<JQuery>?el * Common.SwatchLetter?defaultTheme ^-> Common.SwatchLetter
-            "loadPage" => (T<string> + T<obj>)?url * !? PageContainer.PageLoadConfig?``options`` ^-> T<unit> |> Obsolete
+            "loadPage" => (T<string> + T<obj>)?url * !? PageContainer.PageLoadConfig?``options`` ^-> T<Promise> |> ObsoleteWithMessage "Use the pagecontainer widget's load function instead"
             "navigate" => (T<string> + T<obj>)?url * !? T<obj>?``data`` ^-> T<unit>
             
             "path" =? Path
             "silentScroll" => !?T<int>?yPos ^-> T<unit>
-            "activePage" =? T<JQuery>
+            "activePage" =? T<JQuery> |> ObsoleteWithMessage "Use the pagecontainer widget's getActivePage function instead"
+
+            // THESE NEEDS TO BE REVISED
             "showPageLoadingMsg" => !?T<string>?theme * !?T<string>?msgText * !?T<bool>?textonly ^-> T<unit>
             "hidePageLoadingMsg" => T<unit> ^-> T<unit>
         ]

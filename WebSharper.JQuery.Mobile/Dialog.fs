@@ -16,7 +16,7 @@ open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
 let DialogConfig =
-    Pattern.Config "DialogConfig" {
+    Pattern.ConfigObs "DialogConfig" {
         Required = []
         Optional =
             [
@@ -27,8 +27,11 @@ let DialogConfig =
                 "corners", T<bool>
                 "defaults", T<bool>
                 "disabled", T<bool>
-                "initSelector", T<string>
                 "overlayTheme", Common.SwatchLetter.Type
+            ]
+        Obsolete =
+            [
+                "initSelector", T<string>
             ]
     }
     |> Obsolete

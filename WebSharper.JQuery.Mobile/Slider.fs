@@ -16,7 +16,7 @@ open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
 let SliderConfig =
-    Pattern.Config "SliderConfig" {
+    Pattern.ConfigObs "SliderConfig" {
         Required = []
         Optional =
             [
@@ -27,13 +27,15 @@ let SliderConfig =
                 "defaults", T<bool>
                 "disabled", T<bool>
                 "highlight", T<bool>
-                "initSelector", T<string>
                 "mini", T<bool>
                 "theme", Common.SwatchLetter.Type
                 "trackTheme", Common.SwatchLetter.Type
             ]
+        Obsolete =
+            [
+                "initSelector", T<string>
+            ]
     }
-    |> Obsolete
 
 let Slider =
     let p = Common.Plugin("slider")
@@ -41,14 +43,18 @@ let Slider =
     |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(SliderConfig.Type)
-            p.DefineMethod("enable")
+            p.DefineMethod("destroy")
             p.DefineMethod("disable")
+            p.DefineMethod("enable")
+            p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("refresh")
 
-            Events.Define "start"
+            Events.Define "slidestart"
             |> WithSourceName "Started"
 
-            Events.Define "stop"
+            Events.Define "slidestop"
             |> WithSourceName "Stopped"
-        ]        
-    |> Obsolete
+        ]      

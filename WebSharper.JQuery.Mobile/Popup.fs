@@ -70,14 +70,18 @@ let Popup =
             p.DefineMethod("enable")
             p.DefineMethod("open")
             p.DefineMethod("open", PopupOpenConfig.Type)
+            p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("reposition", T<obj>)
 
-            Events.Define "beforeposition"
+            Events.Define "popupbeforeposition"
             |> WithSourceName "BeforePosition"
 
-            Events.Define "afteropen"
+            Events.Define "popupafteropen"
             |> WithSourceName "AfterOpen"
 
-            Events.Define "afterclose"
+            Events.Define "popupafterclose"
             |> WithSourceName "AfterClose"
         ]

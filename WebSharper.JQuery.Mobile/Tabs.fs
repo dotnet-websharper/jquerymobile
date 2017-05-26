@@ -27,6 +27,7 @@ let TabsConfig =
                 "load", T<Events.JEvent * JQuery -> unit>
 
                 "active", T<obj>
+                "class", T<obj>
                 "collapsible", T<bool>
                 "disabled", T<bool>
                 "event", T<string>
@@ -50,9 +51,15 @@ let Tabs =
 
             p.DefineMethod("destroy")
             p.DefineMethod("disable")
+            p.DefineMethod("disable", T<int> + T<string>)
             p.DefineMethod("enable")
-            p.DefineMethod("load", T<obj>)
+            p.DefineMethod("enable", T<int> + T<string>)
+            p.DefineFunc("instance", T<obj>)
+            p.DefineMethod("load", T<obj> + T<string> + T<int>)
             p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("refresh")
             p.DefineMethod("widget")
 

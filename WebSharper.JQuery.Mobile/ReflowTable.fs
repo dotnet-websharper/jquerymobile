@@ -15,6 +15,16 @@ module WebSharper.JQuery.Mobile.ReflowTable
 open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
+let CL =
+    Pattern.Config "RefTabClasses" {
+        Required = []
+        Optional =
+            [
+                "cellLabels", T<string>
+                "reflowTable", T<string>
+            ]
+    }
+
 let ReflowTableConfig =
     Pattern.Config "ReflowTableConfig" {
         Required = []
@@ -22,8 +32,7 @@ let ReflowTableConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-//                "classes.cellLabels", T<string>
-//                "classes.reflowTable", T<string>
+                "classes", CL.Type
                 "initSelector", T<string>
             ]
     }

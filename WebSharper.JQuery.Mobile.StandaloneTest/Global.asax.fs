@@ -1,4 +1,4 @@
-namespace SinglePageApplication1
+namespace WebSharper.JQuery.Mobile.StandaloneTest
 
 type Global() =
     inherit System.Web.HttpApplication()

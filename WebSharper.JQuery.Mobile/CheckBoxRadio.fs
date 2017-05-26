@@ -46,5 +46,8 @@ let CheckBoxRadio =
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("refresh")
         ]

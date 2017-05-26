@@ -50,11 +50,11 @@ let Page =
             p.DefineConstructor()
             p.DefineConstructor(PageConfig.Type)
 
-            p.DefineFunc("bindRemove", T<unit -> unit>)
+            p.DefineMethod("bindRemove", T<unit -> unit>)
             p.DefineFunc("keepNativeSelector", T<string>) |> Obsolete
             p.DefineMethod("removeContainerBackground") |> Obsolete 
             p.DefineMethod("setContainerBackground", Common.SwatchLetter.Type) |> Obsolete
 
-            Events.Define "beforecreate"
+            Events.Define "pagebeforecreate"
             |> WithSourceName "BeforeCreated"
         ]

@@ -30,7 +30,6 @@ let SelectMenuConfig =
                 "hidePlaceholderMenuItems", T<bool>
                 "icon", Common.Icon.Type
                 "iconpos", Common.IconPosition.Type
-                "iconshadow", T<bool>
                 "inline", T<bool>
                 "mini", T<bool>
                 "nativeMenu", T<bool>
@@ -42,6 +41,7 @@ let SelectMenuConfig =
         Obsolete =
             [
                 "initSelector", T<string>
+                "iconshadow", T<bool>
             ]
     }
 
@@ -56,6 +56,10 @@ let SelectMenu =
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("open")
+            p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("refresh")
             p.DefineMethod("refresh", T<bool>)
         ]

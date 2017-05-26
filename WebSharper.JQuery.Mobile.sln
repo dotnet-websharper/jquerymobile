@@ -5,6 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C59727C0-1252-49E7-8B30-793C934C8CCC}"
 	ProjectSection(SolutionItems) = preProject
+		build-zafir.fsx = build-zafir.fsx
 		build.fsx = build.fsx
 		ivy.xml = ivy.xml
 	EndProjectSection
@@ -12,6 +13,8 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQuery.Mobile", "WebSharper.JQuery.Mobile\WebSharper.JQuery.Mobile.fsproj", "{09FF3F57-1D1A-4537-AF3E-9B957DBD961E}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQuery.Mobile.Tests", "WebSharper.JQuery.Mobile.Tests\WebSharper.JQuery.Mobile.Tests.fsproj", "{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.JQuery.Mobile.StandaloneTest", "WebSharper.JQuery.Mobile.StandaloneTest\WebSharper.JQuery.Mobile.StandaloneTest.fsproj", "{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +33,12 @@ Global
 		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Release-v4.0|Any CPU.ActiveCfg = Debug|Any CPU
 		{BB42AD3F-9110-4D95-A23F-36B4F2F900FA}.Release-v4.0|Any CPU.Build.0 = Debug|Any CPU
+		{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}.Release-v4.0|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE4E2AA-6AB7-41BD-AA64-CB1A3B866B0C}.Release-v4.0|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

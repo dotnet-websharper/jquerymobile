@@ -70,6 +70,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
         PageContainer.PageChangeConfig
         PageContainer.PageContainer
 
+        Panel.Cl
         Panel.PanelConfig
         Panel.Panel
 
@@ -88,12 +89,15 @@ let ClassList : list<CodeModel.NamespaceEntity> =
 
         Table.TableConfig
         Table.Table
+        Table.CL
 
         ColumnToggleTable.ColumnToggleTableConfig
         ColumnToggleTable.ColumnToggleTable
+        ColumnToggleTable.CL
 
         ReflowTable.ReflowTableConfig
         ReflowTable.ReflowTable
+        ReflowTable.CL
 
         Tabs.TabsConfig
         Tabs.Tabs

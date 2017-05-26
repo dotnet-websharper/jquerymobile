@@ -15,6 +15,15 @@ module WebSharper.JQuery.Mobile.Table
 open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
+let CL = 
+    Pattern.Config "TableClasses" {
+        Required = []
+        Optional =
+            [
+                "table", T<string>
+            ]
+    }
+
 let TableConfig =
     Pattern.ConfigObs "TableConfig" {
         Required = []
@@ -22,7 +31,7 @@ let TableConfig =
             [
                 "create", T<Events.JEvent * JQuery -> unit>
 
-//                "classes.table", T<string>
+                "class", CL.Type
                 "defaults", T<bool>
                 "disabled", T<bool>
             ]
@@ -38,4 +47,6 @@ let Table =
     |+> Static [
             p.DefineConstructor()
             p.DefineConstructor(TableConfig.Type)
+
+            p.DefineMethod("rebuild")
         ]

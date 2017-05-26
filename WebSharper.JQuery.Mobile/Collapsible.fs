@@ -27,6 +27,7 @@ let CollapsibleConfig =
                 "collapseCueText", T<string>
                 "collapsed", T<bool>
                 "collapsedIcon", Common.Icon.Type
+                "contentTheme", T<string>
                 "corners", T<bool>
                 "defaults", T<bool>
                 "disabled", T<bool>
@@ -52,13 +53,18 @@ let Collapsible =
             p.DefineConstructor()
             p.DefineConstructor(CollapsibleConfig.Type)
 
-            Events.Define "collapse"
+            Events.DefineTyped "collapsiblecollapse" T<obj>
             |> WithSourceName "Collapse"
-            Events.Define "expand"
-            |> WithSourceName "Expande"
+            Events.DefineTyped "collapsibleexpand" T<obj>
+            |> WithSourceName "Expand"
 
+
+            p.DefineMethod("collapse")
             p.DefineMethod("destroy")
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
         ]

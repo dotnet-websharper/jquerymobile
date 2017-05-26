@@ -16,7 +16,7 @@ open WebSharper.InterfaceGenerator
 open WebSharper.JQuery
 
 let RangeSliderConfig =
-    Pattern.Config "RangeSliderConfig" {
+    Pattern.ConfigObs "RangeSliderConfig" {
         Required = []
         Optional =
             [
@@ -25,15 +25,16 @@ let RangeSliderConfig =
 
                 "defaults", T<bool>
                 "disabled", T<bool>
-                "enhanced", T<bool>
                 "highlight", T<bool>
-                "initSelector", T<string>
                 "mini", T<bool>
                 "theme", Common.SwatchLetter.Type
                 "trackTheme", Common.SwatchLetter.Type
             ]
+        Obsolete =
+            [
+                "initSelector", T<string>
+            ]
     }
-    |> Obsolete
 
 let RangeSlider =
     let p = Common.Plugin("rangeslider")
@@ -46,9 +47,11 @@ let RangeSlider =
             p.DefineMethod("disable")
             p.DefineMethod("enable")
             p.DefineMethod("option", T<string>)
+            p.DefineFunc("option", T<obj>)
+            p.DefineMethod("option", T<string>, T<obj>)
+            p.DefineMethod("option", T<obj>)
             p.DefineMethod("refresh")
 
-            Events.Define "normalize"
+            Events.Define "rangeslidernormalize"
             |> WithSourceName "Normalize"
         ]
-    |> Obsolete
