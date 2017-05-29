@@ -302,6 +302,9 @@ let Mobile =
 
             "Use" => T<unit->unit>
             |> WithInline "undefined"
+
+            "enhanceWithin" => T<JQuery>?j ^-> T<unit>
+            |> WithInline "$j.enhanceWithin()"
         ]
     |+> Instance
         [
@@ -334,6 +337,9 @@ let Mobile =
             "pushStateEnabled" =@ T<bool>
             "subPageUrlKey" =@ T<string> |> Obsolete
             "transitionFallbacks" =? TransitionFallbacks
+
+            "initializePage" => T<unit> ^-> T<unit>
+            "resetActivePageHeight" => T<unit> ^-> T<unit>
 
             // Methods and utilities
 

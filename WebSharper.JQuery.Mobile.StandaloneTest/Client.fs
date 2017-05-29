@@ -10,35 +10,45 @@ open WebSharper.UI.Next.Client
 [<JavaScript>]
 module Client =
 
-    [<Inline "$.mobile.pageContainer(\"change\", $to, null)">]
-    let ChangePage ``to`` = X<unit>
+    let ChangeToPage (href: string) =
+        JQuery.Mobile.PageContainer.Change(JQuery.Of(":mobile-pagecontainer"), href, new JQuery.Mobile.ChangePageConfig())
 
     let IndexPage () =
         JQuery.Mobile.Mobile.Use()
         let header =
             divAttr [
-                attr.``data-`` "role" "header"
+                attr.``data-`` "role" "toolbar"
+                attr.``data-`` "type" "header"
             ] [
                 h1 [text "Main page"]
             ]
         let generateLink name id =
             aAttr [
                 attr.``data-`` "role" "button"
-                attr.href id
+                on.click(fun _ _ -> ChangeToPage id)
             ] [text name]
         let content =
             divAttr [
                 attr.``data-`` "role" "content"
+                Attr.Class "ui-content"
             ] [
                 generateLink "Simple Page" "#simplePage"
                 generateLink "Forms" "#formTypes"
-                generateLink "Events" "" 
+                generateLink "Events" "#eventTest" 
             ]
 
         divAttr [
             attr.id "indexPage"
             attr.``data-`` "role" "page"
             attr.``data-`` "url" "#indexPage"
+            on.afterRender(fun el ->
+                JQuery.Mobile.Mobile.EnhanceWithin(JQuery.Of(el))
+                let tcfg = 
+                    JQuery.Mobile.ToolbarConfig()
+                JQuery.Mobile.Toolbar.Init(JQuery.Of(el).Find("[data-role=header]"), tcfg)
+                JQuery.Mobile.Toolbar.Init(JQuery.Of(el).Find("[data-role=footer]"), tcfg)
+                JQuery.Mobile.Mobile.Instance.ResetActivePageHeight()
+            )
         ] [
             header
             content
@@ -48,17 +58,33 @@ module Client =
         JQuery.Mobile.Mobile.Use()
         let header =
             divAttr [
-                attr.``data-`` "role" "header"
+                attr.``data-`` "role" "toolbar"
+                attr.``data-`` "type" "header"
+                attr.``data-`` "position" "fixed"
+                attr.``data-`` "fullscreen" "true"
             ] [
                 h1 [text "Simple page"]
             ]
         let content =
-            divAttr [attr.``data-`` "role" "content"] [
-                 p [text "Lorem ipsum dolor sit amet, consectetur adipiscing"]
+            divAttr [attr.``data-`` "role" "content"; Attr.Class "ui-content"] [
+                p [text "Lorem ipsum dolor sit amet, consectetur adipiscing"] 
+                aAttr [
+                    attr.``data-`` "role" "button"
+                    attr.href "#indexPage" 
+                ] [
+                    text "Back"
+                ]
             ]
         let footer =
-            divAttr [attr.``data-`` "role" "footer"] [
-                 h4 [text "Page Footer"]
+            divAttr [
+                attr.``data-`` "role" "toolbar"
+                attr.``data-`` "type" "footer"
+                attr.``data-`` "position" "fixed"
+                on.afterRender(fun el ->
+                    JQuery.Of(el) |> JQuery.Mobile.Toolbar.Init
+                )
+            ] [
+                h4 [text "Page Footer"]
             ]
         let page = 
             divAttr [
@@ -66,12 +92,6 @@ module Client =
                 attr.``data-`` "role" "page"
                 attr.``data-`` "url" "#simplePage"
             ] [
-                aAttr [
-                    attr.``data-`` "role" "button"
-                    attr.href "#indexPage" 
-                ] [
-                    text "Back"
-                ]
                 header
                 content
                 footer
@@ -82,7 +102,14 @@ module Client =
         JQuery.Mobile.Mobile.Use()
         let home =
             let header =
-                divAttr [attr.``data-`` "role" "header"] [
+                divAttr [
+                    attr.``data-`` "role" "toolbar"
+                    attr.``data-`` "type" "header"
+                    attr.``data-`` "position" "fixed"
+                    attr.``data-`` "fullscreen" "true"
+                    attr.``data-`` "theme" "b"
+                    Attr.Create "role" "header"
+                ] [
                      h1 [text "Ice Cream Order Form"]
                 ]
             let content =
@@ -108,7 +135,7 @@ module Client =
                         "Angel Road"
                     ]
 
-                divAttr [attr.``data-`` "role" "content"] [
+                divAttr [attr.``data-`` "role" "content"; Attr.Class "ui-content"] [
                     formAttr [
                         attr.action "#"
                     ] [
@@ -155,14 +182,21 @@ module Client =
                             ] id optionList (Var.Create "Main Street")
 
                         ]
-                        divAttr [Attr.Class "ui-body ui-body-b"] [
+                        divAttr [Attr.Class "ui-body ui-body-a"] [
                             fieldsetAttr [Attr.Class "ui-grid-a"] [
                                 divAttr [] [
                                     buttonAttr [
-                                        attr.``data-`` "theme" "a"
                                         on.click (fun _ ev -> ev.PreventDefault(); JS.Alert("Order sent"))
                                     ] [
                                         text "Order Ice Cream"
+                                    ]
+                                ]
+                                divAttr [] [                
+                                    aAttr [
+                                        attr.``data-`` "role" "button"
+                                        attr.href "#indexPage" 
+                                    ] [
+                                        text "Back"
                                     ]
                                 ]
                             ]
@@ -174,18 +208,62 @@ module Client =
                     attr.id "formTypes"
                     attr.``data-`` "role" "page"
                     attr.``data-`` "url" "#formTypes"
-                    ] [
-                    aAttr [
-                        attr.``data-`` "role" "button"
-                        attr.href "#indexPage" 
-                    ] [
-                        text "Back"
-                    ]
+                ] [
                     header
                     content
                 ]
             page
         home
+
+    let EventTestPage () =
+        let header =
+            divAttr [
+                attr.``data-`` "role" "toolbar"
+                attr.``data-`` "type" "header"
+            ] [
+                h1 [text "Tap me!"]
+            ]
+        let content =
+            divAttr [attr.``data-`` "role" "content"; Attr.Class "ui-content"] [
+                p [text "Swipe me!"]
+                aAttr [
+                    attr.``data-`` "role" "button"
+                    attr.href "#indexPage" 
+                ] [
+                    text "Back"
+                ]
+            ]
+        let footer =
+            divAttr [
+                attr.``data-`` "role" "toolbar"
+                attr.``data-`` "type" "footer"
+            ] [
+                h4 [text "Scroll me!"]
+            ]
+        JQuery.Mobile.Events.Tap.On(JQuery.JQuery.Of(header.Dom),
+            fun event -> 
+                "Tapped on:" + string event.PageX + "," + string event.PageY
+                |> JS.Alert
+            )
+        JQuery.Mobile.Events.Swipe.On(JQuery.JQuery.Of(content.Dom),
+            fun event -> 
+                JS.Alert("Swipped on")
+            )
+        JQuery.Mobile.Events.ScrollStart.On(JQuery.JQuery.Of(footer.Dom),
+            fun event -> 
+                JS.Alert("Scrolled on")
+            )
+        let page = 
+            divAttr [
+                attr.id "eventTest"
+                attr.``data-`` "role" "page"
+                attr.``data-`` "url" "#eventTest"
+            ] [
+                header
+                content
+                footer
+            ]
+        page
 
     [<SPAEntryPoint>]
     let Main =
@@ -193,6 +271,7 @@ module Client =
 
         let simplePage = SimplePage()
         let formPage = FormTypes()
+        let eventPage = EventTestPage()
         let indexPage = IndexPage()
 
         let pages =
@@ -200,6 +279,7 @@ module Client =
                 indexPage
                 simplePage
                 formPage
+                eventPage
             ]
 
         let p = div (pages |> List.map (fun k -> k :> Doc))
@@ -210,4 +290,4 @@ module Client =
                 |> JQuery.Mobile.Page.Init
             )
         )
-        |> Doc.RunById "main"
+        |> Doc.RunReplaceById "main"
