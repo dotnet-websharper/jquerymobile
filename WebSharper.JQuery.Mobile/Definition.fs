@@ -354,10 +354,6 @@ let Mobile =
             "path" =? Path
             "silentScroll" => !?T<int>?yPos ^-> T<unit>
             "activePage" =? T<JQuery> |> ObsoleteWithMessage "Use the pagecontainer widget's getActivePage function instead"
-
-            // THESE NEEDS TO BE REVISED
-            "showPageLoadingMsg" => !?T<string>?theme * !?T<string>?msgText * !?T<bool>?textonly ^-> T<unit>
-            "hidePageLoadingMsg" => T<unit> ^-> T<unit>
         ]
 
 let JQuery =
