@@ -5,7 +5,7 @@ let bt =
     BuildTool().PackageId("Zafir.JQueryMobile")
         .VersionFrom("Zafir")
         .WithFSharpVersion(FSharpVersion.FSharp30)
-        .WithFramework(fun fw -> fw.Net45)
+        .WithFramework(fun fw -> fw.Net40)
 
 let ext =
     bt.Zafir.Extension("WebSharper.JQuery.Mobile")
