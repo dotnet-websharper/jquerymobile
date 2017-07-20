@@ -3,6 +3,6 @@
   <dependencies>
     <dependency name="zafir" rev="latest.integration" />
     <dependency name="zafir.html" rev="latest.integration" />
-  </dependencies>
+  <dependency name="zafir.ui.next" rev="latest.integration" /> </dependencies>
 </ivy-module>
 
