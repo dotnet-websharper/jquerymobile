@@ -28,6 +28,7 @@ let ClassList : list<CodeModel.NamespaceEntity> =
 
         Events.Event0
         Events.Event1
+        Events.Event2
 
         Button.ButtonConfig
         Button.Button

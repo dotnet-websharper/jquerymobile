@@ -17,6 +17,7 @@ type JEvent = WebSharper.JQuery.Event
 
 let Handler0 = T<JEvent>?ev ^-> T<unit>
 let Handler1 t = t ^-> T<unit>
+let Handler2 t1 t2 = t1 * t2 ^-> T<unit>
 
 let Event0 =
     let h = Handler0
@@ -55,10 +56,33 @@ let Event1 =
                 |> WithInline "$jQ.off($this, $selector, $handler)"
             ]
 
+let Event2 =
+    Generic -- fun t1 t2 ->
+        let h = Handler2 t1 t2
+        Class "Event`2"
+        |+> Instance [
+                "name" =? T<string>
+                |> WithGetterInline "$this"
+                "trigger" => T<JQuery>?jQ * t2?par ^-> T<unit>
+                |> WithInline "$jQ.trigger($this, $par)"
+                "on" => T<JQuery>?jQ * h?handler ^-> T<unit>
+                |> WithInline "$jQ.on($this, $handler)"
+                "on" => T<JQuery>?jQ * T<string>?selector * h?handler ^-> T<unit>
+                |> WithInline "$jQ.on($this, $selector, $handler)"
+                "off" => T<JQuery>?jQ * h?handler ^-> T<unit>
+                |> WithInline "$jQ.off($this, $handler)"
+                "off" => T<JQuery>?jQ * T<string>?selector * h?handler ^-> T<unit>
+                |> WithInline "$jQ.off($this, $selector, $handler)"
+            ]
+
 let Define name =
     name =? Event0
      |> WithGetterInline (sprintf @"'%s'" name)
 
 let DefineTyped name (ty: Type.Type) =
     name =? Event1.[ty]
+    |> WithGetterInline (sprintf "'%s'" name)
+
+let DefineTyped2 name (ev: Type.Type) (ty: Type.Type) =
+    name =? Event2.[ev, ty]
     |> WithGetterInline (sprintf "'%s'" name)

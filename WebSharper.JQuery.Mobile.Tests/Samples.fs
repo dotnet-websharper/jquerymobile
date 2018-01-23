@@ -154,9 +154,9 @@ type AppControl() =
 
     [<JavaScript>]
     override this.Body =
-        Mobile.Events.PageBeforeChange.On(JQuery.Of JS.Document, fun (e, data) ->
+        Mobile.Events.PageBeforeChange.On(JQuery.Of JS.Document, fun e data ->
             match data.ToPage with
-            | Choice2Of2 pageUrl -> 
+            | Union2Of2 pageUrl -> 
                 match App.getJQMPage pageUrl with
                 | Some pageObj ->
                     let body = JQuery.Of "body"                  

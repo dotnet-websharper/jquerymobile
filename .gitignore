@@ -12,3 +12,10 @@
 /tools/packages/
 .vs/
 /WebSharper.JQuery.Mobile.StandaloneTest/Content/
+
+bin/
+obj/
+/.fake/
+/paket-files/
+/.vscode/
+nuget/*.paket.template

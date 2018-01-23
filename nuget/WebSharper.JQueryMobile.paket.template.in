@@ -1,0 +1,19 @@
+type file
+id WebSharper.JQueryMobile
+authors
+    IntelliFactory
+owners
+    IntelliFactory
+licenseUrl http://websharper.com/licensing
+projectUrl https://github.com/intellifactory/websharper.jquerymobile
+description
+    WebSharper Extensions for JQuery Mobile 1.5.0-alpha
+tags
+    Web JavaScript F# C#
+files
+    ../WebSharper.JQuery.Mobile/bin/Release/netstandard2.0/WebSharper.JQuery.Mobile.dll ==> lib/net461
+    ../WebSharper.JQuery.Mobile/bin/Release/netstandard2.0/WebSharper.JQuery.Mobile.xml ==> lib/net461
+    ../WebSharper.JQuery.Mobile/bin/Release/netstandard2.0/WebSharper.JQuery.Mobile.dll ==> lib/netstandard2.0
+    ../WebSharper.JQuery.Mobile/bin/Release/netstandard2.0/WebSharper.JQuery.Mobile.xml ==> lib/netstandard2.0
+dependencies
+        WebSharper ~> LOCKEDVERSION/3

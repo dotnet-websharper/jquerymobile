@@ -134,7 +134,7 @@ let VMouseEventArgs =
 let Events =
     let ev0 name = Events.Define name
     let ev1 name ty = Events.DefineTyped name ty
-    let ev2 name ty = Events.DefineTyped name (T<WebSharper.JQuery.Event> * ty)
+    let ev2 name ty = Events.DefineTyped2 name T<WebSharper.JQuery.Event> ty
     Class "Events"
     |+> Static [
             ev0 "hashchange" |> WithSourceName "HashChange"
